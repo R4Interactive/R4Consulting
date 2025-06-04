@@ -15,7 +15,7 @@
 
 	/* Polices */
 	--font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-	--font-script: 'Playfair Display', serif;
+	--font-script: 'Dancing Script', cursive;
 
 	/* Hauteur fixe des cartes (ajustable si besoin) */
 	--card-height: 380px;
@@ -116,6 +116,15 @@ button {
 	max-width: 800px;
 	margin: 1rem auto 0;
 	text-align: center;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+/* Lorsque le JS ajoute .hero-visible, l’élément apparaît */
+.hero-inner.hero-visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .site-title {
@@ -126,11 +135,12 @@ button {
 	color: var(--gold);
 }
 
+/* Police manuscrite pour la tagline */
 .tagline {
-	font-family: 'Great Vibes', cursive; /* utilisation de la police manuscrite */
-	font-size: 2rem; /* taille augmentée pour plus d’impact */
+	font-family: var(--font-script);
+	font-size: 2rem; /* taille augmentée */
 	margin-bottom: 2rem;
-	line-height: 1.2; /* un peu plus serré verticalement */
+	line-height: 1.2;
 	color: var(--cream);
 }
 
@@ -228,6 +238,15 @@ button {
 	border-radius: 8px;
 	padding: 2rem 1.5rem;
 	box-sizing: border-box;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 3s ease-out 0.5s, transform 3s ease-out 0.5s;
+}
+
+/* Lorsque le JS ajoute .visible, la carte apparaît */
+.service-card.visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 /* Frame dorée autour de l’icône */
@@ -248,6 +267,12 @@ button {
 	width: 50px;
 	height: 50px;
 	object-fit: contain;
+	transition: transform 2s ease;
+}
+
+/* À l’hover, on fait tourner légèrement l’icône */
+.service-card:hover .service-icon {
+	transform: rotate(15deg);
 }
 
 /* Titre de la carte en or */
@@ -482,119 +507,19 @@ button {
 	background-color: var(--dark-bg);
 }
 
-.contact-heading {
-	font-size: 2rem;
-	font-weight: 800;
-	text-align: center;
-	margin-bottom: 0.5rem;
-	color: var(--gold);
-}
-
-.contact-subheading {
-	text-align: center;
-	font-size: 1rem;
-	margin-bottom: 2rem;
-	color: var(--cream);
-	opacity: 0.85;
-}
-
-.contact-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 2rem;
-	max-width: 1000px;
-	margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-	.contact-grid {
-		grid-template-columns: 1fr 1fr;
-	}
-}
-
-.contact-info {
-	background-color: #111111;
-	padding: 2rem;
-	border-radius: 8px;
-}
-
-.info-title {
-	font-size: 1.25rem;
-	font-weight: 600;
-	margin-bottom: 1rem;
-	color: var(--gold);
-}
-
-.info-list {
-	list-style: none;
-	margin-top: 1rem;
-	display: flex;
-	flex-direction: column;
-	gap: 1.25rem;
-}
-
-.info-list li {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-}
-
-/* -- On applique ici le filtre pour recolorer en doré -- */
-.info-icon {
-	width: 24px;
-	height: 24px;
-	filter: invert(37%) /* ramène le blanc/noir vers une teinte neutre */
-		sepia(82%) /* passage vers l’orange */ saturate(600%)
-		/* renforce la couleur */ hue-rotate(335deg)
-		/* ajuste la teinte pour un doré précis */ brightness(90%);
-}
-
-.info-label {
-	font-weight: 600;
-	width: 100px;
-	color: var(--cream);
-}
-
-.info-text {
-	color: var(--cream);
-	font-size: 0.95rem;
-}
-
-.info-text a {
-	color: var(--cream);
-	text-decoration: none;
-}
-
-.info-text a:hover {
-	text-decoration: underline;
-}
-
-/* ----------------------------------
-   SECTION CONTACT – CORRECTION D’ALIGNEMENT
-   ---------------------------------- */
-
-/* 1) Conteneur global de la section */
-.contact {
-	background-color: var(--dark-bg); /* #0c1518 */
-	padding: 4rem 1rem;
-}
-
-/* 2) Limitation de la largeur et centrage */
 .contact-inner {
 	max-width: 1000px;
 	margin: 0 auto;
 }
 
-/* 3) Titre principal */
 .contact-heading {
 	font-size: 2rem;
 	font-weight: 800;
 	text-align: center;
 	margin: 0 0 2rem 0;
-	color: var(--gold); /* #b08040 */
+	color: var(--gold);
 }
 
-/* 4) Carte unifiée : deux colonnes alignées en haut */
 .contact-card {
 	display: flex;
 	flex-wrap: wrap;
@@ -603,35 +528,22 @@ button {
 	border-radius: 8px;
 	background-color: #111111;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-
-	/* ← Aligne le haut des colonnes .contact-info et .contact-form */
 	align-items: flex-start;
 }
 
-/* 5) Suppression de toute marge/padding abstraite dans h2/h3 */
-.contact-card h2,
-.contact-card h3,
-.contact-info,
-.contact-form {
-	margin: 0;
-	padding: 0;
-}
-
-/* 6) Bloc “Informations” (colonne gauche) */
+/* Bloc “Informations” */
 .contact-info {
-	flex: 1 1 300px; /* largeur min. 300px, peut s’étendre */
+	flex: 1 1 300px;
 	max-width: 400px;
 }
 
-/* 6a) Titre “Informations” */
 .contact-info .info-title {
-	margin: 0 0 1rem 0; /* marge haute 0, marge basse 1rem */
+	margin: 0 0 1rem 0;
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: var(--gold);
 }
 
-/* 6b) Liste d’infos */
 .info-list {
 	list-style: none;
 	display: flex;
@@ -642,20 +554,13 @@ button {
 .info-list li {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
 }
 
 .info-icon {
-	width: 24px;
-	height: 24px;
-	filter: invert(37%) sepia(82%) saturate(600%) hue-rotate(335deg)
-		brightness(90%);
-}
-
-.info-label {
-	font-weight: 600;
-	color: var(--cream); /* #ece3c9 */
-	min-width: 80px;
+	font-size: 1.5rem; /* environ 24px */
+	color: var(--gold);
+	margin-right: 0.75rem;
+	flex-shrink: 0;
 }
 
 .info-text {
@@ -673,21 +578,19 @@ button {
 	text-decoration: underline;
 }
 
-/* 7) Bloc “Formulaire” (colonne droite) */
+/* Bloc “Formulaire” */
 .contact-form {
-	flex: 2 1 400px; /* occupe plus d’espace si possible */
+	flex: 2 1 400px;
 	max-width: 600px;
 }
 
-/* 7a) Titre “Envoyez-Nous un Message” */
 .contact-form .info-title {
-	margin: 0 0 1rem 0; /* marge haute 0, marge basse 1rem */
+	margin: 0 0 1rem 0;
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: var(--gold);
 }
 
-/* 7b) Champs du formulaire */
 .contact-form .form-group {
 	margin-bottom: 1.5rem;
 }
@@ -746,33 +649,31 @@ button {
 	background-color: #9e6e36;
 }
 
-/* 8) Boutons WhatsApp & Calendly – alignement SOUS le formulaire */
+/* Boutons WhatsApp & Calendly – alignement SOUS le formulaire */
 .contact-actions {
 	display: flex;
-	align-items: center; /* aligne WhatsApp et Calendly sur la même ligne */
-	gap: 1rem; /* espace horizontal entre les deux */
-	margin: 2rem 0 0 0; /* marge haute entre formulaire et boutons */
+	align-items: center;
+	gap: 1rem;
+	margin: 2rem 0 0 0;
 }
 
-/* 8a) Styles communs aux deux boutons */
 .contact-actions a.btn-whatsapp,
 .contact-actions button#calendlyBtn {
-	display: inline-flex; /* conteneur flex pour centrer contenu */
-	align-items: center; /* centre verticalement icône + texte */
-	justify-content: center; /* centre horizontalement le contenu */
-	height: 48px; /* même hauteur pour les deux */
-	padding: 0 1.5rem; /* même padding horizontal */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 48px;
+	padding: 0 1.5rem;
 	font-size: 1rem;
 	font-weight: 600;
 	border-radius: 4px;
-	text-decoration: none; /* retire soulignement éventuel */
+	text-decoration: none;
 	cursor: pointer;
 	transition: background-color 0.3s ease, color 0.3s ease;
-	line-height: 1; /* évite tout décalage de texte */
-	margin: 0; /* annule toute marge résiduelle */
+	line-height: 1;
+	margin: 0;
 }
 
-/* 8b) Bouton WhatsApp */
 .contact-actions a.btn-whatsapp {
 	background-color: #25d366;
 	color: #ffffff;
@@ -782,7 +683,7 @@ button {
 .contact-actions a.btn-whatsapp img {
 	width: 20px;
 	height: 20px;
-	margin-right: 0.5rem; /* espace icône ↔ texte */
+	margin-right: 0.5rem;
 	filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(35deg)
 		brightness(110%) contrast(95%);
 }
@@ -792,7 +693,6 @@ button {
 	border-color: #1fa954;
 }
 
-/* 8c) Bouton Calendly */
 .contact-actions button#calendlyBtn {
 	background-color: transparent;
 	color: var(--gold);
@@ -804,28 +704,25 @@ button {
 	color: var(--dark-bg);
 }
 
-/* 8d) Focus (accessibilité) pour les deux boutons */
 .contact-actions a.btn-whatsapp:focus,
 .contact-actions button#calendlyBtn:focus {
 	outline: 2px solid var(--cream);
 	outline-offset: 2px;
 }
 
-/* 9) Responsive sous 600px : boutons empilés en colonne */
 @media (max-width: 600px) {
 	.contact-actions {
-		flex-direction: column; /* empile WhatsApp, puis Calendly */
-		align-items: stretch; /* chaque bouton fait 100% de la largeur */
+		flex-direction: column;
+		align-items: stretch;
 	}
 	.contact-actions a.btn-whatsapp,
 	.contact-actions button#calendlyBtn {
 		width: 100%;
-		height: 44px; /* hauteur réduite pour mobile */
+		height: 44px;
 		margin: 0;
 	}
 }
 
-/* 10) Responsive sous 768px : colonnes Informations/Formulaire empilées */
 @media (max-width: 768px) {
 	.contact-card {
 		flex-direction: column;
@@ -838,9 +735,8 @@ button {
 }
 
 /* --------------------------------------------
-   Scroll‐Reveal (fade & slide) – CSS classes
-   -------------------------------------------- */
-
+	 Scroll‐Reveal (fade & slide) – CSS classes
+	 -------------------------------------------- */
 .reveal-hidden {
 	opacity: 0;
 	transform: translateY(40px);
@@ -875,35 +771,13 @@ button {
 }
 
 /* --------------------------------------------
-   AJOUT D’ANIMATIONS COMPLÉMENTAIRES
-   -------------------------------------------- */
-
-/* 1) Hero Fade‐In à l’arrivée */
-.hero-inner {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 2s ease-out, transform 2s ease-out;
-}
-
-.hero-inner.hero-visible {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-/* 2) Rotation subtile des icônes de service au survol */
-.service-card .service-icon {
-	transition: transform 2s ease;
-}
-
-.service-card:hover .service-icon {
-	transform: rotate(15deg);
-}
-
-/* 3) Animation de soulignement progressif des liens de navigation */
+	 AJOUT D’ANIMATIONS COMPLÉMENTAIRES
+	 -------------------------------------------- */
+/* 1) Rotation subtile des icônes de service au survol (déjà dans .service-card:hover) */
+/* 2) Animation de soulignement progressif des liens de navigation */
 .main-nav a {
 	position: relative;
 }
-
 .main-nav a::after {
 	content: '';
 	position: absolute;
@@ -914,25 +788,12 @@ button {
 	background-color: var(--gold);
 	transition: width 2s ease;
 }
-
 .main-nav a:hover::after,
 .main-nav a.active::after {
 	width: 100%;
 }
 
-/* 4) Apparition en fondu des cartes de service (déjà cachées dans CSS existant) */
-.service-card {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 3s ease-out 0.5s, transform 3s ease-out 0.5s;
-}
-
-.service-card.visible {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-/* 5) Bouton “Retour en haut” discret */
+/* 3) Bouton “Retour en haut” discret (prêt à être activé par JS) */
 #backToTop {
 	position: fixed;
 	right: 1.5rem;
@@ -952,25 +813,19 @@ button {
 	transition: opacity 2s ease, visibility 2s;
 	cursor: pointer;
 }
-
 #backToTop.visible {
 	opacity: 1;
 	visibility: visible;
 }
-
 #backToTop:hover {
 	background-color: #9e6e36;
 }
 
-/* 6) Animation de survol pour les boutons WhatsApp et Calendly (légère expansion) */
+/* 4) Boutons WhatsApp & Calendly : légère expansion au survol */
 .contact-actions a.btn-whatsapp:hover,
 .contact-actions button#calendlyBtn:hover {
 	transform: scale(1.05);
 	transition: transform 2s ease;
 }
 
-/* 7) Apparition en fondu des sections “reveal” déjà géré, rien à ajouter ici */
-
-/* --------------------------------------------
-	 FIN DES AJOUTS CSS
-	 -------------------------------------------- */
+/* Fin du CSS */
