@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.sitemaps.org/schemas/sitemap/0.9
+        https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Page d’accueil -->
+  <url>
+    <loc>https://www.r4consulting.fr/</loc>
+    <lastmod>2025-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Page Identité & Présence Digitale -->
+  <url>
+    <loc>https://www.r4consulting.fr/identite.html</loc>
+    <lastmod>2025-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Page Immobilier Professionnel -->
+  <url>
+    <loc>https://www.r4consulting.fr/immobilier.html</loc>
+    <lastmod>2025-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Page Gestion & Patrimoine -->
+  <url>
+    <loc>https://www.r4consulting.fr/gestion.html</loc>
+    <lastmod>2025-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Page Blog -->
+  <url>
+    <loc>https://www.r4consulting.fr/blog.html</loc>
+    <lastmod>2025-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Page Recrutement -->
+  <url>
+    <loc>https://www.r4consulting.fr/recrutement.html</loc>
+    <lastmod>2025-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- (Si vous avez une page de politique de confidentialité ou autre, ajoutez-la ici) -->
+  <!--
+  <url>
+    <loc>https://www.r4consulting.fr/politique-confidentialite.html</loc>
+    <lastmod>2025-06-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  -->
+
+</urlset>

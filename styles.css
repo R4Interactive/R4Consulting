@@ -1,0 +1,976 @@
+/* ----------------------------------
+   GLOBAL RESET & VARIABLES
+   ---------------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	/* Couleurs principales */
+	--dark-bg: #0c1518; /* Fond sombre */
+	--gold: #b08040; /* Doré pour icônes et titres */
+	--cream: #ece3c9; /* Crème pour le texte */
+
+	/* Polices */
+	--font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+	--font-script: 'Playfair Display', serif;
+
+	/* Hauteur fixe des cartes (ajustable si besoin) */
+	--card-height: 380px;
+}
+
+body {
+	background-color: var(--dark-bg);
+	color: var(--cream);
+	font-family: var(--font-sans);
+	line-height: 1.6;
+}
+
+/* Images, liens et boutons de base */
+img {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	font-family: var(--font-sans);
+}
+
+/* ----------------------------------
+	 HEADER / HERO
+	 ---------------------------------- */
+.hero {
+	position: relative;
+	background-color: var(--dark-bg);
+	padding: 1.5rem 1rem 1rem; /* Haut 1.5rem pour nav, bas 1rem pour contenu */
+}
+
+.header-top {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0.5rem 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	position: relative;
+}
+
+.header-top .logo {
+	width: 120px;
+	height: auto;
+}
+
+.main-nav {
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	background-color: transparent;
+	z-index: 10;
+}
+
+.main-nav ul {
+	list-style: none;
+	display: flex;
+	gap: 1.5rem;
+}
+
+.main-nav a {
+	color: var(--cream);
+	font-weight: 600;
+	padding-bottom: 0.25rem;
+	border-bottom: 2px solid transparent;
+	transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+	color: var(--gold);
+	border-bottom: 2px solid var(--gold);
+}
+
+@media (max-width: 768px) {
+	.main-nav {
+		position: static;
+		margin-top: 0.5rem;
+	}
+	.main-nav ul {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+	.main-nav a {
+		font-size: 0.9rem;
+	}
+}
+
+.hero-inner {
+	max-width: 800px;
+	margin: 1rem auto 0;
+	text-align: center;
+}
+
+.site-title {
+	font-size: 2.5rem;
+	font-weight: 800;
+	letter-spacing: 2px;
+	margin-bottom: 0.5rem;
+	color: var(--gold);
+}
+
+.tagline {
+	font-family: 'Great Vibes', cursive; /* utilisation de la police manuscrite */
+	font-size: 2rem; /* taille augmentée pour plus d’impact */
+	margin-bottom: 2rem;
+	line-height: 1.2; /* un peu plus serré verticalement */
+	color: var(--cream);
+}
+
+/* ----------------------------------
+	 BOUTONS GLOBAUX
+	 ---------------------------------- */
+.btn-primary {
+	display: inline-block;
+	background-color: transparent;
+	color: var(--gold);
+	font-weight: 600;
+	padding: 0.75rem 2rem;
+	border: 2px solid var(--gold);
+	border-radius: 4px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	text-align: center;
+}
+
+.btn-primary:hover {
+	background-color: var(--gold);
+	color: var(--dark-bg);
+}
+
+.btn-secondary {
+	display: inline-block;
+	background-color: transparent;
+	color: var(--gold);
+	font-weight: 600;
+	padding: 0.75rem 2rem;
+	border: 2px solid var(--gold);
+	border-radius: 4px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	text-align: center;
+	margin-top: 1rem;
+}
+
+.btn-secondary:hover {
+	background-color: var(--gold);
+	color: var(--dark-bg);
+}
+
+/* ----------------------------------
+	 SECTION « Qui sommes-nous ? » + SERVICES (sur index.html)
+	 ---------------------------------- */
+.about-services {
+	background-color: var(--dark-bg);
+	padding: 4rem 1rem;
+}
+
+.about-services-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.about-services-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--gold);
+	margin-bottom: 1rem;
+}
+
+.about-services-intro {
+	color: var(--cream);
+	font-size: 1rem;
+	line-height: 1.6;
+	margin-bottom: 3rem;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Conteneur des cartes */
+.services-cards {
+	display: flex;
+	justify-content: center;
+	align-items: stretch; /* Force toutes les cartes à avoir la même hauteur */
+	gap: 2rem;
+	flex-wrap: wrap;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+/* Chaque carte de service */
+.service-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Centre horizontalement le contenu */
+	text-align: center;
+	flex: 0 0 300px; /* Largeur fixe de 300px */
+	max-width: 300px;
+	height: var(--card-height); /* Hauteur fixe pour toutes les cartes */
+	background-color: #111111;
+	border-radius: 8px;
+	padding: 2rem 1.5rem;
+	box-sizing: border-box;
+}
+
+/* Frame dorée autour de l’icône */
+.icon-frame {
+	width: 100px;
+	height: 100px;
+	border: 2px solid var(--gold);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent;
+	margin-bottom: 1rem;
+}
+
+/* Icône centrée à l’intérieur de la frame */
+.service-icon {
+	width: 50px;
+	height: 50px;
+	object-fit: contain;
+}
+
+/* Titre de la carte en or */
+.service-title {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-bottom: 0.75rem;
+}
+
+/* Empêche le retour à la ligne automatique */
+.service-card .service-title {
+	white-space: nowrap;
+}
+
+/* Description de la carte */
+.service-desc {
+	flex: 1; /* Occupe tout l’espace vertical restant */
+	display: flex;
+	align-items: center; /* Centre verticalement si texte court */
+	justify-content: center;
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	margin-top: 0.25rem;
+}
+
+/* Élément additionnel (facultatif) sous la description */
+.service-link {
+	margin-top: 1rem;
+	color: var(--gold);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+/* Ajustements responsives pour les cartes :
+	 - Pour largeurs < 900px : 2 cartes par ligne
+	 - Pour largeurs < 600px : 1 carte par ligne (hauteur auto) */
+@media (max-width: 900px) {
+	.service-card {
+		flex: 0 0 calc(45% - 1rem);
+		max-width: calc(45% - 1rem);
+		height: var(--card-height); /* Conserver la même hauteur fixe */
+	}
+}
+
+@media (max-width: 600px) {
+	.service-card {
+		flex: 0 0 100%;
+		max-width: 100%;
+		height: auto; /* Sur mobile, on laisse la hauteur automatique */
+		padding-bottom: 2rem;
+	}
+}
+
+/* ----------------------------------
+	 SECTION DÉTAIL SERVICE (identite, immobilier, gestion)
+	 ---------------------------------- */
+.detail-service {
+	background-color: var(--dark-bg);
+	padding: 4rem 1rem;
+}
+
+.detail-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.detail-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--gold);
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.detail-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+
+.detail-text {
+	color: var(--cream);
+	font-size: 1rem;
+	line-height: 1.6;
+	max-width: 600px;
+}
+
+.detail-text ul {
+	list-style: disc inside
+		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><circle cx='3' cy='3' r='3' fill='%23B08040'/></svg>");
+	margin: 1rem 0;
+	padding-left: 1rem;
+}
+
+.detail-text li {
+	margin-bottom: 0.5rem;
+}
+
+.detail-image img {
+	width: 100%;
+	max-width: 350px;
+	border-radius: 8px;
+	object-fit: cover;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Sur desktop : texte à gauche, image à droite */
+@media (min-width: 768px) {
+	.detail-content {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+/* ----------------------------------
+	 SECTION BLOG
+	 ---------------------------------- */
+.blog {
+	background-color: var(--dark-bg);
+	padding: 4rem 1rem;
+}
+
+.blog-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.blog-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--gold);
+	margin-bottom: 2rem;
+}
+
+.blog-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	justify-content: center;
+}
+
+.blog-post {
+	background-color: #111111;
+	border-radius: 8px;
+	overflow: hidden;
+	flex: 1 1 calc(33% - 1.5rem);
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.blog-image {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+}
+
+.blog-content {
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.post-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	color: var(--gold);
+}
+
+.post-title a {
+	color: var(--gold);
+	text-decoration: none;
+}
+
+.post-title a:hover {
+	text-decoration: underline;
+}
+
+.post-excerpt {
+	color: var(--cream);
+	font-size: 0.95rem;
+	margin-bottom: auto;
+	line-height: 1.5;
+}
+
+.read-more {
+	margin-top: 1rem;
+	font-weight: 600;
+	color: var(--gold);
+	text-decoration: none;
+}
+
+.read-more:hover {
+	text-decoration: underline;
+}
+
+.blog-pagination {
+	margin-top: 2rem;
+}
+
+.blog-pagination .btn-secondary {
+	padding: 0.75rem 2rem;
+}
+
+@media (max-width: 900px) {
+	.blog-post {
+		flex: 1 1 calc(50% - 1.5rem);
+	}
+}
+
+@media (max-width: 600px) {
+	.blog-list {
+		flex-direction: column;
+		align-items: center;
+	}
+	.blog-post {
+		flex: 1 1 100%;
+	}
+}
+
+/* ----------------------------------
+	 SECTION CONTACT (utilisée partout)
+	 ---------------------------------- */
+.contact {
+	padding: 4rem 1rem;
+	background-color: var(--dark-bg);
+}
+
+.contact-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	text-align: center;
+	margin-bottom: 0.5rem;
+	color: var(--gold);
+}
+
+.contact-subheading {
+	text-align: center;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	color: var(--cream);
+	opacity: 0.85;
+}
+
+.contact-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+	.contact-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.contact-info {
+	background-color: #111111;
+	padding: 2rem;
+	border-radius: 8px;
+}
+
+.info-title {
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+	color: var(--gold);
+}
+
+.info-list {
+	list-style: none;
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.info-list li {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+/* -- On applique ici le filtre pour recolorer en doré -- */
+.info-icon {
+	width: 24px;
+	height: 24px;
+	filter: invert(37%) /* ramène le blanc/noir vers une teinte neutre */
+		sepia(82%) /* passage vers l’orange */ saturate(600%)
+		/* renforce la couleur */ hue-rotate(335deg)
+		/* ajuste la teinte pour un doré précis */ brightness(90%);
+}
+
+.info-label {
+	font-weight: 600;
+	width: 100px;
+	color: var(--cream);
+}
+
+.info-text {
+	color: var(--cream);
+	font-size: 0.95rem;
+}
+
+.info-text a {
+	color: var(--cream);
+	text-decoration: none;
+}
+
+.info-text a:hover {
+	text-decoration: underline;
+}
+
+/* ----------------------------------
+   SECTION CONTACT – CORRECTION D’ALIGNEMENT
+   ---------------------------------- */
+
+/* 1) Conteneur global de la section */
+.contact {
+	background-color: var(--dark-bg); /* #0c1518 */
+	padding: 4rem 1rem;
+}
+
+/* 2) Limitation de la largeur et centrage */
+.contact-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+/* 3) Titre principal */
+.contact-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	text-align: center;
+	margin: 0 0 2rem 0;
+	color: var(--gold); /* #b08040 */
+}
+
+/* 4) Carte unifiée : deux colonnes alignées en haut */
+.contact-card {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	padding: 2rem;
+	border-radius: 8px;
+	background-color: #111111;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+	/* ← Aligne le haut des colonnes .contact-info et .contact-form */
+	align-items: flex-start;
+}
+
+/* 5) Suppression de toute marge/padding abstraite dans h2/h3 */
+.contact-card h2,
+.contact-card h3,
+.contact-info,
+.contact-form {
+	margin: 0;
+	padding: 0;
+}
+
+/* 6) Bloc “Informations” (colonne gauche) */
+.contact-info {
+	flex: 1 1 300px; /* largeur min. 300px, peut s’étendre */
+	max-width: 400px;
+}
+
+/* 6a) Titre “Informations” */
+.contact-info .info-title {
+	margin: 0 0 1rem 0; /* marge haute 0, marge basse 1rem */
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: var(--gold);
+}
+
+/* 6b) Liste d’infos */
+.info-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.info-list li {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.info-icon {
+	width: 24px;
+	height: 24px;
+	filter: invert(37%) sepia(82%) saturate(600%) hue-rotate(335deg)
+		brightness(90%);
+}
+
+.info-label {
+	font-weight: 600;
+	color: var(--cream); /* #ece3c9 */
+	min-width: 80px;
+}
+
+.info-text {
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.4;
+}
+
+.info-text a {
+	color: var(--cream);
+	text-decoration: none;
+}
+
+.info-text a:hover {
+	text-decoration: underline;
+}
+
+/* 7) Bloc “Formulaire” (colonne droite) */
+.contact-form {
+	flex: 2 1 400px; /* occupe plus d’espace si possible */
+	max-width: 600px;
+}
+
+/* 7a) Titre “Envoyez-Nous un Message” */
+.contact-form .info-title {
+	margin: 0 0 1rem 0; /* marge haute 0, marge basse 1rem */
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: var(--gold);
+}
+
+/* 7b) Champs du formulaire */
+.contact-form .form-group {
+	margin-bottom: 1.5rem;
+}
+
+.contact-form .form-group label {
+	display: block;
+	margin: 0 0 0.5rem 0;
+	font-weight: 600;
+	color: var(--cream);
+}
+
+.contact-form .form-group .optional {
+	font-style: italic;
+	font-weight: 400;
+	font-size: 0.9rem;
+	color: #bbbbbb;
+	margin-left: 4px;
+}
+
+.contact-form input,
+.contact-form textarea {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid #333333;
+	border-radius: 4px;
+	background-color: #1a1a1a;
+	color: var(--cream);
+	font-size: 1rem;
+	font-family: var(--font-sans);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+	color: #777777;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+	outline: none;
+	border-color: var(--gold);
+}
+
+.contact-form button {
+	background-color: var(--gold);
+	color: var(--dark-bg);
+	font-weight: 600;
+	padding: 0.75rem 2rem;
+	border: none;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+	margin-top: 0.5rem;
+}
+
+.contact-form button:hover {
+	background-color: #9e6e36;
+}
+
+/* 8) Boutons WhatsApp & Calendly – alignement SOUS le formulaire */
+.contact-actions {
+	display: flex;
+	align-items: center; /* aligne WhatsApp et Calendly sur la même ligne */
+	gap: 1rem; /* espace horizontal entre les deux */
+	margin: 2rem 0 0 0; /* marge haute entre formulaire et boutons */
+}
+
+/* 8a) Styles communs aux deux boutons */
+.contact-actions a.btn-whatsapp,
+.contact-actions button#calendlyBtn {
+	display: inline-flex; /* conteneur flex pour centrer contenu */
+	align-items: center; /* centre verticalement icône + texte */
+	justify-content: center; /* centre horizontalement le contenu */
+	height: 48px; /* même hauteur pour les deux */
+	padding: 0 1.5rem; /* même padding horizontal */
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 4px;
+	text-decoration: none; /* retire soulignement éventuel */
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	line-height: 1; /* évite tout décalage de texte */
+	margin: 0; /* annule toute marge résiduelle */
+}
+
+/* 8b) Bouton WhatsApp */
+.contact-actions a.btn-whatsapp {
+	background-color: #25d366;
+	color: #ffffff;
+	border: 2px solid #25d366;
+}
+
+.contact-actions a.btn-whatsapp img {
+	width: 20px;
+	height: 20px;
+	margin-right: 0.5rem; /* espace icône ↔ texte */
+	filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(35deg)
+		brightness(110%) contrast(95%);
+}
+
+.contact-actions a.btn-whatsapp:hover {
+	background-color: #1fa954;
+	border-color: #1fa954;
+}
+
+/* 8c) Bouton Calendly */
+.contact-actions button#calendlyBtn {
+	background-color: transparent;
+	color: var(--gold);
+	border: 2px solid var(--gold);
+}
+
+.contact-actions button#calendlyBtn:hover {
+	background-color: var(--gold);
+	color: var(--dark-bg);
+}
+
+/* 8d) Focus (accessibilité) pour les deux boutons */
+.contact-actions a.btn-whatsapp:focus,
+.contact-actions button#calendlyBtn:focus {
+	outline: 2px solid var(--cream);
+	outline-offset: 2px;
+}
+
+/* 9) Responsive sous 600px : boutons empilés en colonne */
+@media (max-width: 600px) {
+	.contact-actions {
+		flex-direction: column; /* empile WhatsApp, puis Calendly */
+		align-items: stretch; /* chaque bouton fait 100% de la largeur */
+	}
+	.contact-actions a.btn-whatsapp,
+	.contact-actions button#calendlyBtn {
+		width: 100%;
+		height: 44px; /* hauteur réduite pour mobile */
+		margin: 0;
+	}
+}
+
+/* 10) Responsive sous 768px : colonnes Informations/Formulaire empilées */
+@media (max-width: 768px) {
+	.contact-card {
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	.contact-info,
+	.contact-form {
+		max-width: 100%;
+	}
+}
+
+/* --------------------------------------------
+   Scroll‐Reveal (fade & slide) – CSS classes
+   -------------------------------------------- */
+
+.reveal-hidden {
+	opacity: 0;
+	transform: translateY(40px);
+}
+
+.reveal-visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 3s ease-out, transform 3s ease-out;
+}
+
+/* ----------------------------------
+	 FOOTER
+	 ---------------------------------- */
+.site-footer {
+	padding: 2rem 1rem;
+	text-align: center;
+	background-color: #111111;
+}
+
+.footer-text {
+	font-size: 0.9rem;
+	color: var(--cream);
+	opacity: 0.7;
+}
+
+/* --------------------------------------------
+	 SURCHARGE : RÉDUCTION DE L’ESPACE AU-DESSUS DU H1
+	 -------------------------------------------- */
+.hero-inner {
+	margin-top: 2rem !important;
+}
+
+/* --------------------------------------------
+   AJOUT D’ANIMATIONS COMPLÉMENTAIRES
+   -------------------------------------------- */
+
+/* 1) Hero Fade‐In à l’arrivée */
+.hero-inner {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+.hero-inner.hero-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* 2) Rotation subtile des icônes de service au survol */
+.service-card .service-icon {
+	transition: transform 2s ease;
+}
+
+.service-card:hover .service-icon {
+	transform: rotate(15deg);
+}
+
+/* 3) Animation de soulignement progressif des liens de navigation */
+.main-nav a {
+	position: relative;
+}
+
+.main-nav a::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 0;
+	height: 2px;
+	background-color: var(--gold);
+	transition: width 2s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+	width: 100%;
+}
+
+/* 4) Apparition en fondu des cartes de service (déjà cachées dans CSS existant) */
+.service-card {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 3s ease-out 0.5s, transform 3s ease-out 0.5s;
+}
+
+.service-card.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* 5) Bouton “Retour en haut” discret */
+#backToTop {
+	position: fixed;
+	right: 1.5rem;
+	bottom: 1.5rem;
+	background-color: var(--gold);
+	color: var(--dark-bg);
+	border: none;
+	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	font-size: 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 2s ease, visibility 2s;
+	cursor: pointer;
+}
+
+#backToTop.visible {
+	opacity: 1;
+	visibility: visible;
+}
+
+#backToTop:hover {
+	background-color: #9e6e36;
+}
+
+/* 6) Animation de survol pour les boutons WhatsApp et Calendly (légère expansion) */
+.contact-actions a.btn-whatsapp:hover,
+.contact-actions button#calendlyBtn:hover {
+	transform: scale(1.05);
+	transition: transform 2s ease;
+}
+
+/* 7) Apparition en fondu des sections “reveal” déjà géré, rien à ajouter ici */
+
+/* --------------------------------------------
+	 FIN DES AJOUTS CSS
+	 -------------------------------------------- */

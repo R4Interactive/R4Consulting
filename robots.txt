@@ -1,0 +1,4 @@
+# robots.txt pour https://www.r4consulting.fr
+
+User-agent: *
+Allow: /
