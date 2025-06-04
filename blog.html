@@ -4,183 +4,158 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Titre et méta -->
+    <title>Blog | R4 Consulting</title>
     <meta name="description"
-        content="Découvrez le blog R4 Consulting : actualités, conseils en digital, immobilier et gestion patrimoniale pour entrepreneurs." />
+        content="Le blog R4 Consulting : actualités et conseils en digital, immobilier professionnel et gestion patrimoniale pour entrepreneurs." />
     <meta name="keywords"
         content="blog R4 Consulting, actualités digital, conseils immobilier, gestion de patrimoine, articles entrepreneur" />
-    <!-- Open Graph -->
+
+    <!-- Open Graph / Twitter Card -->
     <meta property="og:title" content="Blog | R4 Consulting" />
     <meta property="og:description"
-        content="Articles et conseils R4 : stratégies digitales, investissement immobilier, gestion de patrimoine pour entrepreneurs." />
+        content="Retrouvez nos articles sur le digital, l’immobilier professionnel et la gestion de patrimoine sur le blog R4 Consulting." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.votre-domaine.com/blog.html" />
-    <meta property="og:image" content="https://www.votre-domaine.com/assets/preview-blog.png" />
+    <meta property="og:url" content="https://www.r4consulting.fr/blog.html" />
+    <meta property="og:image" content="https://www.r4consulting.fr/assets/preview-blog.png" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Blog | R4 Consulting" />
     <meta name="twitter:description"
-        content="R4 Consulting : le blog pour rester à jour en digital, immobilier professionnel et gestion de patrimoine." />
-    <meta name="twitter:image" content="https://www.votre-domaine.com/assets/preview-blog.png" />
+        content="Actualités, guides et conseils en marketing digital, immobilier professionnel et gestion de patrimoine sur le blog R4 Consulting." />
+    <meta name="twitter:image" content="https://www.r4consulting.fr/assets/preview-blog.png" />
 
-    <link rel="canonical" href="https://www.votre-domaine.com/blog.html" />
-    <title>Blog – R4 Consulting</title>
-
+    <link rel="canonical" href="https://www.r4consulting.fr/blog.html" />
     <link rel="icon" href="R4-Consulting-Logo.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
-        rel="stylesheet" />
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <!-- ===============================
-       HEADER (logo + nav + hero-inner)
-       =============================== -->
-    <header class="hero">
+    <!-- HEADER / HERO -->
+    <header class="hero reveal">
         <div class="header-top">
-            <!-- Logo -->
             <a href="index.html">
                 <img src="R4-Consulting-Logo.png" alt="Logo R4 Consulting" class="logo" />
             </a>
-
-            <!-- Nav -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="identite.html">Digital</a></li>
                     <li><a href="immobilier.html">Immobilier</a></li>
                     <li><a href="gestion.html">Patrimoine</a></li>
-                    <li><a href="recrutement.html">Recrutement</a></li>
                     <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="recrutement.html">Recrutement</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
 
-        <!-- Hero-inner -->
         <div class="hero-inner">
-            <h1 class="site-title">R4 CONSULTING</h1>
+            <h1 class="site-title">Blog R4 Consulting</h1>
             <p class="tagline">
-                L’accompagnement 360<sup>°</sup>
-                des entrepreneurs de demain
+                Les dernières actualités et conseils pour entreprendre et investir
             </p>
         </div>
     </header>
 
-    <!-- ===============================
-       SECTION BLOG
-       =============================== -->
-    <section class="blog">
+    <!-- SECTION BLOG (liste des posts) -->
+    <section class="blog reveal">
         <div class="blog-inner">
-            <h2 class="blog-heading">Nos Derniers Articles</h2>
-
+            <h2 class="blog-heading">Nos Articles Récents</h2>
             <div class="blog-list">
-                <!-- Article 1 -->
-                <article class="blog-post">
-                    <a href="#">
-                        <img src="assets/images/article-digital.jpg"
-                            alt="5 Étapes pour Optimiser votre Présence en Ligne" class="blog-image" />
-                    </a>
+                <!-- Exemple d’article 1 -->
+                <div class="blog-post reveal">
+                    <img src="assets/images/blog-post1.jpg" alt="Article sur la stratégie digitale"
+                        class="blog-image" />
                     <div class="blog-content">
                         <h3 class="post-title">
-                            <a href="#">5 Étapes pour Optimiser votre Présence en Ligne</a>
+                            <a href="article1.html">5 stratégies de contenu pour booster votre SEO en 2025</a>
                         </h3>
                         <p class="post-excerpt">
-                            Apprenez à construire une stratégie digitale solide, du ciblage de persona
-                            jusqu’à l’analyse Analytics pour mesurer vos performances…
+                            Découvrez comment créer un calendrier éditorial optimisé et générer un trafic qualifié en
+                            2025…
                         </p>
-                        <a href="#" class="read-more">Lire la suite →</a>
+                        <a href="article1.html" class="read-more">Lire la suite</a>
                     </div>
-                </article>
+                </div>
 
-                <!-- Article 2 -->
-                <article class="blog-post">
-                    <a href="#">
-                        <img src="assets/images/article-immobilier.jpg"
-                            alt="Comment Négocier un Bail Commercial en 2025 ?" class="blog-image" />
-                    </a>
+                <!-- Exemple d’article 2 -->
+                <div class="blog-post reveal">
+                    <img src="assets/images/blog-post2.jpg" alt="Article sur l’investissement immobilier"
+                        class="blog-image" />
                     <div class="blog-content">
                         <h3 class="post-title">
-                            <a href="#">Comment Négocier un Bail Commercial en 2025 ?</a>
+                            <a href="article2.html">Pourquoi investir dans l’immobilier professionnel aujourd’hui ?</a>
                         </h3>
                         <p class="post-excerpt">
-                            Découvrez nos conseils pratiques pour défendre vos intérêts et obtenir un loyer
-                            adapté, même dans un marché tendu…
+                            Avantages et risques : notre guide complet pour évaluer le marché et sécuriser votre achat…
                         </p>
-                        <a href="#" class="read-more">Lire la suite →</a>
+                        <a href="article2.html" class="read-more">Lire la suite</a>
                     </div>
-                </article>
+                </div>
 
-                <!-- Article 3 -->
-                <article class="blog-post">
-                    <a href="#">
-                        <img src="assets/images/article-patrimoine.jpg"
-                            alt="Les 4 Piliers d’une Gestion Patrimoniale Réussie" class="blog-image" />
-                    </a>
+                <!-- Exemple d’article 3 -->
+                <div class="blog-post reveal">
+                    <img src="assets/images/blog-post3.jpg" alt="Article sur la gestion patrimoniale"
+                        class="blog-image" />
                     <div class="blog-content">
                         <h3 class="post-title">
-                            <a href="#">Les 4 Piliers d’une Gestion Patrimoniale Réussie</a>
+                            <a href="article3.html">Optimiser son patrimoine : 4 astuces fiscales pour 2025</a>
                         </h3>
                         <p class="post-excerpt">
-                            Plongez dans notre guide complet pour protéger et faire fructifier vos actifs,
-                            de l’optimisation fiscale à la transmission…
+                            Profitez des dernières réformes fiscales pour réduire votre imposition et préserver vos
+                            actifs…
                         </p>
-                        <a href="#" class="read-more">Lire la suite →</a>
+                        <a href="article3.html" class="read-more">Lire la suite</a>
                     </div>
-                </article>
+                </div>
             </div>
 
-            <!-- Bouton « Voir plus » -->
+            <!-- Pagination (exemple) -->
             <div class="blog-pagination">
-                <a href="#" class="btn-secondary">Voir plus d’articles</a>
+                <a href="#" class="btn-secondary">Précédent</a>
+                <a href="#" class="btn-secondary">Suivant</a>
             </div>
         </div>
     </section>
 
-    <!-- ===============================
-           SECTION CONTACT RÉUNIFIÉE
-           =============================== -->
-    <section id="contact" class="contact">
+    <!-- SECTION CONTACT RÉUNIFIÉE -->
+    <section id="contact" class="contact reveal">
         <div class="contact-inner">
             <h2 class="contact-heading">NOUS CONTACTER</h2>
-
-            <!-- Conteneur unifié de la carte de contact -->
             <div class="contact-card">
-
-                <!-- Bloc 1 : Informations de contact -->
                 <div class="contact-info">
                     <h3 class="info-title">Informations</h3>
                     <ul class="info-list">
                         <li>
                             <img src="assets/icons/email.png" alt="Email" class="info-icon" />
-                            <span class="info-label"></span>
+                            <span class="info-label">Email</span>
                             <span class="info-text">
                                 <a href="mailto:contact@r4consulting.fr">contact@r4consulting.fr</a>
                             </span>
                         </li>
                         <li>
                             <img src="assets/icons/phone.png" alt="Téléphone" class="info-icon" />
-                            <span class="info-label"></span>
+                            <span class="info-label">Téléphone</span>
                             <span class="info-text">+33 7 84 29 82 02</span>
                         </li>
                         <li>
                             <img src="assets/icons/location.png" alt="Adresse" class="info-icon" />
-                            <span class="info-label"></span>
+                            <span class="info-label">Adresse</span>
                             <span class="info-text">
-                                Résidence La Mongie Tourmalet, 3 rue de Sencours
+                                Résidence La Mongie Tourmalet, 3 rue de Sencours<br />
                                 65200 Bagnères de Bigorre, France
                             </span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Bloc 2 : Formulaire de contact + boutons WhatsApp/Calendly -->
-                <div class="contact-form">
+                <div class="contact-form reveal">
                     <h3 class="info-title">Envoyez-Nous un Message</h3>
-                    <form action="#" method="POST">
+                    <form id="contactForm" action="#" method="POST">
                         <div class="form-group">
                             <label for="name">Nom</label>
                             <input type="text" id="name" name="name" placeholder="Votre nom complet" required />
@@ -190,7 +165,7 @@
                             <input type="email" id="email" name="email" placeholder="votre@exemple.com" required />
                         </div>
                         <div class="form-group">
-                            <label for="phone">Téléphone <span class="optional"></span></label>
+                            <label for="phone">Téléphone</label>
                             <input type="tel" id="phone" name="phone" placeholder="+33 1 23 45 67 89" />
                         </div>
                         <div class="form-group">
@@ -201,31 +176,26 @@
                         <button type="submit" class="btn-primary">Envoyer</button>
                     </form>
 
-                    <!-- Espace pour les boutons WhatsApp et Calendly -->
                     <div class="contact-actions">
-                        <!-- Bouton WhatsApp (lien) : classe "btn-whatsapp" -->
-                        <a href="https://wa.me/33784298202" target="_blank" class="btn-whatsapp">
-                            Discuter sur WhatsApp </a>
-
-                        <!-- Bouton Calendly -->
+                        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">
+                            <img src="assets/icons/whatsapp-white.png" alt="WhatsApp" />
+                            Discuter sur WhatsApp
+                        </a>
                         <button id="calendlyBtn" type="button">Prendre rendez-vous</button>
                     </div>
                 </div>
-
-            </div> <!-- /.contact-card -->
-        </div> <!-- /.contact-inner -->
+            </div>
+        </div>
     </section>
 
-    <!-- ===============================
-       FOOTER
-       =============================== -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <p class="footer-text">
             © 2025 R4 Consulting — Digital • Immobilier • Patrimoine • Vision
         </p>
     </footer>
 
-    <!-- JavaScript partagé -->
+    <!-- Script JS -->
     <script src="script.js"></script>
 </body>
 
