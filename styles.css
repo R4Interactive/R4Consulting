@@ -14,7 +14,7 @@
 	--cream: #ece3c9; /* Crème pour le texte */
 
 	/* Polices */
-	--font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+	--font-sans: 'Montserrat', Arial, sans-serif;
 	--font-script: 'Dancing Script', cursive;
 
 	/* Hauteur fixe des cartes (ajustable si besoin) */
