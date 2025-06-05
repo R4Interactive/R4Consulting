@@ -9,9 +9,12 @@
 
 :root {
 	/* Couleurs principales */
-	--dark-bg: #0c1518; /* Fond sombre */
-	--gold: #b08040; /* Doré pour icônes et titres */
-	--cream: #ece3c9; /* Crème pour le texte */
+	--dark-bg: #0c1518;
+	--gold: #b08040;
+	--cream: #ece3c9;
+	--text: var(--cream);
+	--bg: var(--dark-bg);
+	--card-bg: #111111;
 
 	/* Polices */
 	--font-sans: 'Montserrat', Arial, sans-serif;
@@ -19,11 +22,29 @@
 
 	/* Hauteur fixe des cartes (ajustable si besoin) */
 	--card-height: 380px;
+
+	/* NOUVELLE VARIABLE pour les champs de formulaire */
+	--input-bg: #1a1a1a; /* fond des input / textarea en mode sombre */
+	--input-text: var(
+		--cream
+	); /* texte à l’intérieur des champs en mode sombre */
+}
+
+body.light-theme {
+	--dark-bg: #f5f5f5; /* Exemple clair pour fond “sombre” */
+	--gold: #b08040; /* On garde la même couleur d’accent */
+	--cream: #333333; /* Texte principal plus sombre */
+	--text: #333333;
+	--bg: #ffffff; /* Fond général clair */
+	--card-bg: #fafafa; /* Fond des cartes en clair */
+	/* NOUVELLE VARIABLE pour champs de formulaire en mode clair */
+	--input-bg: #ffffff; /* fond clair pour les input / textarea */
+	--input-text: #333333; /* texte dans champ en mode clair */
 }
 
 body {
-	background-color: var(--dark-bg);
-	color: var(--cream);
+	background-color: var(--bg);
+	color: var(--text);
 	font-family: var(--font-sans);
 	line-height: 1.6;
 }
@@ -50,7 +71,7 @@ button {
 	 ---------------------------------- */
 .hero {
 	position: relative;
-	background-color: var(--dark-bg);
+	background-color: var(--bg);
 	padding: 1.5rem 1rem 1rem; /* Haut 1.5rem pour nav, bas 1rem pour contenu */
 }
 
@@ -72,7 +93,7 @@ button {
 .main-nav {
 	position: absolute;
 	top: 0.5rem;
-	right: 1rem;
+	right: 8rem;
 	background-color: transparent;
 	z-index: 10;
 }
@@ -186,7 +207,7 @@ button {
 	 SECTION « Qui sommes-nous ? » + SERVICES (sur index.html)
 	 ---------------------------------- */
 .about-services {
-	background-color: var(--dark-bg);
+	background-color: var(--bg);
 	padding: 4rem 1rem;
 }
 
@@ -238,6 +259,7 @@ button {
 	border-radius: 8px;
 	padding: 2rem 1.5rem;
 	box-sizing: border-box;
+	background-color: var(--card-bg);
 	opacity: 0;
 	transform: translateY(20px);
 	transition: opacity 3s ease-out 0.5s, transform 3s ease-out 0.5s;
@@ -504,7 +526,7 @@ button {
 	 ---------------------------------- */
 .contact {
 	padding: 4rem 1rem;
-	background-color: var(--dark-bg);
+	background-color: var(--bg);
 }
 
 .contact-inner {
@@ -529,6 +551,7 @@ button {
 	background-color: #111111;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 	align-items: flex-start;
+	background-color: var(--card-bg);
 }
 
 /* Bloc “Informations” */
@@ -616,17 +639,31 @@ button {
 	padding: 0.75rem 1rem;
 	border: 1px solid #333333;
 	border-radius: 4px;
-	background-color: #1a1a1a;
-	color: var(--cream);
+
+	/* Utiliser la variable dynamique --input-bg pour le fond */
+	background-color: var(--input-bg);
+	/* Utiliser --input-text pour la couleur du texte dans le champ */
+	color: var(--input-text);
+
 	font-size: 1rem;
 	font-family: var(--font-sans);
 }
 
+/* On s’assure aussi que le placeholder soit visible */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-	color: #777777;
+	color: rgba(
+		var(--input-text),
+		0.6
+	); /* version plus claire de la couleur du texte */
+	/* 
+     Note : si votre navigateur n’accepte pas `rgba(var(--input-text), 0.6)`, 
+     remplacez par une valeur fixe pour le placeholder, par exemple : 
+     color: #777777; 
+  */
 }
 
+/* Quand on est en focus, on change la bordure en doré */
 .contact-form input:focus,
 .contact-form textarea:focus {
 	outline: none;
@@ -755,12 +792,26 @@ button {
 	padding: 2rem 1rem;
 	text-align: center;
 	background-color: #111111;
+	background-color: var(--card-bg);
 }
 
 .footer-text {
 	font-size: 0.9rem;
 	color: var(--cream);
 	opacity: 0.7;
+}
+
+/* Les éléments de texte qui utilisaient “var(--cream)” deviennent “var(--text)” */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.info-text,
+.service-desc {
+	color: var(--text);
 }
 
 /* --------------------------------------------
@@ -826,6 +877,34 @@ button {
 .contact-actions button#calendlyBtn:hover {
 	transform: scale(1.05);
 	transition: transform 2s ease;
+}
+
+/* 2) Règles de base pour le bouton */
+#themeToggle {
+	position: absolute;
+	top: 1rem; /* distance par rapport au haut du header */
+	right: 1rem; /* distance par rapport au bord droit du header */
+	background: none;
+	border: none;
+	color: var(--gold);
+	font-size: 1.5rem; /* on augmente légèrement la taille pour être visible */
+	cursor: pointer;
+	z-index: 1000; /* pour être devant la nav */
+	transition: transform 0.3s ease;
+}
+
+/* 3) Effet au survol */
+#themeToggle:hover {
+	transform: scale(1.1);
+}
+
+/* 4) Pour smartphone (<768px), on ajuste éventuellement un peu la taille */
+@media (max-width: 768px) {
+	#themeToggle {
+		font-size: 1.25rem;
+		top: 0.75rem;
+		right: 0.75rem;
+	}
 }
 
 /* Fin du CSS */

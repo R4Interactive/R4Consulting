@@ -279,3 +279,94 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 });
+
+// script.js
+
+document.addEventListener('DOMContentLoaded', function () {
+	// Récupère le bouton
+	const themeToggle = document.getElementById('themeToggle');
+	const body = document.body;
+
+	// 1) Vérifier dans localStorage si un choix est déjà enregistré
+	const storedTheme = localStorage.getItem('r4-theme');
+	if (storedTheme === 'light') {
+		body.classList.add('light-theme');
+		themeToggle.textContent = '☀️'; // icône soleil si mode clair actif
+	} else {
+		// Si pas de choix ou “dark”, on reste en sombre
+		body.classList.remove('light-theme');
+		themeToggle.textContent = '🌙'; // icône lune si mode sombre actif
+	}
+
+	// 2) Au clic, on bascule la classe sur <body> et on stocke le choix
+	themeToggle.addEventListener('click', function () {
+		if (body.classList.contains('light-theme')) {
+			// On passe en mode sombre
+			body.classList.remove('light-theme');
+			themeToggle.textContent = '🌙';
+			localStorage.setItem('r4-theme', 'dark');
+		} else {
+			// On passe en mode clair
+			body.classList.add('light-theme');
+			themeToggle.textContent = '☀️';
+			localStorage.setItem('r4-theme', 'light');
+		}
+	});
+
+	// … votre code existant (par ex. l’init des reveals / formulaires, etc.) …
+	// Exemple pour la partie “Scroll‐Reveal” déjà en place :
+	const revealElements = document.querySelectorAll('.reveal');
+	const revealObserver = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('reveal-visible');
+					revealObserver.unobserve(entry.target);
+				}
+			});
+		},
+		{ threshold: 0.15 }
+	);
+
+	revealElements.forEach((el) => {
+		el.classList.add('reveal-hidden');
+		revealObserver.observe(el);
+	});
+
+	// Exemple de form handling déjà précédemment fourni :
+	const whatsappBtn = document.getElementById('whatsappBtn');
+	if (whatsappBtn) {
+		whatsappBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			const whatsappLink =
+				'https://wa.me/33123456789?text=Bonjour%20R4%20Consulting%20!%20Je%20souhaite%20prendre%20contact.';
+			window.open(whatsappLink, '_blank');
+		});
+	}
+
+	const calendlyBtn = document.getElementById('calendlyBtn');
+	if (calendlyBtn) {
+		calendlyBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			const calendlyLink =
+				'https://calendly.com/votre-compte-r4-consulting';
+			window.open(calendlyLink, '_blank');
+		});
+	}
+
+	const contactForm = document.getElementById('contactForm');
+	if (contactForm) {
+		contactForm.addEventListener('submit', function (e) {
+			e.preventDefault();
+			const formData = {
+				name: e.target.name.value.trim(),
+				email: e.target.email.value.trim(),
+				phone: e.target.phone.value.trim(),
+				message: e.target.message.value.trim(),
+			};
+			console.log('Formulaire soumis :', formData);
+			alert('Merci ! Votre message a bien été envoyé.');
+			e.target.reset();
+		});
+	}
+});
