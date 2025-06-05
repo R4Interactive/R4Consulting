@@ -301,47 +301,66 @@ button {
 	}
 }
 
-/* ----------------------------------
-	 SECTION « Ils témoignent »
-	 ---------------------------------- */
+/* ==============================
+   SECTION « Ils témoignent »
+   ============================== */
+:root {
+	/* espace entre les cartes, en rem */
+	--testimonial-gap: 1rem;
+}
+
 .testimonials {
 	background-color: var(--bg);
 	padding: 4rem 1rem;
 }
+
 .testimonials-inner {
 	max-width: 1000px;
 	margin: 0 auto;
 	text-align: center;
 }
+
 .testimonials-heading {
 	font-size: 2rem;
 	font-weight: 800;
 	color: var(--gold);
 	margin-bottom: 2rem;
 }
-/* Conteneur principal : masque l’overflow pour le slider */
+
+/* Conteneur parent qui masque l’overflow */
 .testimonials-container {
 	position: relative;
 	overflow: hidden;
 }
-/* Le slider proprement dit : display flex et transition */
+
+/* Slider : display:flex, on vire tout gap natif, on gère l’espace via margin-right */
 .testimonials-slider {
 	display: flex;
 	transition: transform 0.8s ease;
 }
-/* Chaque carte de témoignage */
+
+/* Chaque carte prendra une largeur définie par media queries, et aura une margin-right fixe */
 .testimonial-card {
-	flex: 0 0 100%; /* On écrasera ce flex-basis par JS */
+	flex: 0 0 auto; /* largeur contrôlée par flex-basis ci-dessous */
 	box-sizing: border-box;
 	padding: 2rem 1rem;
-
+	margin-right: var(--testimonial-gap);
 	background-color: var(--card-bg);
 	border-radius: 8px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	/* Effet hover */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* On retire la marge à droite sur la dernière carte pour éviter un “trou” au bout */
+.testimonial-card:last-child {
+	margin-right: 0;
+}
+
 /* Texte justifié à l’intérieur */
 .testimonial-text {
 	color: var(--text);
@@ -351,6 +370,7 @@ button {
 	font-style: italic;
 	text-align: justify;
 }
+
 /* Bloc author (photo + nom) */
 .testimonial-author {
 	display: flex;
@@ -358,6 +378,7 @@ button {
 	justify-content: center;
 	gap: 0.75rem;
 }
+
 .author-photo {
 	width: 48px;
 	height: 48px;
@@ -365,20 +386,51 @@ button {
 	object-fit: cover;
 	border: 2px solid var(--gold);
 }
+
 .author-name {
 	color: var(--gold);
 	font-weight: 600;
 	font-size: 1rem;
 }
 
-/* --------------------------------------------
-	 RESPONSIVE : si ≥1200px, on reste à 100% (tout géré par JS)
-	 -------------------------------------------- */
-/* On _ne modifie pas_ flex‐basis ici, gardé à 100%. */
+/* Effet hover : léger agrandissement + ombre plus marquée */
+.testimonial-card:hover {
+	transform: scale(1.03);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
 
-/* --------------------------------------------
-	 REVEAL : fade & slide in
-	 -------------------------------------------- */
+/* ============================
+	 Définition du flex-basis 
+	 via media queries
+	 ============================ */
+
+/* Par défaut (small screens <768px) : 1 carte = 100% */
+@media (max-width: 767px) {
+	.testimonial-card {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}
+
+/* Entre 768px et 1199px : 2 cartes côte à côte, chacune occupant
+	 (100% – 1*gap) / 2 = calc((100% – var(--testimonial-gap)) / 2) */
+@media (min-width: 768px) and (max-width: 1199px) {
+	.testimonial-card {
+		flex: 0 0 calc((100% - var(--testimonial-gap)) / 2);
+		max-width: calc((100% - var(--testimonial-gap)) / 2);
+	}
+}
+
+/* ≥1200px : 3 cartes côte à côte,
+	 chaque carte = (100% – 2*gap) / 3 */
+@media (min-width: 1200px) {
+	.testimonial-card {
+		flex: 0 0 calc((100% - 2 * var(--testimonial-gap)) / 3);
+		max-width: calc((100% - 2 * var(--testimonial-gap)) / 3);
+	}
+}
+
+/* Scroll-Reveal au besoin */
 .reveal-hidden {
 	opacity: 0;
 	transform: translateY(40px);
@@ -675,6 +727,81 @@ button {
 	 -------------------------------------------- */
 .hero-inner {
 	margin-top: 2rem !important;
+}
+
+/* ====================================================
+   RECENTRAGE DES SECTIONS DÉFINIES PAR .detail-service
+   ==================================================== */
+
+.detail-service .detail-inner {
+	max-width: 1000px;
+	margin: 0 auto; /* centre le conteneur principal */
+	padding: 0 1rem; /* un petit padding latéral */
+	text-align: center; /* centre tout le texte ici par défaut */
+}
+
+/* Conteneur texte + image */
+.detail-service .detail-content {
+	display: flex;
+	flex-direction: column; /* sur mobile : on empile */
+	align-items: center; /* centre les enfants horizontalement */
+	gap: 2rem; /* espace vertical entre blocs */
+	margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+	.detail-service .detail-content {
+		flex-direction: row; /* sur tablettes et plus grand : deux colonnes */
+		justify-content: center; /* centre les colonnes dans le conteneur */
+		align-items: flex-start; /* aligne le haut de chaque colonne */
+	}
+}
+
+/* Bloc texte */
+.detail-service .detail-text {
+	/* Si vous voulez justifier à gauche pour la lecture, conservez : */
+	text-align: left;
+	max-width: 600px;
+	margin: 0 auto; /* centre le bloc texte dans son parent */
+	color: var(--text);
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+/* Bloc image */
+.detail-service .detail-image {
+	width: 100%;
+	max-width: 350px; /* ou la largeur que vous souhaitez */
+	margin: 0 auto; /* centre l’image horizontalement */
+}
+.detail-service .detail-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajoute un léger espacement sous le h2 des sections detail-service */
+.detail-service .detail-heading {
+	margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   EFFET HOVER SUR LES CARTES “3 PÔLES” (Accueil)
+   ============================================ */
+.service-card {
+	/* assure-toi d’avoir déjà un transition pour que l’effet soit fluide */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+	/* décalage léger vers le haut */
+	transform: translateY(-8px);
+	/* ombre plus marquée au survol */
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+	/* optionnel : modifier légèrement le fond pour plus de contraste */
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* --------------------------------------------
