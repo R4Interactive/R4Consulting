@@ -280,8 +280,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ------------------------------
-// script.js (extrait RGPD cookies)
-// ------------------------------
+// script-cookies.js
+
 document.addEventListener('DOMContentLoaded', function () {
 	const cookieBanner = document.getElementById('cookieBanner');
 	const acceptAllBtn = document.getElementById('acceptAllCookies');
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const COOKIE_NAME = 'r4_cookie_consent';
 
-	// Récupère la configuration stockée (string JSON) ou null
+	// Récupère l’objet de consentement (ou null s’il n’existe pas)
 	function getStoredConsent() {
 		try {
 			return JSON.parse(localStorage.getItem(COOKIE_NAME));
@@ -302,90 +302,39 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	// Enregistre l’objet de consentement dans localStorage
+	// Enregistre l’objet de consentement en localStorage
 	function storeConsent(consentObj) {
 		localStorage.setItem(COOKIE_NAME, JSON.stringify(consentObj));
 	}
 
-	// Vérifie si l’utilisateur a déjà consenti (et retourne l’objet), sinon null
-	const savedConsent = getStoredConsent();
-
-	if (!savedConsent) {
-		// Aucune préférence enregistrée => on affiche le bandeau
-		cookieBanner.style.display = 'flex';
-	} else {
-		// Si on a déjà un choix, charger les cookies/script autorisés
-		applyConsent(savedConsent);
-	}
-
-	// Événement “Tout accepter” : on coche toutes les catégories
-	acceptAllBtn.addEventListener('click', () => {
-		const consent = {
-			necessary: true,
-			analytics: true,
-			functional: true,
-			marketing: true,
-		};
-		storeConsent(consent);
-		applyConsent(consent);
-		hideBanner();
-	});
-
-	// Ouvre la modale pour gérer les catégories
-	manageBtn.addEventListener('click', () => {
-		cookieModal.classList.remove('hidden');
-	});
-
-	// Ferme la modale sans rien changer
-	cancelModalBtn.addEventListener('click', () => {
-		cookieModal.classList.add('hidden');
-	});
-
-	// Enregistre les choix de l’utilisateur depuis la modale
-	saveSettingsBtn.addEventListener('click', () => {
-		const formData = new FormData(form);
-		const consent = {
-			necessary: true,
-			analytics: formData.has('analytics'),
-			functional: formData.has('functional'),
-			marketing: formData.has('marketing'),
-		};
-		storeConsent(consent);
-		applyConsent(consent);
-		hideModal();
-		hideBanner();
-	});
-
+	// Masque la bannière de cookie
 	function hideBanner() {
 		cookieBanner.style.display = 'none';
 	}
+
+	// Masque la fenêtre modale de réglages
 	function hideModal() {
 		cookieModal.classList.add('hidden');
 	}
 
-	// À l’issue du consentement : charger ou déclencher les scripts selon les catégories
+	// Charge ou active les scripts en fonction des catégories acceptées
 	function applyConsent(consent) {
-		// 1) Toujours présent : Cookies nécessaires (session PHP, panier, etc.) sont déjà actifs, pas besoin de script.
-		// 2) Si analytics = true, charger Google Analytics (ou un autre)
+		// Les “necessary” sont toujours actifs, pas besoin d’appel de script
 		if (consent.analytics) {
 			loadGoogleAnalytics();
 		}
-		// 3) Si functional = true, vous pouvez charger un script d’amélioration UX
 		if (consent.functional) {
-			// Exemple : mémorisation langue ou autre
-			// loadFunctionalScript();
+			// Exemple : loadFunctionalScript();
 		}
-		// 4) Si marketing = true, charger pixel Facebook, pixel LinkedIn, etc.
 		if (consent.marketing) {
-			// Exemple : loadFacebookPixel();
+			loadFacebookPixel();
 			// loadTikTokPixel();
 		}
 	}
 
-	// Exemple : fonction lazy-load GA si analytics accepté
+	// Exemple de lazy‐load de Google Analytics si analysés acceptés
 	function loadGoogleAnalytics() {
-		if (window.gaLoaded) return; // évite double-chargement
-		// Exemple simplifié pour GA4
+		if (window.gaLoaded) return; // Ne charge qu’une fois
 		const scriptGA = document.createElement('script');
 		scriptGA.src =
 			'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
@@ -402,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		window.gaLoaded = true;
 	}
 
-	// Exemple de chargement pixel Facebook
+	// Exemple de chargement du pixel Facebook si marketing accepté
 	function loadFacebookPixel() {
 		if (window.fbq) return;
 		!(function (f, b, e, v, n, t, s) {
@@ -431,4 +380,54 @@ document.addEventListener('DOMContentLoaded', function () {
 		fbq('init', 'VOTRE_PIXEL_ID');
 		fbq('track', 'PageView');
 	}
+
+	// Vérifie si un consentement est déjà stocké
+	const savedConsent = getStoredConsent();
+
+	if (!savedConsent) {
+		// Pas de consentement => on affiche la bannière
+		cookieBanner.style.display = 'flex';
+	} else {
+		// Consentement déjà présent => on applique et on cache directement la bannière
+		applyConsent(savedConsent);
+		hideBanner();
+	}
+
+	// Lorsque l’utilisateur clique sur “Tout accepter”
+	acceptAllBtn.addEventListener('click', () => {
+		const consent = {
+			necessary: true,
+			analytics: true,
+			functional: true,
+			marketing: true,
+		};
+		storeConsent(consent);
+		applyConsent(consent);
+		hideBanner();
+	});
+
+	// Ouvre la modale de gestion fine
+	manageBtn.addEventListener('click', () => {
+		cookieModal.classList.remove('hidden');
+	});
+
+	// Ferme la modale sans enregistrer
+	cancelModalBtn.addEventListener('click', () => {
+		hideModal();
+	});
+
+	// Enregistre les choix depuis la modale
+	saveSettingsBtn.addEventListener('click', () => {
+		const formData = new FormData(form);
+		const consent = {
+			necessary: true,
+			analytics: formData.has('analytics'),
+			functional: formData.has('functional'),
+			marketing: formData.has('marketing'),
+		};
+		storeConsent(consent);
+		applyConsent(consent);
+		hideModal();
+		hideBanner();
+	});
 });
