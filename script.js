@@ -278,3 +278,157 @@ document.addEventListener('DOMContentLoaded', function () {
 	);
 	serviceCardsList.forEach((card) => cardObserver.observe(card));
 });
+
+// ------------------------------
+// script.js (extrait RGPD cookies)
+// ------------------------------
+document.addEventListener('DOMContentLoaded', function () {
+	const cookieBanner = document.getElementById('cookieBanner');
+	const acceptAllBtn = document.getElementById('acceptAllCookies');
+	const manageBtn = document.getElementById('manageCookies');
+	const cookieModal = document.getElementById('cookieSettingsModal');
+	const cancelModalBtn = document.getElementById('cancelCookieSettings');
+	const saveSettingsBtn = document.getElementById('saveCookieSettings');
+	const form = document.getElementById('cookieSettingsForm');
+
+	const COOKIE_NAME = 'r4_cookie_consent';
+
+	// Récupère la configuration stockée (string JSON) ou null
+	function getStoredConsent() {
+		try {
+			return JSON.parse(localStorage.getItem(COOKIE_NAME));
+		} catch {
+			return null;
+		}
+	}
+
+	// Enregistre l’objet de consentement dans localStorage
+	function storeConsent(consentObj) {
+		localStorage.setItem(COOKIE_NAME, JSON.stringify(consentObj));
+	}
+
+	// Vérifie si l’utilisateur a déjà consenti (et retourne l’objet), sinon null
+	const savedConsent = getStoredConsent();
+
+	if (!savedConsent) {
+		// Aucune préférence enregistrée => on affiche le bandeau
+		cookieBanner.style.display = 'flex';
+	} else {
+		// Si on a déjà un choix, charger les cookies/script autorisés
+		applyConsent(savedConsent);
+	}
+
+	// Événement “Tout accepter” : on coche toutes les catégories
+	acceptAllBtn.addEventListener('click', () => {
+		const consent = {
+			necessary: true,
+			analytics: true,
+			functional: true,
+			marketing: true,
+		};
+		storeConsent(consent);
+		applyConsent(consent);
+		hideBanner();
+	});
+
+	// Ouvre la modale pour gérer les catégories
+	manageBtn.addEventListener('click', () => {
+		cookieModal.classList.remove('hidden');
+	});
+
+	// Ferme la modale sans rien changer
+	cancelModalBtn.addEventListener('click', () => {
+		cookieModal.classList.add('hidden');
+	});
+
+	// Enregistre les choix de l’utilisateur depuis la modale
+	saveSettingsBtn.addEventListener('click', () => {
+		const formData = new FormData(form);
+		const consent = {
+			necessary: true,
+			analytics: formData.has('analytics'),
+			functional: formData.has('functional'),
+			marketing: formData.has('marketing'),
+		};
+		storeConsent(consent);
+		applyConsent(consent);
+		hideModal();
+		hideBanner();
+	});
+
+	function hideBanner() {
+		cookieBanner.style.display = 'none';
+	}
+	function hideModal() {
+		cookieModal.classList.add('hidden');
+	}
+
+	// À l’issue du consentement : charger ou déclencher les scripts selon les catégories
+	function applyConsent(consent) {
+		// 1) Toujours présent : Cookies nécessaires (session PHP, panier, etc.) sont déjà actifs, pas besoin de script.
+		// 2) Si analytics = true, charger Google Analytics (ou un autre)
+		if (consent.analytics) {
+			loadGoogleAnalytics();
+		}
+		// 3) Si functional = true, vous pouvez charger un script d’amélioration UX
+		if (consent.functional) {
+			// Exemple : mémorisation langue ou autre
+			// loadFunctionalScript();
+		}
+		// 4) Si marketing = true, charger pixel Facebook, pixel LinkedIn, etc.
+		if (consent.marketing) {
+			// Exemple : loadFacebookPixel();
+			// loadTikTokPixel();
+		}
+	}
+
+	// Exemple : fonction lazy-load GA si analytics accepté
+	function loadGoogleAnalytics() {
+		if (window.gaLoaded) return; // évite double-chargement
+		// Exemple simplifié pour GA4
+		const scriptGA = document.createElement('script');
+		scriptGA.src =
+			'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+		scriptGA.async = true;
+		document.head.appendChild(scriptGA);
+
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		window.gtag = gtag;
+		gtag('js', new Date());
+		gtag('config', 'G-XXXXXXXXXX');
+		window.gaLoaded = true;
+	}
+
+	// Exemple de chargement pixel Facebook
+	function loadFacebookPixel() {
+		if (window.fbq) return;
+		!(function (f, b, e, v, n, t, s) {
+			if (f.fbq) return;
+			n = f.fbq = function () {
+				n.callMethod
+					? n.callMethod.apply(n, arguments)
+					: n.queue.push(arguments);
+			};
+			if (!f._fbq) f._fbq = n;
+			n.push = n;
+			n.loaded = !0;
+			n.version = '2.0';
+			n.queue = [];
+			t = b.createElement(e);
+			t.async = !0;
+			t.src = v;
+			s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s);
+		})(
+			window,
+			document,
+			'script',
+			'https://connect.facebook.net/en_US/fbevents.js'
+		);
+		fbq('init', 'VOTRE_PIXEL_ID');
+		fbq('track', 'PageView');
+	}
+});

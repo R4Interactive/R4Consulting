@@ -39,6 +39,63 @@
 </head>
 
 <body>
+    <!-- Banderole de consentement aux cookies (RGPD) -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-banner__content">
+            <p>
+                Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser le
+                contenu.
+                <a href="/politique-cookies.html" target="_blank">En savoir plus</a>.
+            </p>
+            <div class="cookie-banner__buttons">
+                <button id="acceptAllCookies" class="btn-cookie">Tout accepter</button>
+                <button id="manageCookies" class="btn-cookie--alt">Préférences</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fenêtre modale de gestion fine des catégories -->
+    <div id="cookieSettingsModal" class="cookie-modal hidden">
+        <div class="cookie-modal__content">
+            <h2>Paramètres des cookies</h2>
+            <form id="cookieSettingsForm">
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieNecessary" name="necessary" disabled checked />
+                    <label for="cookieNecessary">Cookies strictement nécessaires</label>
+                    <p class="cookie-category__desc">
+                        Nécessaires au fonctionnement du site (par ex. panier, session…). Toujours actifs.
+                    </p>
+                </div>
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieAnalytics" name="analytics" />
+                    <label for="cookieAnalytics">Cookies analytiques</label>
+                    <p class="cookie-category__desc">
+                        Permettent de mesurer les performances du site (ex. Google Analytics).
+                    </p>
+                </div>
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieFunctional" name="functional" />
+                    <label for="cookieFunctional">Cookies fonctionnels</label>
+                    <p class="cookie-category__desc">
+                        Améliorent l’expérience (ex. mémorisation langue, préférences d’affichage).
+                    </p>
+                </div>
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieMarketing" name="marketing" />
+                    <label for="cookieMarketing">Cookies marketing / publicitaires</label>
+                    <p class="cookie-category__desc">
+                        Utilisés pour la publicité ciblée (ex. pixels Facebook).
+                    </p>
+                </div>
+
+                <div class="cookie-modal__buttons">
+                    <button type="button" id="saveCookieSettings" class="btn-cookie">Enregistrer mes choix</button>
+                    <button type="button" id="cancelCookieSettings" class="btn-cookie--alt">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- ===============================
      HEADER / HERO
      =============================== -->
