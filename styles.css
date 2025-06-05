@@ -9,37 +9,32 @@
 
 :root {
 	/* Couleurs principales */
-	--dark-bg: #0c1518;
-	--gold: #b08040;
-	--cream: #ece3c9;
+	--dark-bg: #0c1518; /* Fond sombre */
+	--gold: #b08040; /* Doré pour icônes et titres */
+	--cream: #ece3c9; /* Crème pour le texte */
 	--text: var(--cream);
-	--bg: var(--dark-bg);
-	--card-bg: #111111;
-
+	--bg: var(--dark-bg); /* Fond général */
+	--card-bg: #111111; /* Fond des blocs « carte » */
 	/* Polices */
 	--font-sans: 'Montserrat', Arial, sans-serif;
 	--font-script: 'Dancing Script', cursive;
-
-	/* Hauteur fixe des cartes (ajustable si besoin) */
+	/* Hauteur fixe des cartes (si besoin) */
 	--card-height: 380px;
-
-	/* NOUVELLE VARIABLE pour les champs de formulaire */
-	--input-bg: #1a1a1a; /* fond des input / textarea en mode sombre */
-	--input-text: var(
-		--cream
-	); /* texte à l’intérieur des champs en mode sombre */
+	/* Variables pour champs (clair/sombre) */
+	--input-bg: #1a1a1a; /* fond des input / textarea en sombre */
+	--input-text: var(--cream); /* texte dans les champs en mode sombre */
 }
 
+/* Quand on ajoute class="light-theme" au <body> */
 body.light-theme {
-	--dark-bg: #f5f5f5; /* Exemple clair pour fond “sombre” */
-	--gold: #b08040; /* On garde la même couleur d’accent */
-	--cream: #333333; /* Texte principal plus sombre */
+	--dark-bg: #f5f5f5; /* Fond clair */
+	--gold: #b08040; /* accent doré inchangé */
+	--cream: #333333; /* Texte sombre sur fond clair */
 	--text: #333333;
 	--bg: #ffffff; /* Fond général clair */
 	--card-bg: #fafafa; /* Fond des cartes en clair */
-	/* NOUVELLE VARIABLE pour champs de formulaire en mode clair */
-	--input-bg: #ffffff; /* fond clair pour les input / textarea */
-	--input-text: #333333; /* texte dans champ en mode clair */
+	--input-bg: #ffffff; /* fond champs en clair */
+	--input-text: #333333; /* texte dans champs en clair */
 }
 
 body {
@@ -54,12 +49,10 @@ img {
 	display: block;
 	max-width: 100%;
 }
-
 a {
 	text-decoration: none;
 	color: inherit;
 }
-
 button {
 	cursor: pointer;
 	border: none;
@@ -72,9 +65,8 @@ button {
 .hero {
 	position: relative;
 	background-color: var(--bg);
-	padding: 1.5rem 1rem 1rem; /* Haut 1.5rem pour nav, bas 1rem pour contenu */
+	padding: 1.5rem 1rem 1rem; /* Espace pour nav et contenu */
 }
-
 .header-top {
 	max-width: 1000px;
 	margin: 0 auto;
@@ -84,26 +76,22 @@ button {
 	justify-content: flex-start;
 	position: relative;
 }
-
 .header-top .logo {
 	width: 120px;
 	height: auto;
 }
-
 .main-nav {
 	position: absolute;
 	top: 0.5rem;
-	right: 8rem;
+	right: 8rem; /* décale la nav à droite (libère de la place pour #themeToggle) */
 	background-color: transparent;
 	z-index: 10;
 }
-
 .main-nav ul {
 	list-style: none;
 	display: flex;
 	gap: 1.5rem;
 }
-
 .main-nav a {
 	color: var(--cream);
 	font-weight: 600;
@@ -111,13 +99,11 @@ button {
 	border-bottom: 2px solid transparent;
 	transition: color 0.3s ease, border-bottom 0.3s ease;
 }
-
 .main-nav a:hover,
 .main-nav a.active {
 	color: var(--gold);
 	border-bottom: 2px solid var(--gold);
 }
-
 @media (max-width: 768px) {
 	.main-nav {
 		position: static;
@@ -132,7 +118,6 @@ button {
 		font-size: 0.9rem;
 	}
 }
-
 .hero-inner {
 	max-width: 800px;
 	margin: 1rem auto 0;
@@ -141,13 +126,10 @@ button {
 	transform: translateY(20px);
 	transition: opacity 2s ease-out, transform 2s ease-out;
 }
-
-/* Lorsque le JS ajoute .hero-visible, l’élément apparaît */
 .hero-inner.hero-visible {
 	opacity: 1;
 	transform: translateY(0);
 }
-
 .site-title {
 	font-size: 2.5rem;
 	font-weight: 800;
@@ -155,11 +137,10 @@ button {
 	margin-bottom: 0.5rem;
 	color: var(--gold);
 }
-
 /* Police manuscrite pour la tagline */
 .tagline {
 	font-family: var(--font-script);
-	font-size: 2rem; /* taille augmentée */
+	font-size: 2rem;
 	margin-bottom: 2rem;
 	line-height: 1.2;
 	color: var(--cream);
@@ -179,12 +160,10 @@ button {
 	transition: background-color 0.3s ease, color 0.3s ease;
 	text-align: center;
 }
-
 .btn-primary:hover {
 	background-color: var(--gold);
 	color: var(--dark-bg);
 }
-
 .btn-secondary {
 	display: inline-block;
 	background-color: transparent;
@@ -197,33 +176,29 @@ button {
 	text-align: center;
 	margin-top: 1rem;
 }
-
 .btn-secondary:hover {
 	background-color: var(--gold);
 	color: var(--dark-bg);
 }
 
 /* ----------------------------------
-	 SECTION « Qui sommes-nous ? » + SERVICES (sur index.html)
+	 SECTION « Qui sommes-nous ? » + SERVICES (index.html)
 	 ---------------------------------- */
 .about-services {
 	background-color: var(--bg);
 	padding: 4rem 1rem;
 }
-
 .about-services-inner {
 	max-width: 1000px;
 	margin: 0 auto;
 	text-align: center;
 }
-
 .about-services-heading {
 	font-size: 2rem;
 	font-weight: 800;
 	color: var(--gold);
 	margin-bottom: 1rem;
 }
-
 .about-services-intro {
 	color: var(--cream);
 	font-size: 1rem;
@@ -233,44 +208,39 @@ button {
 	margin-left: auto;
 	margin-right: auto;
 }
-
 /* Conteneur des cartes */
 .services-cards {
 	display: flex;
 	justify-content: center;
-	align-items: stretch; /* Force toutes les cartes à avoir la même hauteur */
+	align-items: stretch;
 	gap: 2rem;
 	flex-wrap: wrap;
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 0 1rem;
 }
-
 /* Chaque carte de service */
 .service-card {
 	display: flex;
 	flex-direction: column;
-	align-items: center; /* Centre horizontalement le contenu */
+	align-items: center;
 	text-align: center;
-	flex: 0 0 300px; /* Largeur fixe de 300px */
+	flex: 0 0 300px;
 	max-width: 300px;
-	height: var(--card-height); /* Hauteur fixe pour toutes les cartes */
-	background-color: #111111;
+	height: var(--card-height);
+	background-color: var(--card-bg);
 	border-radius: 8px;
 	padding: 2rem 1.5rem;
 	box-sizing: border-box;
-	background-color: var(--card-bg);
 	opacity: 0;
 	transform: translateY(20px);
 	transition: opacity 3s ease-out 0.5s, transform 3s ease-out 0.5s;
 }
-
-/* Lorsque le JS ajoute .visible, la carte apparaît */
+/* Quand JS ajoute .visible, on affiche */
 .service-card.visible {
 	opacity: 1;
 	transform: translateY(0);
 }
-
 /* Frame dorée autour de l’icône */
 .icon-frame {
 	width: 100px;
@@ -283,20 +253,16 @@ button {
 	background-color: transparent;
 	margin-bottom: 1rem;
 }
-
-/* Icône centrée à l’intérieur de la frame */
+/* Icône centrée */
 .service-icon {
 	width: 50px;
 	height: 50px;
 	object-fit: contain;
 	transition: transform 2s ease;
 }
-
-/* À l’hover, on fait tourner légèrement l’icône */
 .service-card:hover .service-icon {
 	transform: rotate(15deg);
 }
-
 /* Titre de la carte en or */
 .service-title {
 	font-size: 1.2rem;
@@ -304,221 +270,123 @@ button {
 	color: var(--gold);
 	margin-bottom: 0.75rem;
 }
-
-/* Empêche le retour à la ligne automatique */
 .service-card .service-title {
-	white-space: nowrap;
+	white-space: nowrap; /* empêche le retour à la ligne */
 }
-
 /* Description de la carte */
 .service-desc {
-	flex: 1; /* Occupe tout l’espace vertical restant */
+	flex: 1;
 	display: flex;
-	align-items: center; /* Centre verticalement si texte court */
+	align-items: center;
 	justify-content: center;
 	color: var(--cream);
 	font-size: 0.95rem;
 	line-height: 1.5;
 	margin-top: 0.25rem;
 }
-
-/* Élément additionnel (facultatif) sous la description */
-.service-link {
-	margin-top: 1rem;
-	color: var(--gold);
-	font-weight: 600;
-	text-decoration: none;
-}
-
-/* Ajustements responsives pour les cartes :
-	 - Pour largeurs < 900px : 2 cartes par ligne
-	 - Pour largeurs < 600px : 1 carte par ligne (hauteur auto) */
+/* Réglages responsives pour les cartes */
 @media (max-width: 900px) {
 	.service-card {
 		flex: 0 0 calc(45% - 1rem);
 		max-width: calc(45% - 1rem);
-		height: var(--card-height); /* Conserver la même hauteur fixe */
+		height: var(--card-height);
 	}
 }
-
 @media (max-width: 600px) {
 	.service-card {
 		flex: 0 0 100%;
 		max-width: 100%;
-		height: auto; /* Sur mobile, on laisse la hauteur automatique */
+		height: auto;
 		padding-bottom: 2rem;
 	}
 }
 
 /* ----------------------------------
-	 SECTION DÉTAIL SERVICE (identite, immobilier, gestion)
+	 SECTION « Ils témoignent »
 	 ---------------------------------- */
-.detail-service {
-	background-color: var(--dark-bg);
+.testimonials {
+	background-color: var(--bg);
 	padding: 4rem 1rem;
 }
-
-.detail-inner {
+.testimonials-inner {
 	max-width: 1000px;
 	margin: 0 auto;
+	text-align: center;
 }
-
-.detail-heading {
+.testimonials-heading {
 	font-size: 2rem;
 	font-weight: 800;
 	color: var(--gold);
-	text-align: center;
 	margin-bottom: 2rem;
 }
+/* Conteneur principal : masque l’overflow pour le slider */
+.testimonials-container {
+	position: relative;
+	overflow: hidden;
+}
+/* Le slider proprement dit : display flex et transition */
+.testimonials-slider {
+	display: flex;
+	transition: transform 0.8s ease;
+}
+/* Chaque carte de témoignage */
+.testimonial-card {
+	flex: 0 0 100%; /* On écrasera ce flex-basis par JS */
+	box-sizing: border-box;
+	padding: 2rem 1rem;
 
-.detail-content {
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	gap: 2rem;
+	justify-content: space-between;
 }
-
-.detail-text {
-	color: var(--cream);
+/* Texte justifié à l’intérieur */
+.testimonial-text {
+	color: var(--text);
 	font-size: 1rem;
 	line-height: 1.6;
-	max-width: 600px;
+	margin-bottom: 1.5rem;
+	font-style: italic;
+	text-align: justify;
 }
-
-.detail-text ul {
-	list-style: disc inside
-		url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><circle cx='3' cy='3' r='3' fill='%23B08040'/></svg>");
-	margin: 1rem 0;
-	padding-left: 1rem;
-}
-
-.detail-text li {
-	margin-bottom: 0.5rem;
-}
-
-.detail-image img {
-	width: 100%;
-	max-width: 350px;
-	border-radius: 8px;
-	object-fit: cover;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Sur desktop : texte à gauche, image à droite */
-@media (min-width: 768px) {
-	.detail-content {
-		flex-direction: row;
-		justify-content: space-between;
-	}
-}
-
-/* ----------------------------------
-	 SECTION BLOG
-	 ---------------------------------- */
-.blog {
-	background-color: var(--dark-bg);
-	padding: 4rem 1rem;
-}
-
-.blog-inner {
-	max-width: 1000px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.blog-heading {
-	font-size: 2rem;
-	font-weight: 800;
-	color: var(--gold);
-	margin-bottom: 2rem;
-}
-
-.blog-list {
+/* Bloc author (photo + nom) */
+.testimonial-author {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 2rem;
+	align-items: center;
 	justify-content: center;
+	gap: 0.75rem;
 }
-
-.blog-post {
-	background-color: #111111;
-	border-radius: 8px;
-	overflow: hidden;
-	flex: 1 1 calc(33% - 1.5rem);
-	display: flex;
-	flex-direction: column;
-	text-align: left;
-}
-
-.blog-image {
-	width: 100%;
-	height: 180px;
+.author-photo {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
 	object-fit: cover;
+	border: 2px solid var(--gold);
 }
-
-.blog-content {
-	padding: 1.5rem;
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-}
-
-.post-title {
-	font-size: 1.1rem;
+.author-name {
+	color: var(--gold);
 	font-weight: 600;
-	margin-bottom: 0.5rem;
-	color: var(--gold);
+	font-size: 1rem;
 }
 
-.post-title a {
-	color: var(--gold);
-	text-decoration: none;
-}
+/* --------------------------------------------
+	 RESPONSIVE : si ≥1200px, on reste à 100% (tout géré par JS)
+	 -------------------------------------------- */
+/* On _ne modifie pas_ flex‐basis ici, gardé à 100%. */
 
-.post-title a:hover {
-	text-decoration: underline;
+/* --------------------------------------------
+	 REVEAL : fade & slide in
+	 -------------------------------------------- */
+.reveal-hidden {
+	opacity: 0;
+	transform: translateY(40px);
 }
-
-.post-excerpt {
-	color: var(--cream);
-	font-size: 0.95rem;
-	margin-bottom: auto;
-	line-height: 1.5;
-}
-
-.read-more {
-	margin-top: 1rem;
-	font-weight: 600;
-	color: var(--gold);
-	text-decoration: none;
-}
-
-.read-more:hover {
-	text-decoration: underline;
-}
-
-.blog-pagination {
-	margin-top: 2rem;
-}
-
-.blog-pagination .btn-secondary {
-	padding: 0.75rem 2rem;
-}
-
-@media (max-width: 900px) {
-	.blog-post {
-		flex: 1 1 calc(50% - 1.5rem);
-	}
-}
-
-@media (max-width: 600px) {
-	.blog-list {
-		flex-direction: column;
-		align-items: center;
-	}
-	.blog-post {
-		flex: 1 1 100%;
-	}
+.reveal-visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 3s ease-out, transform 3s ease-out;
 }
 
 /* ----------------------------------
@@ -528,12 +396,10 @@ button {
 	padding: 4rem 1rem;
 	background-color: var(--bg);
 }
-
 .contact-inner {
 	max-width: 1000px;
 	margin: 0 auto;
 }
-
 .contact-heading {
 	font-size: 2rem;
 	font-weight: 800;
@@ -541,90 +407,75 @@ button {
 	margin: 0 0 2rem 0;
 	color: var(--gold);
 }
-
 .contact-card {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2rem;
 	padding: 2rem;
 	border-radius: 8px;
-	background-color: #111111;
+	background-color: var(--card-bg);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 	align-items: flex-start;
-	background-color: var(--card-bg);
 }
-
 /* Bloc “Informations” */
 .contact-info {
 	flex: 1 1 300px;
 	max-width: 400px;
 }
-
 .contact-info .info-title {
 	margin: 0 0 1rem 0;
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: var(--gold);
 }
-
 .info-list {
 	list-style: none;
 	display: flex;
 	flex-direction: column;
 	gap: 1.25rem;
 }
-
 .info-list li {
 	display: flex;
 	align-items: center;
 }
-
 .info-icon {
-	font-size: 1.5rem; /* environ 24px */
+	font-size: 1.5rem; /* ~24px */
 	color: var(--gold);
 	margin-right: 0.75rem;
 	flex-shrink: 0;
 }
-
 .info-text {
 	color: var(--cream);
 	font-size: 0.95rem;
 	line-height: 1.4;
 }
-
 .info-text a {
 	color: var(--cream);
 	text-decoration: none;
 }
-
 .info-text a:hover {
 	text-decoration: underline;
 }
-
 /* Bloc “Formulaire” */
 .contact-form {
 	flex: 2 1 400px;
 	max-width: 600px;
 }
-
 .contact-form .info-title {
 	margin: 0 0 1rem 0;
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: var(--gold);
 }
-
 .contact-form .form-group {
 	margin-bottom: 1.5rem;
 }
-
 .contact-form .form-group label {
 	display: block;
 	margin: 0 0 0.5rem 0;
 	font-weight: 600;
 	color: var(--cream);
 }
-
 .contact-form .form-group .optional {
 	font-style: italic;
 	font-weight: 400;
@@ -632,44 +483,27 @@ button {
 	color: #bbbbbb;
 	margin-left: 4px;
 }
-
 .contact-form input,
 .contact-form textarea {
 	width: 100%;
 	padding: 0.75rem 1rem;
 	border: 1px solid #333333;
 	border-radius: 4px;
-
-	/* Utiliser la variable dynamique --input-bg pour le fond */
 	background-color: var(--input-bg);
-	/* Utiliser --input-text pour la couleur du texte dans le champ */
 	color: var(--input-text);
-
 	font-size: 1rem;
 	font-family: var(--font-sans);
 }
-
-/* On s’assure aussi que le placeholder soit visible */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-	color: rgba(
-		var(--input-text),
-		0.6
-	); /* version plus claire de la couleur du texte */
-	/* 
-     Note : si votre navigateur n’accepte pas `rgba(var(--input-text), 0.6)`, 
-     remplacez par une valeur fixe pour le placeholder, par exemple : 
-     color: #777777; 
-  */
+	/* si navegador ne supporte pas rgba(var(--input-text), 0.6), remplacer par #777777 */
+	color: #777777;
 }
-
-/* Quand on est en focus, on change la bordure en doré */
 .contact-form input:focus,
 .contact-form textarea:focus {
 	outline: none;
 	border-color: var(--gold);
 }
-
 .contact-form button {
 	background-color: var(--gold);
 	color: var(--dark-bg);
@@ -681,19 +515,16 @@ button {
 	cursor: pointer;
 	margin-top: 0.5rem;
 }
-
 .contact-form button:hover {
 	background-color: #9e6e36;
 }
-
-/* Boutons WhatsApp & Calendly – alignement SOUS le formulaire */
+/* Boutons WhatsApp & Calendly sous le formulaire */
 .contact-actions {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 	margin: 2rem 0 0 0;
 }
-
 .contact-actions a.btn-whatsapp,
 .contact-actions button#calendlyBtn {
 	display: inline-flex;
@@ -710,43 +541,29 @@ button {
 	line-height: 1;
 	margin: 0;
 }
-
 .contact-actions a.btn-whatsapp {
 	background-color: #25d366;
 	color: #ffffff;
 	border: 2px solid #25d366;
 }
-
-.contact-actions a.btn-whatsapp img {
-	width: 20px;
-	height: 20px;
-	margin-right: 0.5rem;
-	filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(35deg)
-		brightness(110%) contrast(95%);
-}
-
 .contact-actions a.btn-whatsapp:hover {
 	background-color: #1fa954;
 	border-color: #1fa954;
 }
-
 .contact-actions button#calendlyBtn {
 	background-color: transparent;
 	color: var(--gold);
 	border: 2px solid var(--gold);
 }
-
 .contact-actions button#calendlyBtn:hover {
 	background-color: var(--gold);
 	color: var(--dark-bg);
 }
-
 .contact-actions a.btn-whatsapp:focus,
 .contact-actions button#calendlyBtn:focus {
 	outline: 2px solid var(--cream);
 	outline-offset: 2px;
 }
-
 @media (max-width: 600px) {
 	.contact-actions {
 		flex-direction: column;
@@ -759,7 +576,6 @@ button {
 		margin: 0;
 	}
 }
-
 @media (max-width: 768px) {
 	.contact-card {
 		flex-direction: column;
@@ -778,7 +594,6 @@ button {
 	opacity: 0;
 	transform: translateY(40px);
 }
-
 .reveal-visible {
 	opacity: 1;
 	transform: translateY(0);
@@ -791,60 +606,17 @@ button {
 .site-footer {
 	padding: 2rem 1rem;
 	text-align: center;
-	background-color: #111111;
 	background-color: var(--card-bg);
 }
-
 .footer-text {
 	font-size: 0.9rem;
 	color: var(--cream);
 	opacity: 0.7;
 }
 
-/* Les éléments de texte qui utilisaient “var(--cream)” deviennent “var(--text)” */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.info-text,
-.service-desc {
-	color: var(--text);
-}
-
 /* --------------------------------------------
-	 SURCHARGE : RÉDUCTION DE L’ESPACE AU-DESSUS DU H1
+	 BOUTON “RETOUR EN HAUT”
 	 -------------------------------------------- */
-.hero-inner {
-	margin-top: 2rem !important;
-}
-
-/* --------------------------------------------
-	 AJOUT D’ANIMATIONS COMPLÉMENTAIRES
-	 -------------------------------------------- */
-/* 1) Rotation subtile des icônes de service au survol (déjà dans .service-card:hover) */
-/* 2) Animation de soulignement progressif des liens de navigation */
-.main-nav a {
-	position: relative;
-}
-.main-nav a::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	bottom: -2px;
-	width: 0;
-	height: 2px;
-	background-color: var(--gold);
-	transition: width 2s ease;
-}
-.main-nav a:hover::after,
-.main-nav a.active::after {
-	width: 100%;
-}
-
-/* 3) Bouton “Retour en haut” discret (prêt à être activé par JS) */
 #backToTop {
 	position: fixed;
 	right: 1.5rem;
@@ -872,33 +644,24 @@ h6,
 	background-color: #9e6e36;
 }
 
-/* 4) Boutons WhatsApp & Calendly : légère expansion au survol */
-.contact-actions a.btn-whatsapp:hover,
-.contact-actions button#calendlyBtn:hover {
-	transform: scale(1.05);
-	transition: transform 2s ease;
-}
-
-/* 2) Règles de base pour le bouton */
+/* --------------------------------------------
+	 BOUTON THEME TOGGLE (en haut à droite)
+	 -------------------------------------------- */
 #themeToggle {
 	position: absolute;
-	top: 1rem; /* distance par rapport au haut du header */
-	right: 1rem; /* distance par rapport au bord droit du header */
+	top: 1rem;
+	right: 1rem;
 	background: none;
 	border: none;
 	color: var(--gold);
-	font-size: 1.5rem; /* on augmente légèrement la taille pour être visible */
+	font-size: 1.5rem;
 	cursor: pointer;
-	z-index: 1000; /* pour être devant la nav */
+	z-index: 1000;
 	transition: transform 0.3s ease;
 }
-
-/* 3) Effet au survol */
 #themeToggle:hover {
 	transform: scale(1.1);
 }
-
-/* 4) Pour smartphone (<768px), on ajuste éventuellement un peu la taille */
 @media (max-width: 768px) {
 	#themeToggle {
 		font-size: 1.25rem;
@@ -907,4 +670,13 @@ h6,
 	}
 }
 
-/* Fin du CSS */
+/* --------------------------------------------
+	 SURCHARGE : RÉDUCTION DE L’ESPACE AU-DESSUS DU H1
+	 -------------------------------------------- */
+.hero-inner {
+	margin-top: 2rem !important;
+}
+
+/* --------------------------------------------
+	 FIN DU CSS
+	 -------------------------------------------- */

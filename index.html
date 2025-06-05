@@ -27,6 +27,8 @@
 
     <!-- CSS principal -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- FontAwesome (pour les icônes si besoin) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-pak6rZVHfFXYUIyM0qM0jHTOQhD8n2wZrMBf9s9eP68qh+9kZlYpRdlWBDiL3jZF7hRWw9mm4V9jrluH5+5r0A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,9 +36,6 @@
     <!-- Google Fonts (Dancing Script et Montserrat) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Dancing+Script&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-pak6rZVHfFXYUIyM0qM0jHTOQhD8n2wZrMBf9s9eP68qh+9kZlYpRdlWBDiL3jZF7hRWw9mm4V9jrluH5+5r0A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -49,8 +48,8 @@
                 <img src="R4-Consulting-Logo.png" alt="Logo R4 Consulting" class="logo" />
             </a>
             <!-- Bouton pour basculer le thème -->
-            <button id="themeToggle" aria-label="Basculer thème sombre/clair" title="Basculer thème sombre/clair">
-                🌙 </button>
+            <button id="themeToggle" aria-label="Basculer thème sombre/clair"
+                title="Basculer thème sombre/clair">🌙</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">Accueil</a></li>
@@ -80,12 +79,9 @@
             <h2 class="about-services-heading">Qui sommes-nous ?</h2>
             <p class="about-services-intro">
                 Chez <strong>R4 Consulting</strong>, nous croyons que chaque entrepreneur mérite un accompagnement
-                global
-                et sur mesure. Fondée par une équipe d’experts passionnés en digital, immobilier et gestion
-                patrimoniale,
-                notre mission est simple : centraliser toutes les compétences nécessaires pour faire grandir vos
-                projets,
-                garantir votre sérénité et optimiser vos choix stratégiques.
+                global et sur mesure. Fondée par une équipe d’experts passionnés en digital, immobilier et gestion
+                patrimoniale, notre mission est simple : centraliser toutes les compétences nécessaires pour faire
+                grandir vos projets, garantir votre sérénité et optimiser vos choix stratégiques.
             </p>
 
             <!-- Conteneur flex des cartes, chaque carte est un lien -->
@@ -100,10 +96,10 @@
                         <h3 class="service-title">Identité & Présence Digitale</h3>
                         <p class="service-desc">
                             Nous développons votre image en ligne pour vous rendre reconnaissable et crédible. Création
-                            de site web,
-                            gestion de vos réseaux sociaux et stratégie de contenu : tout est pensé pour que votre
-                            marque se distingue
-                            et attire vos clients idéaux.
+                            de site
+                            web, gestion de vos réseaux sociaux et stratégie de contenu : tout est pensé pour que votre
+                            marque
+                            se distingue et attire vos clients idéaux.
                         </p>
                     </div>
                 </a>
@@ -118,10 +114,8 @@
                         <h3 class="service-title">Immobilier Professionnel</h3>
                         <p class="service-desc">
                             Trouver, négocier et gérer vos locaux professionnels tout en optimisant vos coûts. Nous vous
-                            accompagnons
-                            dans la recherche de biens adaptés, la signature de baux et le suivi de vos investissements
-                            pour que vous
-                            puissiez vous concentrer sur votre activité.
+                            accompagnons dans la recherche de biens adaptés, la signature de baux et le suivi de vos
+                            investissements pour que vous puissiez vous concentrer sur votre activité.
                         </p>
                     </div>
                 </a>
@@ -136,13 +130,84 @@
                         <h3 class="service-title">Gestion & Patrimoine</h3>
                         <p class="service-desc">
                             Élaborer une stratégie patrimoniale pour protéger et faire fructifier vos actifs.
-                            Optimisation fiscale,
-                            constitution de patrimoine et préparation de transmission : nous veillons à sécuriser votre
-                            avenir personnel
-                            et professionnel.
+                            Optimisation
+                            fiscale, constitution de patrimoine et préparation de transmission : nous veillons à
+                            sécuriser votre
+                            avenir personnel et professionnel.
                         </p>
                     </div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+       SECTION « Ils témoignent »
+       =============================== -->
+    <section id="testimonials" class="testimonials reveal">
+        <div class="testimonials-inner">
+            <h2 class="testimonials-heading">Ils témoignent</h2>
+
+            <div class="testimonials-container">
+                <div class="testimonials-slider">
+                    <!-- Carte 1 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            « Grâce à R4 Consulting, j'ai pu lancer mon site professionnel en 2 semaines seulement !
+                            Leur équipe m’a
+                            accompagné de A à Z, je recommande sans hésiter. »
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Portrait de Marie D."
+                                class="author-photo" />
+                            <span class="author-name">Marie D.</span>
+                        </div>
+                    </div>
+
+                    <!-- Carte 2 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            « L’expertise immobilière de R4 m’a permis de trouver un local parfaitement adapté à mes
+                            besoins.
+                            Transaction rapide, conseils au top ! »
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Portrait de Lucas T."
+                                class="author-photo" />
+                            <span class="author-name">Lucas T.</span>
+                        </div>
+                    </div>
+
+                    <!-- Carte 3 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            « Leur accompagnement patrimonial a été décisif pour sécuriser mes investissements. Équipe
+                            très
+                            professionnelle et réactive ! »
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Portrait de Sophie M."
+                                class="author-photo" />
+                            <span class="author-name">Sophie M.</span>
+                        </div>
+                    </div>
+
+                    <!-- Carte 4 (exemple additionnel) -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            « Grâce à R4 Consulting, j’ai pu moderniser la stratégie digitale de mon entreprise. Les
+                            résultats sont
+                            au‐delà de mes attentes ! »
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Portrait de Julien L."
+                                class="author-photo" />
+                            <span class="author-name">Julien L.</span>
+                        </div>
+                    </div>
+
+                    <!-- Ajoutez d’autres .testimonial-card si nécessaire -->
+                </div>
             </div>
         </div>
     </section>
@@ -163,7 +228,6 @@
                         <li>
                             <img src="https://img.icons8.com/ios-filled/24/b08040/new-post.png" alt="Email"
                                 class="info-icon" />
-                            <span class="info-label"></span>
                             <span class="info-text">
                                 <a href="mailto:contact@r4consulting.fr">contact@r4consulting.fr</a>
                             </span>
@@ -171,13 +235,11 @@
                         <li>
                             <img src="https://img.icons8.com/ios-filled/24/b08040/phone.png" alt="Téléphone"
                                 class="info-icon" />
-                            <span class="info-label"></span>
                             <span class="info-text">+33 7 84 29 82 02</span>
                         </li>
                         <li>
                             <img src="https://img.icons8.com/ios-filled/24/b08040/marker.png" alt="Adresse"
                                 class="info-icon" />
-                            <span class="info-label"></span>
                             <span class="info-text">
                                 Résidence La Mongie Tourmalet, 3 rue de Sencours<br />
                                 65200 Bagnères de Bigorre, France
@@ -204,7 +266,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Votre projet, question..."
+                            <textarea id="message" name="message" rows="5" placeholder="Votre projet, question…"
                                 required></textarea>
                         </div>
                         <button type="submit" class="btn-primary">Envoyer</button>
@@ -212,9 +274,7 @@
 
                     <!-- Boutons WhatsApp et Calendly -->
                     <div class="contact-actions">
-                        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">
-                            Discuter sur WhatsApp
-                        </a>
+                        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">Discuter sur WhatsApp</a>
                         <button id="calendlyBtn" type="button">Prendre rendez-vous</button>
                     </div>
                 </div>
