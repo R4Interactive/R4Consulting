@@ -1,0 +1,88 @@
+/* ==============================
+   Styles spécifiques aux articles
+   (blog.styles.css)
+   ============================== */
+
+/* Conteneur principal de l’article */
+.blog-article {
+	max-width: 800px;
+	margin: 2rem auto;
+	padding: 0 1rem;
+}
+
+/* Titre principal de l’article */
+.blog-article .post-title {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--gold);
+	margin-bottom: 0.5rem;
+	text-align: left;
+}
+
+/* Meta (date, auteur) */
+.blog-article .post-meta {
+	font-size: 0.9rem;
+	color: var(--cream);
+	margin-bottom: 1.5rem;
+	text-align: left;
+}
+
+/* Image mise en avant */
+.blog-article .blog-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+	margin: 1.5rem 0;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Sous-titres de section */
+.blog-article h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin: 2rem 0 0.75rem;
+}
+
+/* Paragraphes */
+.blog-article p {
+	font-size: 1rem;
+	color: var(--text);
+	line-height: 1.6;
+	margin-bottom: 1rem;
+	text-align: justify;
+}
+
+/* Listes à puces */
+.blog-article ul {
+	list-style: disc inside;
+	margin: 0 0 1rem 1.5rem;
+	color: var(--text);
+}
+
+.blog-article ul li {
+	margin-bottom: 0.5rem;
+}
+
+/* Styling de code inline */
+.blog-article code {
+	background-color: rgba(255, 255, 255, 0.1);
+	padding: 0.2rem 0.4rem;
+	border-radius: 4px;
+	font-family: monospace;
+	font-size: 0.95rem;
+}
+
+/* Gestion du responsive */
+@media (max-width: 600px) {
+	.blog-article {
+		padding: 0 0.5rem;
+	}
+	.blog-article .post-title {
+		font-size: 1.75rem;
+	}
+	.blog-article h2 {
+		font-size: 1.3rem;
+	}
+}
