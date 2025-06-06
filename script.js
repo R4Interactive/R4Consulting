@@ -54,11 +54,28 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			});
 		},
-		{ root: null, rootMargin: '0px', threshold: 0.15 }
+		{
+			root: null,
+			rootMargin: '0px',
+			threshold: 0.15,
+		}
 	);
+
+	// On marque d’abord toutes les cibles en "hidden" et on les observe
 	revealElements.forEach((el) => {
 		el.classList.add('reveal-hidden');
 		revealObserver.observe(el);
+	});
+
+	// -- À la fin, on force une passe manuelle pour celles qui sont déjà visibles au chargement --
+	revealElements.forEach((el) => {
+		const rect = el.getBoundingClientRect();
+		if (rect.top < window.innerHeight && rect.bottom > 0) {
+			// si l’élément est (même partiellement) dans la fenêtre d’affichage,
+			// on lui applique immédiatement la classe “visible”
+			el.classList.add('reveal-visible');
+			revealObserver.unobserve(el);
+		}
 	});
 
 	// ====================================================
