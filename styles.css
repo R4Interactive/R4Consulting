@@ -1908,99 +1908,137 @@ button {
 }
 
 /* =======================================================
-   OVERRIDES ULTRA-COMPACTS POUR GESTION.HTML (.page-gestion)
+   CSS SPÉCIFIQUE À LA PAGE gestion.html (classes à ajouter)
    ======================================================= */
 
-/* 1) Rendre les .detail-service très compacts (padding réduit) */
+/* 1. Réduction des espacements uniquement sur gestion.html */
+.page-gestion h2.detail-heading {
+	margin-top: 1.25rem; /* au lieu de 2rem/3rem */
+	margin-bottom: 0.75rem; /* au lieu de 1.5rem/2rem */
+}
+
+.page-gestion h3 {
+	margin-top: 1rem; /* au lieu de 1.5rem */
+	margin-bottom: 0.5rem; /* au lieu de 1rem */
+}
+
 .page-gestion .detail-service {
-	padding-top: 1rem !important; /* au lieu de 2rem précédemment */
-	padding-bottom: 1rem !important; /* au lieu de 2rem précédemment */
+	margin-top: 1rem; /* espacement vertical réduit */
+	margin-bottom: 1rem;
 }
 
-/* 2) Très faible écart entre deux sections detail-service */
-.page-gestion .detail-service + .detail-service {
-	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
-}
-
-/* 3) Éviter un trop grand margin-top sur la première detail-service */
 .page-gestion .detail-service:first-of-type {
-	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+	margin-top: 1rem;
 }
 
-/* 4) Supprimer (ou réduire à 0.5rem) le margin-bottom de .detail-service */
-.page-gestion .detail-service {
-	margin-bottom: 0.5rem !important; /* au lieu de 1rem précédemment */
+.page-gestion .detail-service + .detail-service {
+	margin-top: 1rem !important;
 }
 
-/* 5) Réduire le margin-bottom du hero-inner */
-.page-gestion .hero-inner {
-	margin-bottom: 0.5rem !important; /* au lieu de 1rem précédemment */
+.page-gestion .detail-service + .contact {
+	margin-top: 1rem !important;
 }
 
-/* 6) Écart minimal entre .hero et le 1er .detail-service */
-.page-gestion .hero + .detail-service {
-	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
-}
-
-/* 7) Titres H2 (detail-heading) encore plus compacts */
-.page-gestion .detail-heading {
-	margin-top: 0.75rem !important; /* au lieu de 1rem précédemment */
-	margin-bottom: 0.5rem !important; /* au lieu de 0.5rem précédemment */
-}
-
-/* 8) Titres H3 plus serrés */
-.page-gestion .detail-service h3 {
-	margin-top: 0.75rem !important; /* au lieu de 1rem précédemment */
-	margin-bottom: 0.5rem !important; /* au lieu de 0.5rem précédemment */
-}
-
-/* 9) Réduire au strict minimum marges des <p> et <ul> dans detail-content */
-.page-gestion .detail-content p {
-	margin-top: 0.25rem !important; /* au lieu de 0.5rem précédemment */
-	margin-bottom: 0.25rem !important;
-}
-.page-gestion .detail-content ul {
-	margin-top: 0.25rem !important; /* au lieu de 0.5rem précédemment */
-	margin-bottom: 0.25rem !important;
-	padding-left: 1rem; /* indent conservé */
-}
-.page-gestion .detail-content li {
-	margin-bottom: 0.25rem !important; /* au lieu de 0.5rem précédemment */
-}
-
-/* 10) Réduction de l’espace au-dessus de chaque bloc “section-block” */
-.page-gestion .detail-content.section-block {
-	margin-top: 1rem !important; /* au lieu de 1.5rem précédemment */
-}
-
-/* 11) Section “contact” très compacte */
 .page-gestion .contact {
-	padding-top: 1rem !important; /* au lieu de 2rem précédemment */
-	padding-bottom: 1rem !important; /* au lieu de 2rem précédemment */
-	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+	padding-top: 1.5rem; /* au lieu de 4rem */
+	padding-bottom: 1.5rem;
 }
 
-/* 12) Footer plus serré */
 .page-gestion .site-footer {
-	padding-top: 0.75rem !important; /* au lieu de 1rem précédemment */
-	padding-bottom: 0.75rem !important; /* au lieu de 1rem précédemment */
-	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+	padding-top: 1rem; /* au lieu de 2rem */
+	padding-bottom: 1rem;
 }
 
-/* 13) Réduire le margin-bottom de tout élément .reveal */
-.page-gestion .reveal {
-	margin-bottom: 1rem !important; /* au lieu de 1.5rem précédemment */
+.page-gestion .hero-inner {
+	margin-bottom: 1rem !important; /* réduire l’espace sous le hero */
 }
 
-/* 14) Boutons primaires plus compacts */
-.page-gestion .btn-primary {
-	margin-top: 0.25rem !important; /* au lieu de 0.5rem précédemment */
-	margin-bottom: 0.25rem !important;
+.page-gestion .hero + .subnav {
+	margin-top: 0.5rem !important;
 }
 
-/* Sur la page gestion.html seulement */
-.page-gestion .detail-content.intro .detail-text {
-	margin-bottom: 2rem; /* augmentez ou diminuez selon vos besoins */
+/* 2. Style du sommaire d’ancre (subnav) – visible juste sous le hero */
+.subnav {
+	max-width: 1000px;
+	margin: 1rem auto;
+	text-align: center;
+}
+
+.subnav ul {
+	list-style: none;
+	display: inline-flex;
+	gap: 1rem;
+}
+
+.subnav a {
+	color: var(--cream);
+	font-weight: 600;
+	padding: 0.25rem 0.5rem;
+	border-bottom: 2px solid transparent;
+	transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.subnav a:hover,
+.subnav a:focus {
+	color: var(--gold);
+	border-bottom: 2px solid var(--gold);
+}
+
+/* 3. Mini-accordéon pour la section “démarche pas à pas” */
+.mini-accordion-toggle {
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+	background: none;
+	border: none;
+	color: var(--gold);
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.mini-accordion-toggle:hover {
+	color: var(--cream);
+}
+
+.mini-accordion-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease, margin-top 0.3s ease;
+	margin-top: 0;
+	padding-left: 1rem; /* légère indentation pour la sous-liste */
+}
+
+.mini-accordion-content.open {
+	max-height: 500px; /* assez grand pour contenir la liste complète */
+	margin-top: 0.5rem;
+}
+
+/* 4. Classes utilitaires pour réduire les marges dans detail-content */
+.page-gestion .detail-content p {
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+
+.page-gestion .detail-content ul {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	padding-left: 1rem;
+}
+
+.page-gestion .detail-content li {
+	margin-bottom: 0.5rem;
+}
+
+/* ==========================================
+   Centrage du bouton “Voir toutes les étapes”
+   ========================================== */
+
+/* 1) On transforme le lien en élément de type block
+   2) On centre ce bloc via margin auto */
+.page-gestion .mini-accordion-toggle {
+	display: block;
+	width: max-content; /* largeur ajustée au contenu du lien */
+	margin: 0.75rem auto; /* 0.75rem (haut) et en bas, centré horizontalement */
+	text-align: center; /* s’assure que le texte interne reste centré */
 }
 
 /* --------------------------------------------
