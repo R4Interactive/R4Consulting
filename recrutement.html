@@ -8,14 +8,14 @@
     <!-- Titre et méta -->
     <title>Recrutement | R4 Consulting</title>
     <meta name="description"
-        content="Rejoignez l’équipe R4 Consulting ! Découvrez nos offres de postes en digital, immobilier et gestion patrimoniale. Postulez dès maintenant." />
+        content="Rejoignez l’équipe R4 Consulting : Business Developers Indépendants & Managers, Chef de projet Digital, Conseiller Immobilier, Junior en Gestion Patrimoniale. Découvrez nos offres en digital, immobilier et patrimoine !" />
     <meta name="keywords"
-        content="recrutement R4 Consulting, offres d’emploi, digital, marketing, immobilier, gestion de patrimoine, carrière, opportunités" />
+        content="recrutement R4 Consulting, offres d’emploi, business developer, digital, immobilier, gestion de patrimoine, carrière, carrousel d’offres" />
 
     <!-- Open Graph / Twitter Card -->
     <meta property="og:title" content="Recrutement | R4 Consulting" />
     <meta property="og:description"
-        content="R4 Consulting recrute : développez votre carrière en digital, immobilier professionnel ou gestion patrimoniale. Postulez maintenant !" />
+        content="R4 Consulting recrute : devenez Business Developer Indépendant ou Manager, Chef de projet Digital, Conseiller Immobilier ou Junior en Gestion Patrimoniale. Postulez maintenant !" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.r4consulting.fr/recrutement.html" />
     <meta property="og:image" content="https://www.r4consulting.fr/assets/preview-recrutement.png" />
@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Recrutement | R4 Consulting" />
     <meta name="twitter:description"
-        content="R4 Consulting recrute : rejoignez une équipe dynamique en digital, immobilier et gestion patrimoniale. Consultez nos offres et postulez !" />
+        content="R4 Consulting recrute : rejoignez nos équipes en digital, immobilier et gestion patrimoniale. Consultez nos offres et postulez !" />
     <meta name="twitter:image" content="https://www.r4consulting.fr/assets/preview-recrutement.png" />
 
     <link rel="canonical" href="https://www.r4consulting.fr/recrutement.html" />
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body class="recrutement">
     <!-- Banderole de consentement aux cookies (RGPD) -->
     <div id="cookieBanner" class="cookie-banner">
         <div class="cookie-banner__content">
@@ -95,7 +95,9 @@
         </div>
     </div>
 
-    <!-- HEADER / HERO -->
+    <!-- ===============================
+       HEADER / HERO
+       =============================== -->
     <header class="hero reveal">
         <div class="header-top">
             <a href="index.html">
@@ -103,7 +105,8 @@
             </a>
             <!-- Bouton pour basculer le thème -->
             <button id="themeToggle" aria-label="Basculer thème sombre/clair" title="Basculer thème sombre/clair">
-                🌙 </button>
+                🌙
+            </button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
@@ -118,59 +121,130 @@
         </div>
 
         <div class="hero-inner">
-            <h1 class="site-title">Recrutement</h1>
+            <h1 class="site-title">Rejoignez-nous</h1>
             <p class="tagline">
-                Rejoignez R4 Consulting et participez à nos projets innovants
+                Bâtissez votre avenir avec R4 Consulting : digital, immobilier et gestion patrimoniale
             </p>
         </div>
     </header>
 
-    <!-- SECTION RECRUTEMENT -->
+    <!-- ===============================
+       SECTION RECRUTEMENT AVEC CARROUSEL
+       =============================== -->
     <section class="detail-service reveal">
         <div class="detail-inner">
-            <h2 class="detail-heading">Nos Offres et Opportunités</h2>
-            <div class="detail-content">
-                <div class="detail-text">
-                    <p>
-                        Vous êtes passionné(e) par le digital, l’immobilier ou la gestion de patrimoine ?
-                        Consultez nos postes ouverts ci-dessous et postulez directement via notre formulaire.
-                    </p>
-                    <ul>
-                        <li><strong>Chef de projet digital (H/F)</strong> - Paris : gestion de campagnes, pilotage
-                            d’équipe, stratégie de contenu.</li>
-                        <li><strong>Conseiller immobilier (H/F)</strong> - Lyon : prospection, négociation,
-                            accompagnement clients professionnels.</li>
-                        <li><strong>Junior en gestion patrimoniale (H/F)</strong> - Bordeaux : audits patrimoniaux,
-                            optimisation fiscale, relation clientèle.</li>
-                    </ul>
+            <h2 class="detail-heading">Nos Offres &amp; Opportunités</h2>
+
+            <!-- 1) Conteneur du carrousel -->
+            <div class="jobs-carousel-container">
+                <!-- Flèche “Précédent” -->
+                <button class="carousel-arrow prev-arrow" aria-label="Précédent">‹</button>
+
+                <!-- Piste (track) qui défile horizontalement -->
+                <div class="jobs-carousel-track">
+                    <!-- Carte 1 : Business Developer Manager Indépendant -->
+                    <div class="job-card">
+                        <h3 class="job-title">Business Developer Manager Indépendant</h3>
+                        <p class="job-location"><strong>Marché :</strong> Digital • Immobilier • Patrimoine</p>
+                        <ul class="job-details">
+                            <li>Cadrer la stratégie commerciale globale</li>
+                            <li>Animer et coordonner une équipe de freelances</li>
+                            <li>Développer et piloter les partenariats clés</li>
+                            <li>Assurer l’atteinte des objectifs de croissance</li>
+                        </ul>
+                        <a href="#contact" class="btn-primary apply-btn">Postuler</a>
+                    </div>
+
+                    <!-- Carte 2 : Business Developer Indépendant -->
+                    <div class="job-card">
+                        <h3 class="job-title">Business Developer Indépendant</h3>
+                        <p class="job-location"><strong>Secteurs :</strong> Digital • Immobilier • Patrimoine</p>
+                        <ul class="job-details">
+                            <li>Prospection active & qualification de leads</li>
+                            <li>Organisation de rendez-vous ciblés</li>
+                            <li>Développement de nouveaux comptes clients</li>
+                            <li>Reporting régulier et suivi des performances</li>
+                        </ul>
+                        <a href="#contact" class="btn-primary apply-btn">Postuler</a>
+                    </div>
+
+                    <!-- Carte 3 : Chef de projet Digital (H/F) -->
+                    <div class="job-card">
+                        <h3 class="job-title">Chef de projet Digital (H/F)</h3>
+                        <p class="job-location"><strong>Localisation :</strong> Paris – <em>Hybrid</em></p>
+                        <ul class="job-details">
+                            <li>Conception et mise en œuvre de campagnes digitales</li>
+                            <li>Coordination des ressources internes et partenaires externes</li>
+                            <li>Analyse des performances & optimisation continue</li>
+                            <li>Veille stratégique sur les tendances du digital</li>
+                        </ul>
+                        <a href="#contact" class="btn-primary apply-btn">Postuler</a>
+                    </div>
+
+                    <!-- Carte 4 : Conseiller Immobilier (H/F) -->
+                    <div class="job-card">
+                        <h3 class="job-title">Conseiller Immobilier (H/F)</h3>
+                        <p class="job-location"><strong>Localisation :</strong> Lyon – <em>Présentiel</em></p>
+                        <ul class="job-details">
+                            <li>Prospection & développement d’un portefeuille clients B2B</li>
+                            <li>Négociation, transaction et suivi après-vente</li>
+                            <li>Accompagnement sur les aspects juridiques et financiers</li>
+                            <li>Appui dans l’utilisation de nos outils et partenaires locaux</li>
+                        </ul>
+                        <a href="#contact" class="btn-primary apply-btn">Postuler</a>
+                    </div>
+
+                    <!-- Carte 5 : Junior en Gestion Patrimoniale (H/F) -->
+                    <div class="job-card">
+                        <h3 class="job-title">Junior en Gestion Patrimoniale (H/F)</h3>
+                        <p class="job-location"><strong>Localisation :</strong> Bordeaux – <em>Mixte</em></p>
+                        <ul class="job-details">
+                            <li>Réalisation d’audits patrimoniaux complets</li>
+                            <li>Participation à l’élaboration de stratégies fiscales</li>
+                            <li>Suivi de la relation client (entrepreneurs, investisseurs)</li>
+                            <li>Support dans la mise en place de solutions d’optimisation</li>
+                        </ul>
+                        <a href="#contact" class="btn-primary apply-btn">Postuler</a>
+                    </div>
                 </div>
-                <div class="detail-image">
-                    <img src="assets/images/recrutement-illu.jpg"
-                        alt="Illustration : équipe R4 Consulting au travail" />
-                </div>
+
+                <!-- Flèche “Suivant” -->
+                <button class="carousel-arrow next-arrow" aria-label="Suivant">›</button>
             </div>
+
+            <!-- 2) CTA sous le carrousel -->
+            <p class="cta-text">
+                Vous ne retrouvez pas exactement le poste recherché ?
+                Envoyez-nous une candidature spontanée via le formulaire ci-dessous. Nous sommes toujours à l’écoute de
+                nouveaux talents !
+            </p>
         </div>
     </section>
 
-    <!-- FORMULAIRE DE CANDIDATURE -->
+    <!-- ===============================
+       FORMULAIRE DE CANDIDATURE
+       =============================== -->
     <section id="contact" class="contact reveal">
         <div class="contact-inner">
             <h2 class="contact-heading">Postulez Maintenant</h2>
             <div class="contact-card">
-                <!-- Informations statiques -->
+                <!-- Bloc “Comment Postuler ?” -->
                 <div class="contact-info">
-                    <h3 class="info-title">Nous Rejoindre</h3>
+                    <h3 class="info-title">Comment Postuler ?</h3>
                     <p>
-                        Envoyez-nous votre CV et une lettre de motivation en précisant le poste souhaité.
+                        Sélectionnez l’offre qui vous intéresse et cliquez sur “Postuler” pour être redirigé au
+                        formulaire.
+                        Joignez votre CV & lettre de motivation en précisant le <strong>titre du poste</strong>.
+                        Nous étudierons votre candidature sous 48 h.
                     </p>
                 </div>
 
-                <!-- Formulaire de candidature -->
+                <!-- Formulaire -->
                 <div class="contact-form reveal">
                     <h3 class="info-title">Formulaire de Candidature</h3>
                     <form id="contactForm" action="#" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="name">Nom & Prénom</label>
+                            <label for="name">Nom &amp; Prénom</label>
                             <input type="text" id="name" name="name" placeholder="Votre nom complet" required />
                         </div>
                         <div class="form-group">
@@ -183,7 +257,7 @@
                         </div>
                         <div class="form-group">
                             <label for="position">Poste souhaité</label>
-                            <input type="text" id="position" name="position" placeholder="Ex. Chef de projet digital"
+                            <input type="text" id="position" name="position" placeholder="Titre exact de l’offre"
                                 required />
                         </div>
                         <div class="form-group">
@@ -192,7 +266,8 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Lettre de motivation</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Expliquez votre motivation..."
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Expliquez en quelques lignes votre motivation et vos compétences…"
                                 required></textarea>
                         </div>
                         <button type="submit" class="btn-primary">Envoyer ma candidature</button>
@@ -209,15 +284,20 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ===============================
+       FOOTER
+       =============================== -->
     <footer class="site-footer">
         <p class="footer-text">
             © 2025 R4 Consulting — Digital • Immobilier • Patrimoine • Vision
         </p>
     </footer>
 
-    <!-- Script JS -->
+    <!-- JavaScript principal (pour le carrousel, thème, cookies, etc.) -->
     <script src="script.js"></script>
 </body>
 
 </html>
+
+
+<script src="script.js"></script>

@@ -583,3 +583,47 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 })();
+document.addEventListener('DOMContentLoaded', function () {
+	const track = document.querySelector('.jobs-carousel-track');
+	const btnPrev = document.querySelector('.prev-arrow');
+	const btnNext = document.querySelector('.next-arrow');
+
+	// On déplace le scroll de la piste d’un “viewport” complet (largeur visible)
+	btnPrev.addEventListener('click', () => {
+		track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+	});
+	btnNext.addEventListener('click', () => {
+		track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+	});
+});
+
+//SCRIPT pour préremplir “Poste souhaité”
+document.addEventListener('DOMContentLoaded', function () {
+	// On récupère tous les boutons “Postuler”
+	const applyButtons = document.querySelectorAll('.apply-btn');
+
+	applyButtons.forEach((btn) => {
+		btn.addEventListener('click', function (e) {
+			// Empêche le saut instantané, on gérera le scroll manuellement
+			e.preventDefault();
+
+			// On trouve la carte parente .job-card
+			const card = btn.closest('.job-card');
+			const jobTitle = card.querySelector('.job-title').innerText.trim();
+
+			// On remplit le champ “position” avec le titre de l’offre
+			const positionField = document.getElementById('position');
+			positionField.value = jobTitle;
+
+			// On scroll vers la section contact
+			const contactSection = document.getElementById('contact');
+			contactSection.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+
+			// On attend un peu puis on met le focus sur le champ “position”
+			setTimeout(() => positionField.focus(), 500);
+		});
+	});
+});
