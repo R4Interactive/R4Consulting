@@ -269,9 +269,10 @@ button {
 	font-weight: 600;
 	color: var(--gold);
 	margin-bottom: 0.75rem;
-}
-.service-card .service-title {
-	white-space: nowrap; /* empêche le retour à la ligne */
+	line-height: 1.2; /* pour limiter les sauts trop "bizarres" */
+	word-break: keep-all; /* évite des césures inopinées */
+	white-space: normal; /* autorise le saut de ligne au besoin */
+	word-wrap: break-word; /* coupe proprement si mot très long */
 }
 /* Description de la carte */
 .service-desc {
@@ -283,7 +284,9 @@ button {
 	font-size: 0.95rem;
 	line-height: 1.5;
 	margin-top: 0.25rem;
+	text-align: center; /* s’assurer que le texte explicatif est centré sous le titre */
 }
+
 /* Réglages responsives pour les cartes */
 @media (max-width: 900px) {
 	.service-card {
