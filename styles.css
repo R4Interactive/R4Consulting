@@ -2312,6 +2312,107 @@ button {
   /* -------------------------------------------
 	 FIN DES STYLES CARROUSEL D’OFFRES – RECRUTEMENT
 	 ------------------------------------------- */
-	
+	/* ==== SECTION BLOG ==== */
+.blog {
+	background-color: var(--bg);
+	padding: 4rem 1rem;
+  }
+  .blog-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+  }
+  .blog-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--gold);
+	margin-bottom: 2rem;
+  }
+  
+  /* Conteneur des posts */
+  .blog-list {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  /* Chaque article */
+  .blog-post {
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .blog-post:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  }
+  
+  /* Image de l’article */
+  .blog-image {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+  }
+  
+  /* Contenu texte */
+  .blog-content {
+	padding: 1.5rem;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+  }
+  .post-title {
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--cream);
+	margin-bottom: 0.75rem;
+  }
+  .post-title a {
+	color: var(--cream);
+	text-decoration: none;
+  }
+  .post-title a:hover {
+	color: var(--gold);
+	text-decoration: underline;
+  }
+  
+  /* Extrait */
+  .post-excerpt {
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	margin-bottom: 1.5rem;
+  }
+  
+  /* Lire la suite */
+  .read-more {
+	margin-top: auto;
+	align-self: flex-start;
+	font-weight: 600;
+	color: var(--gold);
+	text-decoration: none;
+	transition: color 0.3s ease;
+  }
+  .read-more:hover {
+	color: var(--cream);
+  }
+  
+  /* Pagination */
+  .blog-pagination {
+	margin-top: 2.5rem;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+  }
+  .blog-pagination .btn-secondary {
+	padding: 0.5rem 1.5rem;
+	font-size: 0.95rem;
+  }
+  
 /* --------------------------------------------
 	 FIN DU CSS
