@@ -197,7 +197,7 @@ button {
 	font-size: 2rem;
 	font-weight: 800;
 	color: var(--gold);
-	margin-bottom: 1rem;
+	margin-bottom: 3rem;
 }
 .about-services-intro {
 	color: var(--cream);
@@ -1812,6 +1812,98 @@ button {
 	.offres-packs-section .offers-prev,
 	.offres-packs-section .offers-next {
 		display: none;
+	}
+}
+
+/* Conteneur général des cartes */
+/* 1. Conteneur flex pour les 4 cartes */
+.immo-services {
+	display: flex;
+	justify-content: center; /* centre les cartes horizontalement dans la section */
+	align-items: stretch; /* aligne toutes les cartes avec la même hauteur si possible */
+	gap: 2rem; /* espace de 2rem entre chaque carte */
+	flex-wrap: wrap; /* si l’écran est trop petit, on passe à la ligne suivante */
+	margin: 0 auto; /* centre le conteneur au besoin */
+	padding: 0 1rem; /* léger padding latéral sur mobile/tablette */
+	max-width: 1000px; /* limite la largeur totale du conteneur si désiré */
+}
+
+/* 2. Chaque carte */
+.immo-card {
+	flex: 1 1 calc(25% - 2rem); /* 4 cartes côte à côte avec gap de 2rem → (100% - 3×2rem)/4 arrondi */
+	max-width: calc(25% - 2rem);
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	box-sizing: border-box;
+	padding: 2rem 1.5rem; /* espace interne */
+	text-align: center; /* centre le contenu dans la carte */
+	display: flex;
+	flex-direction: column; /* organise les enfants en colonne */
+	justify-content: flex-start; /* on peut ajuster en center si vous voulez centrer verticalement */
+	align-items: center; /* centre horizontalement tous les contenus */
+	/* facultatif : ombre et transition si vous voulez un effet hover similaire aux autres pages */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.immo-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 3. Icône : on s’assure qu’elle ne déborde pas */
+.immo-card .icon-frame {
+	width: 80px; /* on peut ajuster la taille du cadre autour de l’icône */
+	height: 80px;
+	border: 2px solid var(--gold);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+.immo-card .service-icon {
+	width: 50px;
+	height: 50px;
+	object-fit: contain;
+	color: var(--gold);
+}
+
+/* 4. Titres et descriptions : on garantit une mise en forme cohérente */
+.immo-card .service-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-bottom: 0.75rem;
+	line-height: 1.3;
+}
+.immo-card .service-desc {
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	text-align: center; /* on centre le texte */
+	flex-grow: 1; /* occupe l’espace restant si besoin */
+}
+
+/* 5. Responsivité */
+@media (max-width: 1024px) {
+	/* 3 cartes sur grands écrans réduits */
+	.immo-card {
+		flex: 1 1 calc((100% - 2rem) / 3);
+		max-width: calc((100% - 2rem) / 3);
+	}
+}
+@media (max-width: 768px) {
+	/* 2 cartes côte à côte sur tablette */
+	.immo-card {
+		flex: 1 1 calc((100% - 2rem) / 2);
+		max-width: calc((100% - 2rem) / 2);
+	}
+}
+@media (max-width: 480px) {
+	/* 1 carte pleine largeur sur mobile */
+	.immo-card {
+		flex: 1 1 100%;
+		max-width: 100%;
 	}
 }
 
