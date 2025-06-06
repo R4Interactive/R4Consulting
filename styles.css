@@ -959,6 +959,862 @@ button {
 	font-size: 1rem;
 }
 
+/* ==============================
+   SECTION DÉTAIL SERVICE “IDENTITÉ”
+   ============================== */
+
+/* Conteneur principal "detail-service" */
+.detail-service {
+	background-color: var(--bg);
+	padding: 4rem 1rem;
+}
+
+.detail-service .detail-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+/* TITRE PRINCIPAL */
+.detail-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--gold);
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+/* BLOC INTRO (texte + image côte à côte sur desktop, empilé sur mobile) */
+.detail-content.intro {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+
+@media (min-width: 768px) {
+	.detail-content.intro {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+/* Texte explicatif */
+.detail-service .detail-text p {
+	color: var(--text);
+	font-size: 1rem;
+	line-height: 1.6;
+	text-align: center;
+}
+
+/* Image illustrative */
+.detail-service .detail-image img {
+	width: 100%;
+	max-width: 450px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* BLOC "section-block" pour chaque sous-partie (espacement vertical) */
+.detail-content.section-block {
+	margin-top: 3rem;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+/* Sous-titres H3 */
+.detail-service h3 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--gold);
+	margin-bottom: 1rem;
+	text-align: left;
+}
+
+/* Listes globales */
+.detail-service ul {
+	list-style: disc inside;
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-left: 1rem;
+}
+
+/* Listes imbriquées (detailed-list) */
+.detailed-list > li {
+	margin-bottom: 1.5rem;
+}
+
+.detailed-list li ul {
+	list-style: circle inside;
+	margin-left: 1.5rem;
+	margin-top: 0.5rem;
+}
+
+/* Témoignages inline */
+.testimonials-inline {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.testimonials-inline blockquote {
+	font-style: italic;
+	color: var(--cream);
+	border-left: 4px solid var(--gold);
+	padding-left: 1rem;
+}
+
+.testimonials-inline cite {
+	display: block;
+	margin-top: 0.5rem;
+	font-weight: 600;
+	color: var(--gold);
+	text-align: right;
+}
+
+@media (min-width: 768px) {
+	.testimonials-inline {
+		flex-direction: row;
+	}
+}
+
+/* BLOC "offer-block" pour chaque pack */
+.offer-block {
+	margin-bottom: 2rem;
+}
+
+.offer-block h4 {
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-bottom: 0.5rem;
+}
+
+.offer-block ul {
+	list-style: circle inside;
+	margin-left: 1rem;
+}
+
+/* Bloc FAQ */
+.faq-block h4 {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-top: 1rem;
+}
+
+.faq-block p {
+	color: var(--text);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-top: 0.5rem;
+}
+
+/* Appel à l’action final (cta-block) */
+.cta-block {
+	text-align: center;
+	margin-top: 3rem;
+}
+
+.cta-block h3 {
+	font-size: 1.75rem;
+	font-weight: 800;
+	color: var(--gold);
+	margin-bottom: 1rem;
+}
+
+.cta-block p {
+	font-size: 1rem;
+	color: var(--cream);
+	margin-bottom: 1.5rem;
+}
+
+.cta-button {
+	background-color: var(--gold);
+	color: var(--dark-bg);
+	font-weight: 600;
+	padding: 1rem 2.5rem;
+	border-radius: 4px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	display: inline-block;
+	font-size: 1.1rem;
+}
+
+.cta-button:hover {
+	background-color: #9e6e36;
+	transform: translateY(-3px);
+}
+
+/* ===============================
+   RÉGLAGES RESPONSIVES GLOBAUX
+   =============================== */
+@media (max-width: 767px) {
+	/* Ajustements taille de police pour plus de lisibilité sur mobile */
+	.detail-service .detail-inner {
+		padding: 0 0.5rem;
+	}
+	.detail-heading {
+		font-size: 1.75rem;
+	}
+	.detail-service h3 {
+		font-size: 1.3rem;
+	}
+	.detail-service ul {
+		font-size: 0.9rem;
+	}
+}
+
+/* ==============================
+   SECTION DÉTAIL SERVICE “IDENTITÉ”
+   ============================== */
+
+/* Conteneur principal "detail-service" */
+.detail-service {
+	background-color: var(--bg);
+	padding: 4rem 1rem;
+}
+
+.detail-service .detail-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+/* TITRE PRINCIPAL */
+.detail-heading {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--gold);
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+/* BLOC INTRO (texte + image côte à côte sur desktop, empilé sur mobile) */
+.detail-content.intro {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+
+@media (min-width: 768px) {
+	.detail-content.intro {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+/* Texte explicatif */
+.detail-service .detail-text p {
+	color: var(--text);
+	font-size: 1rem;
+	line-height: 1.6;
+	text-align: center;
+}
+
+/* Image illustrative */
+.detail-service .detail-image img {
+	width: 100%;
+	max-width: 450px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* BLOC "section-block" pour chaque sous-partie (espacement vertical) */
+.detail-content.section-block {
+	margin-top: 3rem;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+/* Sous-titres H3 */
+.detail-service h3 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--gold);
+	margin-bottom: 1rem;
+	text-align: left;
+}
+
+/* Listes globales */
+.detail-service ul {
+	list-style: disc inside;
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-left: 1rem;
+}
+
+/* Listes imbriquées (detailed-list) */
+.detailed-list > li {
+	margin-bottom: 1.5rem;
+}
+
+.detailed-list li ul {
+	list-style: circle inside;
+	margin-left: 1.5rem;
+	margin-top: 0.5rem;
+}
+
+/* Témoignages inline */
+.testimonials-inline {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.testimonials-inline blockquote {
+	font-style: italic;
+	color: var(--cream);
+	border-left: 4px solid var(--gold);
+	padding-left: 1rem;
+}
+
+.testimonials-inline cite {
+	display: block;
+	margin-top: 0.5rem;
+	font-weight: 600;
+	color: var(--gold);
+	text-align: right;
+}
+
+@media (min-width: 768px) {
+	.testimonials-inline {
+		flex-direction: row;
+	}
+}
+
+/* BLOC "offer-block" pour chaque pack */
+.offer-block {
+	margin-bottom: 2rem;
+}
+
+.offer-block h4 {
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-bottom: 0.5rem;
+}
+
+.offer-block ul {
+	list-style: circle inside;
+	margin-left: 1rem;
+}
+
+/* Bloc FAQ */
+.faq-block h4 {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-top: 1rem;
+}
+
+.faq-block p {
+	color: var(--text);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-top: 0.5rem;
+}
+
+/* Appel à l’action final (cta-block) */
+.cta-block {
+	text-align: center;
+	margin-top: 3rem;
+}
+
+.cta-block h3 {
+	font-size: 1.75rem;
+	font-weight: 800;
+	color: var(--gold);
+	margin-bottom: 1rem;
+}
+
+.cta-block p {
+	font-size: 1rem;
+	color: var(--cream);
+	margin-bottom: 1.5rem;
+}
+
+.cta-button {
+	background-color: var(--gold);
+	color: var(--dark-bg);
+	font-weight: 600;
+	padding: 1rem 2.5rem;
+	border-radius: 4px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	display: inline-block;
+	font-size: 1.1rem;
+}
+
+.cta-button:hover {
+	background-color: #9e6e36;
+	transform: translateY(-3px);
+}
+
+/* ===============================
+   RÉGLAGES RESPONSIVES GLOBAUX
+   =============================== */
+@media (max-width: 767px) {
+	/* Ajustements taille de police pour plus de lisibilité sur mobile */
+	.detail-service .detail-inner {
+		padding: 0 0.5rem;
+	}
+	.detail-heading {
+		font-size: 1.75rem;
+	}
+	.detail-service h3 {
+		font-size: 1.3rem;
+	}
+	.detail-service ul {
+		font-size: 0.9rem;
+	}
+}
+
+/* =========================================
+   SECTION “NOTRE APPROCHE PAS À PAS” – CARROUSEL
+   (à placer en fin de styles.css)
+   ========================================= */
+
+/* 1. Conteneur global du carrousel */
+.approach-carousel-container {
+	position: relative;
+	margin-top: 2rem;
+	/* Hauteur auto, le contenu adaptera sa hauteur */
+	padding: 0 8rem; /* <–– on crée 2rem d’espace à gauche et à droite pour les flèches */
+}
+
+/* 2. Piste (track) défilable horizontalement */
+.approach-carousel-track {
+	display: flex;
+	gap: 1.5rem; /* espace de 24px entre chacune */
+	overflow-x: auto; /* autorise le scroll horizontal */
+	scroll-behavior: smooth; /* défilement fluide */
+	padding: 1rem 0rem; /* marge latérale pour ne pas couper la 1re/dernière carte */
+	scroll-snap-type: x mandatory; /* activation du scroll-snap */
+}
+
+/* 3. Masquage de la barre de scroll native */
+.approach-carousel-track::-webkit-scrollbar {
+	display: none;
+}
+.approach-carousel-track {
+	-ms-overflow-style: none; /* IE & Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+/* 4. Style de chaque carte d’étape (largeur fixe à 300px) */
+.approach-card {
+	flex: 0 0 300px; /* carte fixe de 300px de large */
+	max-width: 300px;
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	padding: 2rem 1.5rem;
+	box-sizing: border-box;
+	scroll-snap-align: start; /* on colle chaque carte au bord gauche au snap */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	text-align: center; /* TOUT le texte (titre + puces) centré */
+}
+
+/* 5. Effet hover identique aux autres cartes */
+.approach-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 6. Titre de chaque étape (h4) */
+.approach-title {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-bottom: 1rem;
+	line-height: 1.3;
+}
+
+/* 7. Liste interne dans la carte */
+.approach-list {
+	list-style: disc inside;
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	padding-left: 1rem; /* pour avoir un léger retrait intérieur */
+	text-align: left; /* puces alignées à gauche, mais centrées horizontalement dans la carte */
+}
+.approach-list li {
+	margin-bottom: 0.75rem;
+}
+
+/* 8. Boutons flèches « Précédent » et « Suivant » */
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.7);
+	border: none;
+	color: var(--cream);
+	font-size: 2rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease;
+}
+.carousel-arrow:hover {
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* 9. Positionnement des flèches */
+.prev-arrow {
+	left: 0.5rem; /* légèrement à l’intérieur du padding */
+}
+.next-arrow {
+	right: 0.5rem; /* légèrement à l’intérieur du padding */
+}
+
+/* 10. Responsivité – écrans moyens (≤ 900px) */
+@media (max-width: 900px) {
+	/* Les cartes gardent 300px de large, l’utilisateur scrollera horizontalement */
+	.carousel-arrow {
+		font-size: 1.8rem;
+		width: 2.2rem;
+		height: 2.2rem;
+	}
+	.prev-arrow {
+		left: 0.3rem;
+	}
+	.next-arrow {
+		right: 0.3rem;
+	}
+}
+
+/* 11. Responsivité – mobile (≤ 600px) */
+@media (max-width: 600px) {
+	.approach-card {
+		flex: 0 0 260px; /* on réduit légèrement la largeur pour plus de marge de scroll */
+		max-width: 260px;
+	}
+	.carousel-arrow {
+		font-size: 1.5rem;
+		width: 2rem;
+		height: 2rem;
+	}
+	.prev-arrow {
+		left: 0.2rem;
+	}
+	.next-arrow {
+		right: 0.2rem;
+	}
+}
+
+/* 12. Petit écart sous le titre H3 de la section */
+.detail-content.section-block > h3 {
+	margin-bottom: 1rem;
+}
+
+/* ==============================================
+   CENTRAGE + JUSTIFICATION POUR LES BLOCS “DETAIL-CONTENT” 
+   (à placer juste avant la fin de votre fichier styles.css)
+   ============================================== */
+
+/* 1. Pour chaque bloc “detail-content.section-block”, on centre le contenu */
+.detail-content.section-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* centre horizontalement chaque sous-bloc */
+	margin: 3rem auto; /* espace vertical + centrage global */
+	padding: 0 1rem; /* un léger padding latéral */
+	box-sizing: border-box;
+}
+
+/* 2. Limiter la largeur “texte” à 700px, centrer et justifier */
+.detail-content.section-block .detail-text,
+.detail-content.section-block .faq-block,
+.detail-content.section-block .cta-block,
+.detail-content.section-block .offers-packs-cards,
+.detail-content.section-block .testimonials-inline {
+	width: 100%;
+	max-width: 700px; /* largeur maxi pour rester lisible */
+	margin: 0 auto; /* centre la zone de texte */
+	text-align: justify; /* justifie le contenu textuel à l’intérieur */
+}
+
+/* 3. Les titres H3 (et H4 dans la FAQ) restent centrés */
+.detail-content.section-block h3,
+.detail-content.section-block h4 {
+	width: 100%;
+	max-width: 700px; /* même largeur que le texte */
+	margin: 0 auto 1rem;
+	text-align: center; /* titre centré */
+	color: var(--gold);
+}
+
+/* 4. S’assurer que les listes à puces (hors carrousel) sont justifiées */
+.detail-content.section-block ul {
+	list-style: disc inside;
+	margin: 0 auto 1rem;
+	padding-left: 1rem;
+	max-width: 700px;
+	text-align: justify;
+	color: var(--cream);
+	line-height: 1.6;
+}
+
+/* 5. Pour les témoignages “inline” : côté à côte sur desktop, centrés en mobile */
+.detail-content.section-block .testimonials-inline {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	margin: 0 auto;
+}
+@media (min-width: 768px) {
+	.detail-content.section-block .testimonials-inline {
+		flex-direction: row;
+		justify-content: center;
+	}
+}
+
+/* 6. Le formulaire de contact (à la fin) : centré et justifié */
+.detail-content.section-block .contact-form {
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+	text-align: justify;
+}
+
+/* 7. Ajustements pour les champs du formulaire : titre > centré, labels > justifiés */
+.detail-content.section-block .contact-form .info-title {
+	text-align: center;
+	width: 100%;
+	margin-bottom: 1.5rem;
+}
+.detail-content.section-block .contact-form label {
+	display: block;
+	text-align: left; /* labels alignés à gauche pour une meilleure lisibilité */
+	margin-bottom: 0.5rem;
+}
+
+/* 8. Si vous avez un bloc “Ce que vous obtenez” (liste) : limiter sa largeur et justifier */
+.detail-content.section-block:nth-of-type(3) ul {
+	/* 3e bloc, par exemple */
+	max-width: 700px;
+	margin: 0 auto;
+	text-align: justify;
+}
+
+/* 9. Le bloc “Appel à l’action” : centré */
+.detail-content.section-block .cta-block {
+	text-align: center; /* on centrer le texte et le bouton */
+	max-width: 700px;
+	margin: 0 auto;
+}
+.detail-content.section-block .cta-block p {
+	text-align: justify;
+	margin-bottom: 1.5rem;
+}
+.detail-content.section-block .cta-block .cta-button {
+	display: inline-block;
+}
+
+/* 10. Pour le bloc FAQ rapide (textes + citations) : centré et justifié */
+.detail-content.section-block .faq-block {
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+	text-align: justify;
+}
+.detail-content.section-block .faq-block h4 {
+	margin-top: 1rem;
+	text-align: center;
+	font-weight: 600;
+	color: var(--gold);
+}
+.detail-content.section-block .faq-block p {
+	margin-top: 0.5rem;
+}
+
+/* 11. Si jamais certains paragraphes sont très courts, forcer une “justification minimale” */
+.detail-content.section-block p {
+	text-align: justify;
+	margin-bottom: 1rem;
+}
+
+/* … tout le reste de votre CSS … */
+
+/* ============================================
+   OFFRES & PACKS – CAROUSEL HORIZONTAL (définitions uniques)
+   ============================================ */
+
+.offres-packs-section .offers-carousel {
+	position: relative;
+	max-width: 1000px;
+	margin: 2rem auto;
+	padding: 0; /* plus de 50px ici */
+	overflow: visible; /* pour que les flèches puissent dépasser */
+	box-sizing: border-box;
+}
+.offres-packs-section h3 {
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: var(--gold);
+	margin-bottom: 1.5rem;
+}
+.offres-packs-section .offers-carousel {
+	position: relative;
+	max-width: 1000px;
+	margin: 2rem auto;
+	padding: 0 50px;
+	box-sizing: border-box;
+}
+.offres-packs-section .offers-packs-wrapper {
+	overflow: hidden;
+	margin: 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+.offres-packs-section .offers-packs-cards {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 2rem; /* espace fixe entre cartes */
+	align-items: stretch;
+	transition: transform 0.5s ease;
+	will-change: transform;
+}
+.offres-packs-section .offer-card {
+	flex: 0 0 100%;
+	max-width: 100%;
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	padding: 2rem 1.5rem;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.offres-packs-section .offer-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+	background-color: rgba(255, 255, 255, 0.05);
+}
+.offres-packs-section .offer-title {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-bottom: 1rem;
+	text-align: center;
+	line-height: 1.3;
+}
+.offres-packs-section .offer-list {
+	list-style: disc inside;
+	color: var(--cream);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	padding-left: 1rem;
+	margin-bottom: 1.5rem;
+}
+.offres-packs-section .offer-list li {
+	margin-bottom: 0.75rem;
+}
+.offres-packs-section .offer-cta {
+	display: inline-block;
+	background-color: var(--gold);
+	color: var(--dark-bg);
+	font-weight: 600;
+	padding: 0.75rem 1.5rem;
+	border-radius: 4px;
+	text-align: center;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.offres-packs-section .offer-cta:hover {
+	background-color: #9e6e36;
+	transform: translateY(-2px);
+}
+.offres-packs-section .offers-prev,
+.offres-packs-section .offers-next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.7);
+	color: var(--cream);
+	border: none;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	font-size: 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	z-index: 10;
+}
+.offres-packs-section .offers-prev {
+	left: 0;
+}
+.offres-packs-section .offers-next {
+	right: 0;
+}
+.offres-packs-section .offers-prev:hover,
+.offres-packs-section .offers-next:hover {
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+@media (min-width: 1200px) {
+	.approach-card {
+		/* 
+     On veut que 3 cartes + 2 gaps tiennent exactement dans 100% de la largeur du track. 
+     Il y a 2 gaps de 1.5rem chacun → total “gaps” = 2 × 1.5rem.
+     Reste (100% – 2 × 1.5rem) à se partager en 3 cartes identiques.
+    */
+		flex: 0 0 calc((100% - 2 * 1.5rem) / 3) !important;
+		max-width: calc((100% - 2 * 1.5rem) / 3) !important;
+	}
+}
+
+/* ===================================================================
+   CARROUSEL “OFFRES & PACKS” : 2 cartes pleines côte-à-côte à ≥1200px
+   =================================================================== */
+@media (min-width: 1200px) {
+	.offres-packs-section .offer-card {
+		/* 
+		Passer à 2 cartes : chaque carte fait (100% - 2rem) / 2
+		- Il y a un seul espace (gap) de 2rem entre elles. 
+		- On force !important pour écraser le flex déjà appliqué.
+	  */
+		flex: 0 0 calc((100% - 2rem) / 2) !important;
+		max-width: calc((100% - 2rem) / 2) !important;
+	}
+}
+@media (max-width: 900px) {
+	.offres-packs-section .offer-card {
+		flex: 0 0 calc((100% - 2rem) / 2);
+		max-width: calc((100% - 2rem) / 2);
+	}
+	.offres-packs-section .offers-prev {
+		left: 10px;
+	}
+	.offres-packs-section .offers-next {
+		right: 10px;
+	}
+}
+
+@media (max-width: 600px) {
+	.offres-packs-section .offer-card {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	.offres-packs-section .offers-prev,
+	.offres-packs-section .offers-next {
+		display: none;
+	}
+}
+
 /* --------------------------------------------
 	 FIN DU CSS
 	 -------------------------------------------- */

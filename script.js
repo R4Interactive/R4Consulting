@@ -431,3 +431,80 @@ document.addEventListener('DOMContentLoaded', function () {
 		hideBanner();
 	});
 });
+
+(function () {
+	const track = document.querySelector('.approach-carousel-track');
+	const prevBtn = document.querySelector('.prev-arrow');
+	const nextBtn = document.querySelector('.next-arrow');
+	if (!track || !prevBtn || !nextBtn) return;
+
+	function getGapAndCardWidth() {
+		const card = document.querySelector('.approach-card');
+		if (!card) return { totalCardPlusGap: card.offsetWidth };
+		const styleCard = window.getComputedStyle(card);
+		// on récupère margin-right (gap en CSS Flex) pour être sûr
+		const marginRight = parseInt(styleCard.marginRight, 10) || 0;
+		return { totalCardPlusGap: card.offsetWidth + marginRight };
+	}
+
+	function scrollByOneCard(direction) {
+		const { totalCardPlusGap } = getGapAndCardWidth();
+		if (direction === 'next') {
+			track.scrollBy({ left: totalCardPlusGap, behavior: 'smooth' });
+		} else {
+			track.scrollBy({ left: -totalCardPlusGap, behavior: 'smooth' });
+		}
+	}
+
+	prevBtn.addEventListener('click', () => scrollByOneCard('prev'));
+	nextBtn.addEventListener('click', () => scrollByOneCard('next'));
+})();
+
+// -----------------------------------------------
+//  CARROUSEL “OFFRES & PACKS” – logique JavaScript
+// -----------------------------------------------
+document.addEventListener('DOMContentLoaded', function () {
+	const wrapper = document.querySelector('.offers-packs-wrapper');
+	const cardsContainer = document.querySelector('.offers-packs-cards');
+	const cards = document.querySelectorAll('.offer-card');
+	const prevBtn = document.querySelector('.offers-prev');
+	const nextBtn = document.querySelector('.offers-next');
+	let currentIndex = 0;
+
+	function getVisibleCount() {
+		const wrapperWidth = wrapper.offsetWidth;
+		const style = window.getComputedStyle(cardsContainer);
+		const gapSize = parseInt(style.gap) || 0;
+		const cardWidth = cards[0].offsetWidth;
+		// On ajoute gapSize à wrapperWidth pour que (n * cardWidth + (n-1)*gapSize) ≤ wrapperWidth
+		return Math.floor((wrapperWidth + gapSize) / (cardWidth + gapSize));
+	}
+
+	function updateCarousel() {
+		const visibleCount = getVisibleCount();
+		const maxIndex = Math.max(0, cards.length - visibleCount);
+
+		if (currentIndex < 0) currentIndex = 0;
+		if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+		const style = window.getComputedStyle(cardsContainer);
+		const gapSize = parseInt(style.gap) || 0;
+		const shiftX = currentIndex * (cards[0].offsetWidth + gapSize);
+		cardsContainer.style.transform = `translateX(-${shiftX}px)`;
+	}
+
+	prevBtn.addEventListener('click', function () {
+		currentIndex--;
+		updateCarousel();
+	});
+
+	nextBtn.addEventListener('click', function () {
+		currentIndex++;
+		updateCarousel();
+	});
+
+	window.addEventListener('resize', updateCarousel);
+
+	// Initialisation
+	updateCarousel();
+});
