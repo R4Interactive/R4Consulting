@@ -1907,6 +1907,102 @@ button {
 	}
 }
 
+/* =======================================================
+   OVERRIDES ULTRA-COMPACTS POUR GESTION.HTML (.page-gestion)
+   ======================================================= */
+
+/* 1) Rendre les .detail-service très compacts (padding réduit) */
+.page-gestion .detail-service {
+	padding-top: 1rem !important; /* au lieu de 2rem précédemment */
+	padding-bottom: 1rem !important; /* au lieu de 2rem précédemment */
+}
+
+/* 2) Très faible écart entre deux sections detail-service */
+.page-gestion .detail-service + .detail-service {
+	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+}
+
+/* 3) Éviter un trop grand margin-top sur la première detail-service */
+.page-gestion .detail-service:first-of-type {
+	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+}
+
+/* 4) Supprimer (ou réduire à 0.5rem) le margin-bottom de .detail-service */
+.page-gestion .detail-service {
+	margin-bottom: 0.5rem !important; /* au lieu de 1rem précédemment */
+}
+
+/* 5) Réduire le margin-bottom du hero-inner */
+.page-gestion .hero-inner {
+	margin-bottom: 0.5rem !important; /* au lieu de 1rem précédemment */
+}
+
+/* 6) Écart minimal entre .hero et le 1er .detail-service */
+.page-gestion .hero + .detail-service {
+	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+}
+
+/* 7) Titres H2 (detail-heading) encore plus compacts */
+.page-gestion .detail-heading {
+	margin-top: 0.75rem !important; /* au lieu de 1rem précédemment */
+	margin-bottom: 0.5rem !important; /* au lieu de 0.5rem précédemment */
+}
+
+/* 8) Titres H3 plus serrés */
+.page-gestion .detail-service h3 {
+	margin-top: 0.75rem !important; /* au lieu de 1rem précédemment */
+	margin-bottom: 0.5rem !important; /* au lieu de 0.5rem précédemment */
+}
+
+/* 9) Réduire au strict minimum marges des <p> et <ul> dans detail-content */
+.page-gestion .detail-content p {
+	margin-top: 0.25rem !important; /* au lieu de 0.5rem précédemment */
+	margin-bottom: 0.25rem !important;
+}
+.page-gestion .detail-content ul {
+	margin-top: 0.25rem !important; /* au lieu de 0.5rem précédemment */
+	margin-bottom: 0.25rem !important;
+	padding-left: 1rem; /* indent conservé */
+}
+.page-gestion .detail-content li {
+	margin-bottom: 0.25rem !important; /* au lieu de 0.5rem précédemment */
+}
+
+/* 10) Réduction de l’espace au-dessus de chaque bloc “section-block” */
+.page-gestion .detail-content.section-block {
+	margin-top: 1rem !important; /* au lieu de 1.5rem précédemment */
+}
+
+/* 11) Section “contact” très compacte */
+.page-gestion .contact {
+	padding-top: 1rem !important; /* au lieu de 2rem précédemment */
+	padding-bottom: 1rem !important; /* au lieu de 2rem précédemment */
+	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+}
+
+/* 12) Footer plus serré */
+.page-gestion .site-footer {
+	padding-top: 0.75rem !important; /* au lieu de 1rem précédemment */
+	padding-bottom: 0.75rem !important; /* au lieu de 1rem précédemment */
+	margin-top: 0.5rem !important; /* au lieu de 1rem précédemment */
+}
+
+/* 13) Réduire le margin-bottom de tout élément .reveal */
+.page-gestion .reveal {
+	margin-bottom: 1rem !important; /* au lieu de 1.5rem précédemment */
+}
+
+/* 14) Boutons primaires plus compacts */
+.page-gestion .btn-primary {
+	margin-top: 0.25rem !important; /* au lieu de 0.5rem précédemment */
+	margin-bottom: 0.25rem !important;
+}
+
+/* Sur la page gestion.html seulement */
+.page-gestion .detail-content.intro .detail-text {
+	margin-bottom: 2rem; /* augmentez ou diminuez selon vos besoins */
+}
+
 /* --------------------------------------------
 	 FIN DU CSS
 	 -------------------------------------------- */
