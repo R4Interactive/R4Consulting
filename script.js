@@ -508,3 +508,61 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Initialisation
 	updateCarousel();
 });
+
+// fonction d'ecoute pour selection pack
+document.addEventListener('DOMContentLoaded', function () {
+	// On récupère tous les boutons “Je choisis ce pack”
+	const offerButtons = document.querySelectorAll('.offer-cta');
+	const contactSection = document.getElementById('contact');
+	const subjectField = document.getElementById('contactSubject');
+	const messageField = document.getElementById('message');
+
+	offerButtons.forEach((btn) => {
+		btn.addEventListener('click', function (e) {
+			e.preventDefault();
+
+			// 1) Récupérer le nom du pack depuis data-pack
+			const chosenPack = this.getAttribute('data-pack') || '';
+
+			// 2) Pré-remplir le champ caché “subject”
+			if (subjectField) {
+				subjectField.value = `Pack choisi : ${chosenPack}`;
+			}
+
+			// 3) Pré-remplir la textarea “message”
+			if (messageField) {
+				// Si vous voulez écraser complètement le message :
+				messageField.value = `Bonjour,\n\nJe suis intéressé(e) par : ${chosenPack}.\n\nMerci de me recontacter.`;
+				// Si vous préférez ajouter (au lieu d’écraser), on pourrait faire :
+				// messageField.value = `Pack choisi : ${chosenPack}\n\n` + messageField.value;
+			}
+
+			// 4) Scroller vers la section #contact (lisse)
+			if (contactSection) {
+				contactSection.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				});
+			}
+		});
+	});
+});
+// prise en charge d'une navigation directe (url)
+(function prefillFromURL() {
+	const params = new URLSearchParams(window.location.search);
+	const packFromURL = params.get('pack');
+	if (packFromURL) {
+		// même logique que pour les boutons
+		if (subjectField) subjectField.value = `Pack choisi : ${packFromURL}`;
+		if (messageField) {
+			messageField.value = `Bonjour,\n\nJe suis intéressé(e) par : ${packFromURL}.\n\nMerci de me recontacter.`;
+		}
+		// Scroll automatique si on a le hash #contact
+		if (window.location.hash === '#contact' && contactSection) {
+			contactSection.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+		}
+	}
+})();

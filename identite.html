@@ -337,7 +337,10 @@
                                     <li>Audit de lancement & recommandations</li>
                                     <li>Coaching 2 h pour prise en main de l’outil</li>
                                 </ul>
-                                <a href="#contact" class="btn-primary offer-cta">Je choisis ce pack</a>
+                                <a href="#contact" class="btn-primary offer-cta"
+                                    data-pack="Pack Lancement Express – 2 semaines">
+                                    Je choisis ce pack
+                                </a>
                             </div>
 
                             <!-- Carte 2 -->
@@ -350,7 +353,9 @@
                                     <li>Création d’un lead magnet (ebook / checklist) + tunnel de conversion</li>
                                     <li>Suivi mensuel (rapport + ajustements) pendant 3 mois</li>
                                 </ul>
-                                <a href="#contact" class="btn-primary offer-cta">Je choisis ce pack</a>
+                                <a href="#contact" class="btn-primary offer-cta"
+                                    data-pack="Pack Croissance Durable – 6 semaines">
+                                    Je choisis ce pack </a>
                             </div>
 
                             <!-- Carte 3 -->
@@ -364,7 +369,10 @@
                                     <li>Suivi SEO technique + netlinking</li>
                                     <li>Tableau de bord personnalisé et reporting hebdomadaire</li>
                                 </ul>
-                                <a href="#contact" class="btn-primary offer-cta">Je choisis ce pack</a>
+                                <a href="#contact" class="btn-primary offer-cta"
+                                    data-pack="Pack 360° Prestige – 3 mois minimum">
+                                    Je choisis ce pack
+                                </a>
                             </div>
                         </div> <!-- /.offers-packs-cards -->
                     </div> <!-- /.offers-packs-wrapper -->
@@ -472,11 +480,16 @@
                             <label for="phone">Téléphone</label>
                             <input type="tel" id="phone" name="phone" placeholder="+33 1 23 45 67 89" />
                         </div>
+
+                        <!-- NOUVEAU : champ caché "subject" pour l'objet du mail -->
+                        <input type="hidden" id="contactSubject" name="subject" value="" />
+
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="Votre projet, question..."
                                 required></textarea>
                         </div>
+
                         <button type="submit" class="btn-primary">Envoyer</button>
                     </form>
 
