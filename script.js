@@ -627,3 +627,34 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 });
+// CTA des fiches service immo
+document.addEventListener('DOMContentLoaded', function () {
+	// 1) On récupère toutes les balises CTA dans les fiches immobilier
+	const ctaButtons = document.querySelectorAll('.cta-immobilier');
+
+	// 2) Pour chacune, on installe un listener sur le clic
+	ctaButtons.forEach(function (btn) {
+		btn.addEventListener('click', function (e) {
+			// Empêcher le saut immédiat si besoin (on gère le scroll manuellement)
+			e.preventDefault();
+
+			// Récupérer la valeur de "data-subject"
+			const sujet = btn.getAttribute('data-subject') || '';
+
+			// Mettre à jour le champ #subject du formulaire
+			const subjectInput = document.querySelector('#subject');
+			if (subjectInput) {
+				subjectInput.value = sujet;
+			}
+
+			// Faire défiler jusqu'à la section de contact en douceur
+			const contactSection = document.querySelector('#contact');
+			if (contactSection) {
+				contactSection.scrollIntoView({ behavior: 'smooth' });
+			}
+
+			// Mettre à jour l’URL (facultatif) pour ajouter le hash #contact
+			// window.location.hash = '#contact';
+		});
+	});
+});
