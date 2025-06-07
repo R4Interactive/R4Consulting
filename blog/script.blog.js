@@ -63,6 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
+		//  contrôle du format du téléphone
+		const phoneValue = form.querySelector('#phone').value.trim();
+		const phonePattern = /^(\d{10}|\+ ?33\s?[0-9](?:\s?\d{2}){4})$/;
+		if (!phonePattern.test(phoneValue)) {
+			alert(
+				'Le numéro de téléphone doit comporter 10 chiffres ou être au format "+ 33 1 23 45 67 89".'
+			);
+			form.querySelector('#phone').focus();
+			return;
+		}
+
 		// Tout est valide : on affiche le message de succès
 		alert(
 			'Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.'
