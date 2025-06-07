@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Titre et méta -->
+    <title>Contact | R4 Consulting</title>
+    <meta name="description"
+        content="Contactez R4 Consulting pour un accompagnement sur-mesure en digital, immobilier professionnel et gestion de patrimoine." />
+    <meta name="keywords"
+        content="contact R4 Consulting, digital, immobilier professionnel, gestion patrimoine, accompagnement 360" />
+
+    <!-- Open Graph / Twitter Card -->
+    <meta property="og:title" content="Contact | R4 Consulting" />
+    <meta property="og:description"
+        content="Contactez nos experts en digital, immobilier et patrimoine pour propulser votre projet." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.r4consulting.fr/contact.html" />
+    <meta property="og:image" content="https://www.r4consulting.fr/assets/preview-contact.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact | R4 Consulting" />
+    <meta name="twitter:description"
+        content="Prenez rendez-vous avec R4 Consulting : digital, immobilier et gestion patrimoniale." />
+    <meta name="twitter:image" content="https://www.r4consulting.fr/assets/preview-contact.png" />
+
+    <link rel="canonical" href="https://www.r4consulting.fr/contact.html" />
+    <link rel="icon" href="R4-Consulting-Logo.png" type="image/png" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Dancing+Script&display=swap"
+        rel="stylesheet" />
+
+    <!-- Global styles & page overrides -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/css/contact.styles.css" />
+</head>
+
+<body class="article">
+    <!-- HEADER / HERO -->
+    <header class="hero reveal">
+        <div class="header-top">
+            <a href="../index.html"><img src="../R4-Consulting-Logo.png" alt="Logo R4 Consulting" class="logo" /></a>
+            <button id="themeToggle" aria-label="Basculer thème sombre/clair">🌙</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../identite.html">Digital</a></li>
+                    <li><a href="../immobilier.html">Immobilier</a></li>
+                    <li><a href="../gestion.html">Patrimoine</a></li>
+                    <li><a href="../recrutement.html">Recrutement</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero-inner reveal">
+            <h1 class="site-title">Contactez-Nous</h1>
+            <p class="tagline">Votre projet mérite l’expertise R4 Consulting</p>
+        </div>
+    </header>
+
+    <!-- SECTION CONTACT -->
+    <section id="contact" class="contact reveal">
+        <div class="contact-inner">
+            <h2 class="contact-heading">NOUS CONTACTER</h2>
+            <div class="contact-card">
+                <!-- Bloc infos -->
+                <div class="contact-info">
+                    <h3 class="info-title">Informations</h3>
+                    <ul class="info-list">
+                        <li>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/new-post.png" alt="Email"
+                                class="info-icon" />
+                            <span class="info-text"><a
+                                    href="mailto:contact@r4consulting.fr">contact@r4consulting.fr</a></span>
+                        </li>
+                        <li>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/phone.png" alt="Téléphone"
+                                class="info-icon" />
+                            <span class="info-text">+33 7 84 29 82 02</span>
+                        </li>
+                        <li>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/marker.png" alt="Adresse"
+                                class="info-icon" />
+                            <span class="info-text">
+                                Résidence La Mongie Tourmalet,<br />3 rue de Sencours, 65200 Bagnères-de-Bigorre
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Bloc formulaire -->
+                <div class="contact-form">
+                    <h3 class="info-title">Envoyez-Nous un Message</h3>
+                    <form id="contactForm" action="#" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" id="origine" name="origine" value="" />
+                        <div class="form-group">
+                            <label for="name">Nom &amp; Prénom</label>
+                            <input type="text" id="name" name="name" placeholder="Votre nom complet" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse e-mail</label>
+                            <input type="email" id="email" name="email" placeholder="votre@exemple.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+33 1 23 45 67 89" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Objet</label>
+                            <input type="text" id="subject" name="subject"
+                                placeholder="Ex. Digital, Immobilier, Patrimoine…" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet…"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Envoyer</button>
+                    </form>
+
+                    <div class="contact-actions">
+                        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">Discuter sur WhatsApp</a>
+                        <button id="calendlyBtn" type="button">Prendre rendez-vous</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer reveal">
+        <p class="footer-text">© 2025 R4 Consulting — Digital • Immobilier • Patrimoine • Vision</p>
+    </footer>
+
+    <script src="/blog/script.blog.js"></script>
+
+
+</body>
+
+</html>

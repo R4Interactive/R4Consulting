@@ -1,0 +1,43 @@
+/* contact.styles.css */
+
+/* S’assure que la section contact est bien centrée et espacée */
+#contact {
+	padding: 4rem 1rem;
+}
+
+/* Ajustement pour le container déjà défini dans styles.css */
+.contact-inner {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+/* Renforce l’animation reveal pour header & footer */
+.hero.reveal-hidden,
+.breadcrumb.reveal-hidden,
+.contact.reveal-hidden,
+.site-footer.reveal-hidden {
+	opacity: 0;
+	transform: translateY(20px);
+}
+.hero.reveal-visible,
+.breadcrumb.reveal-visible,
+.contact.reveal-visible,
+.site-footer.reveal-visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+/* Si besoin, override styles.css pour ce formulaire */
+.contact-form form input,
+.contact-form form textarea {
+	background-color: var(--input-bg);
+	color: var(--input-text);
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+	.contact-card {
+		flex-direction: column;
+	}
+}

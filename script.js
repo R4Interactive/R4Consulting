@@ -174,127 +174,159 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	const contactForm = document.getElementById('contactForm');
-	if (contactForm) {
-		contactForm.addEventListener('submit', function (e) {
+	document.addEventListener('DOMContentLoaded', () => {
+		const form = document.getElementById('contactForm');
+		if (!form) return;
+
+		form.addEventListener('submit', function (e) {
 			e.preventDefault();
-			const formData = {
-				name: e.target.name.value.trim(),
-				email: e.target.email.value.trim(),
-				phone: e.target.phone.value.trim(),
-				message: e.target.message.value.trim(),
-			};
-			console.log('Formulaire R4 Consulting soumis :', formData);
-			alert('Merci ! Votre message a bien été envoyé.');
-			e.target.reset();
-		});
-	}
 
-	// -----------------------------------------
-	// 5) HOVER ANIMATION SUR .service-card
-	// -----------------------------------------
-	document.querySelectorAll('.service-card').forEach((card) => {
-		card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-		card.addEventListener('mouseenter', () => {
-			card.style.transform = 'scale(1.03)';
-			card.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.6)';
-		});
-		card.addEventListener('mouseleave', () => {
-			card.style.transform = 'scale(1)';
-			card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)';
-		});
-	});
-
-	// ======================================================
-	// 6) SMOOTH SCROLL POUR LES ANCRES + MENU “ACTIVE” AU SCROLL
-	// ======================================================
-	const anchorLinks2 = document.querySelectorAll('a[href^="#"]');
-	anchorLinks2.forEach((link) => {
-		link.addEventListener('click', function (e) {
-			const targetId = this.getAttribute('href').slice(1);
-			const targetEl = document.getElementById(targetId);
-			if (targetEl) {
-				e.preventDefault();
-				window.scrollTo({
-					top: targetEl.offsetTop - 60,
-					behavior: 'smooth',
-				});
-			}
-		});
-	});
-
-	const sections = document.querySelectorAll('section[id]');
-	const navLinks = document.querySelectorAll('.main-nav a');
-	const sectionObserver = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				const id = entry.target.getAttribute('id');
-				const navLink = document.querySelector(
-					`.main-nav a[href="#${id}"]`
-				);
-				if (entry.isIntersecting && navLink) {
-					navLinks.forEach((link) => link.classList.remove('active'));
-					navLink.classList.add('active');
-				}
+			// IDs des champs obligatoires
+			const requiredIds = [
+				'name',
+				'email',
+				'phone',
+				'subject',
+				'message',
+			];
+			// On cherche ceux qui sont vides
+			const missing = requiredIds.filter((id) => {
+				const el = form.querySelector(`#${id}`);
+				return !el || el.value.trim() === '';
 			});
-		},
-		{ root: null, rootMargin: '0px 0px -50% 0px', threshold: 0 }
-	);
-	sections.forEach((section) => sectionObserver.observe(section));
 
-	// ----------------------------------------
-	// 7) BOUTON “RETOUR EN HAUT”
-	// ----------------------------------------
-	const backToTop = document.createElement('button');
-	backToTop.id = 'backToTop';
-	backToTop.innerHTML = '&#8679;'; // flèche vers le haut
-	document.body.appendChild(backToTop);
+			if (missing.length > 0) {
+				// S’il en manque au moins un, on alerte et on met le focus sur le 1er
+				const first = missing[0];
+				let label =
+					{
+						name: 'Nom',
+						email: 'E-mail',
+						phone: 'Téléphone',
+						subject: 'Objet',
+						message: 'Message',
+					}[first] || first;
 
-	backToTop.addEventListener('click', () => {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
+				alert(`Veuillez remplir le champ « ${label} ».`);
+				form.querySelector(`#${first}`)?.focus();
+				return;
+			}
+
+			// Sinon tous présents : on affiche le popup de succès
+			alert('Merci ! Votre message a bien été envoyé.');
+			form.reset();
+
+			// Si vous voulez vraiment envoyer au serveur, décommentez :
+			// form.submit();
+		});
 	});
 
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > 400) {
-			backToTop.classList.add('visible');
-		} else {
-			backToTop.classList.remove('visible');
+	// Si vous voulez vraiment envoyer au serveur, décommentez :
+	// form.submit();
+});
+
+// -----------------------------------------
+// 5) HOVER ANIMATION SUR .service-card
+// -----------------------------------------
+document.querySelectorAll('.service-card').forEach((card) => {
+	card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+	card.addEventListener('mouseenter', () => {
+		card.style.transform = 'scale(1.03)';
+		card.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.6)';
+	});
+	card.addEventListener('mouseleave', () => {
+		card.style.transform = 'scale(1)';
+		card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)';
+	});
+});
+
+// ======================================================
+// 6) SMOOTH SCROLL POUR LES ANCRES + MENU “ACTIVE” AU SCROLL
+// ======================================================
+const anchorLinks2 = document.querySelectorAll('a[href^="#"]');
+anchorLinks2.forEach((link) => {
+	link.addEventListener('click', function (e) {
+		const targetId = this.getAttribute('href').slice(1);
+		const targetEl = document.getElementById(targetId);
+		if (targetEl) {
+			e.preventDefault();
+			window.scrollTo({
+				top: targetEl.offsetTop - 60,
+				behavior: 'smooth',
+			});
 		}
 	});
-
-	// ----------------------------------------
-	// 8) HERO FADE‐IN AU CHARGEMENT
-	// ----------------------------------------
-	const heroInner = document.querySelector('.hero-inner');
-	if (heroInner) {
-		setTimeout(() => {
-			heroInner.classList.add('hero-visible');
-		}, 100);
-	}
-
-	// ----------------------------------------------------
-	// 9) APPARITION ÉCHELONNÉE DES CARTES DE SERVICE
-	// ----------------------------------------------------
-	const serviceCardsList = Array.from(
-		document.querySelectorAll('.service-card')
-	);
-	const cardObserver = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					const card = entry.target;
-					const index = serviceCardsList.indexOf(card);
-					const delay = 0.5 + index * 0.5; // 0.5s, 1s, 1.5s, …
-					card.style.transition = `opacity 3s ease-out ${delay}s, transform 3s ease-out ${delay}s`;
-					card.classList.add('visible');
-					cardObserver.unobserve(card);
-				}
-			});
-		},
-		{ root: null, rootMargin: '0px', threshold: 0.2 }
-	);
-	serviceCardsList.forEach((card) => cardObserver.observe(card));
 });
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.main-nav a');
+const sectionObserver = new IntersectionObserver(
+	(entries) => {
+		entries.forEach((entry) => {
+			const id = entry.target.getAttribute('id');
+			const navLink = document.querySelector(
+				`.main-nav a[href="#${id}"]`
+			);
+			if (entry.isIntersecting && navLink) {
+				navLinks.forEach((link) => link.classList.remove('active'));
+				navLink.classList.add('active');
+			}
+		});
+	},
+	{ root: null, rootMargin: '0px 0px -50% 0px', threshold: 0 }
+);
+sections.forEach((section) => sectionObserver.observe(section));
+
+// ----------------------------------------
+// 7) BOUTON “RETOUR EN HAUT”
+// ----------------------------------------
+const backToTop = document.createElement('button');
+backToTop.id = 'backToTop';
+backToTop.innerHTML = '&#8679;'; // flèche vers le haut
+document.body.appendChild(backToTop);
+
+backToTop.addEventListener('click', () => {
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 400) {
+		backToTop.classList.add('visible');
+	} else {
+		backToTop.classList.remove('visible');
+	}
+});
+
+// ----------------------------------------
+// 8) HERO FADE‐IN AU CHARGEMENT
+// ----------------------------------------
+const heroInner = document.querySelector('.hero-inner');
+if (heroInner) {
+	setTimeout(() => {
+		heroInner.classList.add('hero-visible');
+	}, 100);
+}
+
+// ----------------------------------------------------
+// 9) APPARITION ÉCHELONNÉE DES CARTES DE SERVICE
+// ----------------------------------------------------
+const serviceCardsList = Array.from(document.querySelectorAll('.service-card'));
+const cardObserver = new IntersectionObserver(
+	(entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				const card = entry.target;
+				const index = serviceCardsList.indexOf(card);
+				const delay = 0.5 + index * 0.5; // 0.5s, 1s, 1.5s, …
+				card.style.transition = `opacity 3s ease-out ${delay}s, transform 3s ease-out ${delay}s`;
+				card.classList.add('visible');
+				cardObserver.unobserve(card);
+			}
+		});
+	},
+	{ root: null, rootMargin: '0px', threshold: 0.2 }
+);
+serviceCardsList.forEach((card) => cardObserver.observe(card));
 
 // ------------------------------
 // script-cookies.js
@@ -656,5 +688,47 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Mettre à jour l’URL (facultatif) pour ajouter le hash #contact
 			// window.location.hash = '#contact';
 		});
+	});
+});
+// empeche l'envoi de formulaire si un champs est vide
+// On attend que le DOM soit chargé
+document.addEventListener('DOMContentLoaded', () => {
+	const form = document.getElementById('contactForm');
+	if (!form) return;
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault();
+
+		// IDs des champs obligatoires
+		const requiredIds = ['name', 'email', 'phone', 'subject', 'message'];
+		// On cherche ceux qui sont vides
+		const missing = requiredIds.filter((id) => {
+			const el = form.querySelector(`#${id}`);
+			return !el || el.value.trim() === '';
+		});
+
+		if (missing.length > 0) {
+			// S’il en manque au moins un, on alerte et on met le focus sur le 1er
+			const first = missing[0];
+			let label =
+				{
+					name: 'Nom',
+					email: 'E-mail',
+					phone: 'Téléphone',
+					subject: 'Objet',
+					message: 'Message',
+				}[first] || first;
+
+			alert(`Veuillez remplir le champ « ${label} ».`);
+			form.querySelector(`#${first}`)?.focus();
+			return;
+		}
+
+		// Sinon tous présents : on affiche le popup de succès
+		alert('Merci ! Votre message a bien été envoyé.');
+		form.reset();
+
+		// Si vous voulez vraiment envoyer au serveur, décommentez :
+		// form.submit();
 	});
 });
