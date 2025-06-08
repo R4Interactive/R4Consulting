@@ -2446,6 +2446,63 @@ button {
   body.nav-open .hamburger span:nth-child(3) {
 	transform: translateY(-8px) rotate(-45deg);
   }
+
+  /* Style de base */
+.mini-accordion {
+	margin-top: .75rem auto;
+	font-size: .95rem;
+	color: var(--gold);
+	width: max-content;
+  }
+  
+  .mini-accordion summary {
+	list-style: none;
+	cursor: pointer;
+	position: relative;
+	padding-right: 1.5rem;
+  }
+  
+  /* On retire le triangle par défaut */
+  .mini-accordion summary::-webkit-details-marker {
+	display: none;
+  }
+  
+  /* On ajoute une flèche + rotation */
+  .mini-accordion summary::after {
+	content: "▸";
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: transform .2s ease;
+  }
+  
+  /* Lorsque c’est ouvert, on fait pivoter la flèche */
+  .mini-accordion[open] summary::after {
+	transform: rotate(90deg);
+  }
+  
+  .mini-accordion ul {
+	max-height: 0;
+	overflow: hidden;
+	margin-top: 0.5rem;
+	padding-left: 1rem;
+	list-style: disc inside;
+	color: var(--cream);
+	line-height: 1.5;
+	transition: max-height 0.3s ease;
+  }
+  /* on cache et on prépare la transition */
+.mini-accordion ul {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+  }
+  
+  /* lorsqu’on a l’attribut [open], on laisse l’UL monter */
+  .mini-accordion[open] ul {
+	/* valeur temporaire, remplacée en JS */
+	max-height: 500px;
+  }
   
 /* ──────────────────────────────────────────────
    “Notre approche” passe en grille en responsive
@@ -2580,6 +2637,39 @@ button {
 	overflow-x: hidden;
   }
   
+  /* ──────────────────────────────────────────────
+   CARROUSEL “Recrutement” → PASSAGE EN GRILLE
+   ────────────────────────────────────────────── */
+@media (max-width: 992px) {
+	/* 1) On retire le padding desktop pour le container */
+	.jobs-carousel-container {
+	  padding: 0 !important;
+	  margin: 2rem auto !important;
+	  max-width: 100%;
+	}
+  
+	/* 2) On transforme la piste en grille fluide à 1, 2 ou 3 colonnes */
+	.jobs-carousel-track {
+	  display: grid !important;
+	  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	  gap: 1.5rem;
+	  overflow: visible !important;        /* plus de scroll horizontal */
+	  scroll-snap-type: none !important;  /* désactive le snap */
+	  padding: 0 !important;
+	}
+  
+	/* 3) On cache les flèches de navigation */
+	.jobs-carousel-container .carousel-arrow {
+	  display: none !important;
+	}
+  }
+  
+  /* Affinement pour très petits écrans */
+  @media (max-width: 576px) {
+	.jobs-carousel-track {
+	  grid-template-columns: 1fr;  /* une seule colonne */
+	}
+  }
   
 /* --------------------------------------------
 	 FIN DU CSS

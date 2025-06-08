@@ -756,3 +756,26 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	});
 });
+document.querySelectorAll('.mini-accordion').forEach((detail) => {
+	const summary = detail.querySelector('summary');
+	const list = detail.querySelector('ul');
+
+	summary.addEventListener('click', (e) => {
+		e.preventDefault();
+		const isOpen = detail.hasAttribute('open');
+
+		if (!isOpen) {
+			// ouvrir
+			detail.setAttribute('open', '');
+			list.style.maxHeight = list.scrollHeight + 'px';
+		} else {
+			// fermer
+			list.style.maxHeight = list.scrollHeight + 'px';
+			requestAnimationFrame(() => (list.style.maxHeight = '0'));
+			list.addEventListener('transitionend', function _hide() {
+				detail.removeAttribute('open');
+				list.removeEventListener('transitionend', _hide);
+			});
+		}
+	});
+});
