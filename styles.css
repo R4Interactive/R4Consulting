@@ -2413,6 +2413,170 @@ button {
 	padding: 0.5rem 1.5rem;
 	font-size: 0.95rem;
   }
+
+  /* Styles du bouton hamburger */
+.hamburger {
+	display: none;         /* visible uniquement sur petits écrans */
+	flex-direction: column;
+	justify-content: space-between;
+	width: 24px;
+	height: 18px;
+	background: none;
+	border: none;
+	padding: 0;
+	margin-left: auto;
+	cursor: pointer;
+	z-index: 1100;
+  }
+  .hamburger span {
+	display: block;
+	height: 2px;
+	background: var(--cream);
+	border-radius: 1px;
+	transition: transform 0.3s, opacity 0.3s;
+  }
+  
+  /* État « ouvert » du menu : on transformera la croix */
+  body.nav-open .hamburger span:nth-child(1) {
+	transform: translateY(8px) rotate(45deg);
+  }
+  body.nav-open .hamburger span:nth-child(2) {
+	opacity: 0;
+  }
+  body.nav-open .hamburger span:nth-child(3) {
+	transform: translateY(-8px) rotate(-45deg);
+  }
+  
+/* ──────────────────────────────────────────────
+   “Notre approche” passe en grille en responsive
+────────────────────────────────────────────── */
+@media (max-width: 992px) {
+	.approach-carousel-container {
+	  padding: 0;
+	  margin: 2rem auto;
+	}
+  
+	/* On transforme le track en grille et on supprime le scroll horizontal */
+	.approach-carousel-track {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	  gap: 1.5rem;
+	  overflow: visible !important;
+	  scroll-snap-type: none !important;
+	  padding: 0;
+	}
+  
+	/* On désactive les flèches */
+	.approach-carousel-container .carousel-arrow {
+	  display: none;
+	}
+  
+	/* Les cards prennent toute la largeur de leur cellule */
+	.approach-card {
+	  flex: none !important;
+	  max-width: none !important;
+	}
+  }
+  
+
+  /* Responsive ≤768px : cachons la nav normale, activons le hamburger */
+  @media (max-width: 768px) {
+	.hamburger {
+	  display: flex;
+	}
+	.main-nav {
+	  position: fixed;
+	  top: 0;
+	  right: 0;
+	  width: 75%;
+	  max-width: 300px;
+	  height: 100%;
+	  background: var(--bg);
+	  transform: translateX(100%);
+	  transition: transform 0.3s ease;
+	  padding-top: 4rem;
+	  z-index: 1000;
+	}
+	/* Quand le body porte .nav-open, on affiche la nav */
+	body.nav-open .main-nav {
+	  transform: translateX(0);
+	}
+	/* Menu vertical, centré */
+	.main-nav ul {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 1.5rem;
+	  list-style: none;
+	  margin: 0;
+	  padding: 0;
+	}
+	.main-nav a {
+	  font-size: 1.2rem;
+	}
+	.header-top {
+		display: flex !important;
+		flex-direction: column;
+		align-items: center;
+	  }
+	  /* Pour que le nav ne vienne pas coller le logo */
+	  .header-top .main-nav {
+		margin-top: 1rem;
+	  }
+	  /* Si vous voulez un petit gap au-dessus du themeToggle */
+  #themeToggle {
+    margin-top: 1rem;
+  }
+  }
+
+/* ────────────────
+   Offres & Packs → grille en responsive
+─────────────────── */
+@media (max-width: 992px) {
+  /* 1) Retrait du padding desktop */
+  .offres-packs-section .offers-carousel {
+    padding: 0 !important;
+    margin: 2rem auto !important;
+  }
+
+  /* 2) On désactive le scroll forcé */
+  .offres-packs-section .offers-packs-wrapper {
+    overflow: visible !important;
+  }
+
+  /* 3) Passage en grille fluide */
+  .offres-packs-section .offers-packs-cards {
+    display: grid !important;
+      /*  colonnes entre 576px et 768px, 1 colonne en mobile plus étroit */
+	  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 1.5rem !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* 4) Les cartes occupent leur cellule */
+  .offres-packs-section .offer-card {
+    flex: none !important;
+    max-width: none !important;
+	width: 100% !important;
+  }
+
+  /* 5) On masque les flèches */
+  .offres-packs-section .offers-prev,
+  .offres-packs-section .offers-next {
+    display: none !important;
+  }
+}
+/* ───────────────────────────────────────────
+   AFFINAGE : 1 seule colonne sur très petits écrans
+────────────────────────────────────────── */
+@media (max-width: 576px) {
+	.offres-packs-section .offers-packs-cards {
+	  grid-template-columns: 1fr !important;
+	}
+  }
+
+  
   
 /* --------------------------------------------
 	 FIN DU CSS

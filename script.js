@@ -743,3 +743,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		// form.submit();
 	});
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+	const btn = document.getElementById('hamburgerBtn');
+	btn.addEventListener('click', () => {
+		document.body.classList.toggle('nav-open');
+	});
+	// Fermer le menu si on clique sur un lien
+	document.querySelectorAll('.main-nav a').forEach((link) => {
+		link.addEventListener('click', () => {
+			document.body.classList.remove('nav-open');
+		});
+	});
+});
