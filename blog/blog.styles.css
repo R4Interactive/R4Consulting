@@ -169,27 +169,380 @@ body.article-page {
 	color: var(--dark-bg);
 }
 
-/* ──────────────────────────────────────────────
-	 RESPONSIVE
-  ────────────────────────────────────────────── */
+/* Styles du bouton hamburger */
+.hamburger {
+	display: none; /* caché par défaut en desktop */
+	flex-direction: column;
+	justify-content: space-between;
+	width: 24px;
+	height: 18px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin-left: auto; /* pousse vers la droite */
+	z-index: 1100; /* au-dessus de la nav */
+}
+.hamburger span {
+	display: block;
+	height: 2px;
+	background: var(--cream);
+	border-radius: 1px;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* Lorsque menu ouvert (body.nav-open), transformer en croix */
+body.nav-open .hamburger span:nth-child(1) {
+	transform: translateY(8px) rotate(45deg);
+}
+body.nav-open .hamburger span:nth-child(2) {
+	opacity: 0;
+}
+body.nav-open .hamburger span:nth-child(3) {
+	transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Responsive : menu hamburger sous 768px */
 @media (max-width: 768px) {
+	/* 1) On affiche le hamburger */
+	.hamburger {
+		display: flex;
+	}
+	/* 2) On masque la nav par défaut */
+	.main-nav {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 75%;
+		max-width: 280px;
+		height: 100%;
+		background: var(--bg);
+		transform: translateX(100%);
+		transition: transform 0.3s ease;
+		padding-top: 4rem; /* espace sous le header */
+		z-index: 1050;
+	}
+	/* 3) Quand body.nav-open, on fait glisser la nav */
+	body.nav-open .main-nav {
+		transform: translateX(0);
+	}
+	/* 4) Menu vertical centré */
+	.main-nav ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.main-nav a {
+		font-size: 1.2rem;
+	}
+}
+
+/* ──────────────────────────────────────────────
+   Bouton “Retour au Blog” (class .back-blog)
+────────────────────────────────────────────── */
+.back-blog {
+	display: inline-block;
+	margin: 2rem auto 0; /* centrage horizontal */
+	padding: 0.6rem 1.2rem;
+	border: 2px solid var(--cream);
+	border-radius: 4px;
+	background: transparent;
+	color: var(--cream);
+	font-size: 0.9rem;
+	text-decoration: none;
+	font-weight: 600;
+	transition: background 0.3s ease, color 0.3s ease;
+}
+
+.back-blog:hover {
+	background: var(--cream);
+	color: var(--dark-bg);
+}
+
+/* ==============================================
+   MEDIA QUERIES POUR TOUTES LES TAILLES D'ÉCRAN
+   ============================================== */
+
+/* 1) Écrans larges réduits (≤1200px) */
+@media (max-width: 1200px) {
+	.site-header {
+		padding: 1rem 1.5rem;
+	}
+	.logo {
+		width: 100px;
+	}
+	.main-nav ul {
+		gap: 1.25rem;
+	}
+	.article-content {
+		max-width: 720px;
+	}
+}
+
+/* 2) Laptops / tablettes paysage (≤992px) */
+@media (max-width: 992px) {
+	.site-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.main-nav {
+		width: 100%;
+		margin-top: 0.5rem;
+	}
+	.main-nav ul {
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	.hero-title {
+		font-size: 2.25rem;
+	}
+	.article-content {
+		max-width: 680px;
+		padding: 0 1rem;
+	}
+	.btn-primary {
+		padding: 0.65rem 1.8rem;
+	}
+}
+
+/* 3) Tablettes portrait / petits laptops (≤768px) */
+@media (max-width: 768px) {
+	#themeToggle {
+		font-size: 1.25rem;
+	}
 	.hero-title {
 		font-size: 2rem;
 	}
-	.article-body h2 {
-		font-size: 1.5rem;
+	.hero-subtitle {
+		font-size: 1.4rem;
 	}
 	.main-nav ul {
-		flex-wrap: wrap;
-		justify-content: center;
 		gap: 1rem;
 	}
+	.article-content {
+		padding: 0 0.75rem;
+	}
+	.article-body h2 {
+		font-size: 1.4rem;
+	}
+	.article-body p {
+		font-size: 0.95rem;
+	}
+	.btn-primary {
+		font-size: 0.95rem;
+	}
+	.back-blog {
+		display: block;
+		width: 100%;
+		text-align: center;
+		padding: 0.8rem 0;
+		margin: 2rem 0 0; /* espace au-dessus, plus compact */
+		box-sizing: border-box;
+	}
 }
-@media (max-width: 480px) {
+
+/* 4) Grands smartphones & petits tablettes (≤576px) */
+@media (max-width: 576px) {
+	.site-header {
+		padding: 0.75rem 1rem;
+	}
+	.logo {
+		width: 90px;
+	}
+	.main-nav ul {
+		gap: 0.75rem;
+		justify-content: center;
+	}
+	.hero-title {
+		font-size: 1.75rem;
+	}
 	.hero-subtitle {
 		font-size: 1.2rem;
 	}
-	.breadcrumb {
+	.article-content {
+		padding: 0 0.5rem;
+	}
+	.post-meta {
+		font-size: 0.85rem;
+	}
+	.article-body h2 {
+		font-size: 1.3rem;
+	}
+	.article-body p {
+		font-size: 0.9rem;
+	}
+	.btn-primary {
+		padding: 0.6rem 1.5rem;
+		font-size: 0.9rem;
+	}
+	.back-blog {
+		display: block;
+		margin: 2rem auto;
+	}
+	.site-header .main-nav {
+		width: 100%;
+		text-align: center;
+		margin-top: 0.5rem;
+	}
+	/* Passe la liste en flex centré horizontalement */
+	.site-header .main-nav ul {
+		display: flex;
+		flex-direction: column; /* ou row si tu veux en ligne */
+		align-items: center; /* centre horizontalement */
+		gap: 0.75rem;
+		padding: 0;
+		margin: 0;
+	}
+	/* Centre le texte des items */
+	.site-header .main-nav ul li {
+		width: 100%;
+	}
+	.site-header .main-nav ul li a {
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+	}
+
+	header.hero .header-top {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	/* 2) On centre la nav et on lui donne toute la largeur dispo */
+	header.hero .main-nav {
+		width: 100% !important;
+		margin: 1rem 0 0 !important;
+		text-align: center;
+	}
+
+	/* 3) On transforme la <ul> en flex-colonne et on centre ses items */
+	header.hero .main-nav ul {
+		display: flex !important;
+		flex-direction: column;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	/* 4) Un peu d’espacement entre chaque lien */
+	header.hero .main-nav li {
+		margin: 0.5rem 0;
+	}
+
+	/* 5) Les <a> prennent toute la largeur pour un centrage parfait */
+	header.hero .main-nav li a {
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* 5) Smartphones moyens (≤480px) */
+@media (max-width: 480px) {
+	.logo {
+		width: 80px;
+	}
+	.main-nav ul {
+		flex-direction: column;
+	}
+	.hero-title {
+		font-size: 1.5rem;
+	}
+	.hero-subtitle {
+		font-size: 1rem;
+	}
+	.article-content {
+		padding: 0 0.5rem;
+	}
+	.btn-primary {
+		width: 100%;
+		text-align: center;
+		box-sizing: border-box;
+	}
+	.article-cta {
+		padding: 0 1rem;
+	}
+	.article-body h2 {
+		margin: 1.5rem 0 0.75rem;
+	}
+	.article-body p {
+		margin-bottom: 1rem;
+	}
+	.back-blog {
+		font-size: 0.85rem;
+		padding: 0.7rem 0;
+		margin: 1.5rem 0 0;
+	}
+}
+
+/* 6) Petits smartphones (≤375px) */
+@media (max-width: 375px) {
+	.site-header {
+		padding: 0.5rem 0.75rem;
+	}
+	#themeToggle {
+		font-size: 1rem;
+	}
+	.logo {
+		width: 70px;
+	}
+	.hero-title {
+		font-size: 1.3rem;
+	}
+	.hero-subtitle {
+		font-size: 0.9rem;
+	}
+	.main-nav ul {
+		gap: 0.5rem;
+	}
+	.article-content {
+		padding: 0 0.5rem;
+	}
+	.btn-primary {
+		padding: 0.5rem 1rem;
+		font-size: 0.85rem;
+	}
+	.article-body h2 {
+		font-size: 1.2rem;
+	}
+	.article-body p {
+		font-size: 0.85rem;
+	}
+}
+
+/* 7) Très petits écrans / iPhone SE (≤320px) */
+@media (max-width: 320px) {
+	.site-header {
+		padding: 0.5rem 0.5rem;
+	}
+	.logo {
+		width: 60px;
+	}
+	.hero-title {
+		font-size: 1.1rem;
+	}
+	.hero-subtitle {
+		font-size: 0.8rem;
+	}
+	.main-nav ul {
+		gap: 0.3rem;
+	}
+	.article-content {
+		padding: 0 0.3rem;
+	}
+	.btn-primary {
+		padding: 0.45rem 0.9rem;
+		font-size: 0.8rem;
+	}
+	.article-body h2 {
+		font-size: 1rem;
+	}
+	.article-body p {
 		font-size: 0.8rem;
 	}
 }

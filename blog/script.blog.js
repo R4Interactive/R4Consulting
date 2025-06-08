@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
-		//  contrôle du format du téléphone
+		//  contrôle du format du numéro de téléphone
 		const phoneValue = form.querySelector('#phone').value.trim();
 		const phonePattern = /^(\d{10}|\+ ?33\s?[0-9](?:\s?\d{2}){4})$/;
 		if (!phonePattern.test(phoneValue)) {
@@ -99,4 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		const origineField = document.getElementById('origine');
 		if (origineField) origineField.value = from;
 	}
+});
+document.addEventListener('DOMContentLoaded', () => {
+	const btn = document.getElementById('hamburgerBtn');
+	btn.addEventListener('click', () => {
+		document.body.classList.toggle('nav-open');
+	});
+
+	// Fermer le menu quand on clique sur un lien
+	document.querySelectorAll('.main-nav a').forEach((link) => {
+		link.addEventListener('click', () => {
+			document.body.classList.remove('nav-open');
+		});
+	});
 });
