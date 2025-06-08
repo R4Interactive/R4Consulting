@@ -2545,8 +2545,8 @@ button {
 	  position: fixed;
 	  top: 0;
 	  right: 0;
-	  width: 75%;
-	  max-width: 300px;
+	  width: 100%;
+	  max-width: none;
 	  height: 100%;
 	  background: var(--bg);
 	  transform: translateX(100%);
