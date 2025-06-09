@@ -37,79 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('r4-theme', isLight ? 'light' : 'dark');
 	});
 
-	// 2) Soumission du formulaire avec validation et envoi
-	const form = document.getElementById('contactForm');
-	form.addEventListener('submit', async (e) => {
-		e.preventDefault();
-
-		// Champs obligatoires
-		const requiredIds = ['name', 'email', 'phone', 'subject', 'message'];
-		const missing = requiredIds.filter((id) => {
-			const el = form.querySelector('#' + id);
-			return !el || el.value.trim() === '';
-		});
-
-		if (missing.length > 0) {
-			// On alerte sur le premier champ manquant
-			const labels = {
-				name: 'Nom',
-				email: 'E-mail',
-				phone: 'Téléphone',
-				subject: 'Objet',
-				message: 'Message',
-			};
-			alert(`Veuillez remplir le champ « ${labels[missing[0]]} ».`);
-			form.querySelector('#' + missing[0]).focus();
-			return;
-		}
-
-		//  contrôle du format du numéro de téléphone
-		const phoneValue = form.querySelector('#phone').value.trim();
-		const phonePattern = /^(\d{10}|\+ ?33\s?[0-9](?:\s?\d{2}){4})$/;
-		if (!phonePattern.test(phoneValue)) {
-			alert(
-				'Le numéro de téléphone doit comporter 10 chiffres ou être au format "+ 33 1 23 45 67 89".'
-			);
-			form.querySelector('#phone').focus();
-			return;
-		}
-
-		const data = {
-			name: form.name.value,
-			email: form.email.value,
-			phone: form.phone.value,
-			subject: form.subject.value,
-			message: form.message.value,
-		};
-
-		try {
-                const resp = await fetch('/api/contact', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(data),
-			});
-			const json = await resp.json();
-			if (json.success) {
-				alert('Merci ! Votre message a bien été envoyé.');
-				form.reset();
-			} else {
-				alert(json.error || 'Erreur serveur');
-			}
-		} catch (err) {
-			console.error(err);
-			alert('Erreur réseau, réessayez plus tard.');
-		}
-	});
-
 	// 3) WhatsApp
 	document.getElementById('whatsappBtn').addEventListener('click', (e) => {
 		e.preventDefault();
 		window.open('https://wa.me/33784298202', '_blank');
-	});
-
-	// 4) Calendly
-	document.getElementById('calendlyBtn').addEventListener('click', () => {
-		window.open('https://calendly.com/r4consulting/30min', '_blank');
 	});
 
 	// 5) Pré-remplissage du champ "origine" depuis l’URL (?from=…)

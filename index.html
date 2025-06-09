@@ -307,42 +307,22 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Bloc 2 : Formulaire de contact + boutons WhatsApp/Calendly -->
-                <div class="contact-form reveal">
-                    <h3 class="info-title">Envoyez-Nous un Message</h3>
-                    <form id="contactForm" action="/api/contact" method="POST">
-                        <div class="form-group">
-                            <label for="name">Nom</label>
-                            <input type="text" id="name" name="name" placeholder="Votre nom complet" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Adresse e-mail</label>
-                            <input type="email" id="email" name="email" placeholder="votre@exemple.com" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+33 1 23 45 67 89" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Objet</label>
-                            <input type="text" id="subject" name="subject"
-                                placeholder="Ex. Digital, Immobilier, Patrimoine…" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Votre projet, question…"
-                                required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Envoyer</button>
-                    </form>
-
-                    <!-- Boutons WhatsApp et Calendly -->
-                    <div class="contact-actions">
-                        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">Discuter sur WhatsApp</a>
-                        <button id="calendlyBtn" type="button">Prendre rendez-vous</button>
-                    </div>
+                <!-- NOUVEAU -->
+                <div class="contact-actions only-ctas">
+                    <a href="https://wa.me/33784298202?text=Bonjour%20R4%20Consulting%20!" class="btn-whatsapp"
+                        target="_blank" rel="noopener">
+                        Discuter sur WhatsApp
+                    </a>
+                    <a href="https://calendar.app.google/vu2skZJCPNh8YWsT8" class="btn-secondary" target="_blank"
+                        rel="noopener">
+                        Réserver sur Google Agenda
+                    </a>
+                    <a href="mailto:contact@r4consulting.fr" class="btn-tertiary">
+                        Envoyer un e-mail
+                    </a>
                 </div>
+
+
             </div>
         </div>
     </section>

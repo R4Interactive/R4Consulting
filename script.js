@@ -107,9 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Affiche la carte d’index « index »
 		function showTestimonial(index) {
-			const widthPercent = 100 / visibleCount;
-			const offset = -index * widthPercent;
-			slider.style.transform = `translateX(${offset}%)`;
+			const offset = cards[index].offsetLeft;
+			slider.style.transform = `translateX(-${offset}px)`;
 		}
 
 		// Passe à la carte suivante (boucle)
@@ -161,16 +160,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			const whatsappLink =
 				'https://wa.me/33784298202?text=Bonjour%20R4%20Consulting%20!%20Je%20souhaite%20prendre%20contact.';
 			window.open(whatsappLink, '_blank');
-		});
-	}
-
-	const calendlyBtn = document.getElementById('calendlyBtn');
-	if (calendlyBtn) {
-		calendlyBtn.addEventListener('click', function (e) {
-			e.preventDefault();
-			const calendlyLink =
-				'https://calendly.com/votre-compte-r4-consulting';
-			window.open(calendlyLink, '_blank');
 		});
 	}
 
