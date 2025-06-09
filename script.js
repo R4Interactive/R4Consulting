@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			};
 
 			try {
-                        const resp = await fetch('/api/contact', {
+				const resp = await fetch('/api/contact', {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(data),
@@ -542,49 +542,52 @@ document.addEventListener('DOMContentLoaded', function () {
 //  CARROUSEL “OFFRES & PACKS” – logique JavaScript
 // -----------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
-	const wrapper = document.querySelector('.offers-packs-wrapper');
-	const cardsContainer = document.querySelector('.offers-packs-cards');
-	const cards = document.querySelectorAll('.offer-card');
-	const prevBtn = document.querySelector('.offers-prev');
-	const nextBtn = document.querySelector('.offers-next');
-	let currentIndex = 0;
+	// On récupère chaque carousel “Offres & Packs” (on a 3 sections : générale, SEO, SEA)
+	const carousels = document.querySelectorAll(
+		'.offres-packs-section .offers-carousel'
+	);
 
-	function getVisibleCount() {
-		const wrapperWidth = wrapper.offsetWidth;
-		const style = window.getComputedStyle(cardsContainer);
-		const gapSize = parseInt(style.gap) || 0;
-		const cardWidth = cards[0].offsetWidth;
-		// On ajoute gapSize à wrapperWidth pour que (n * cardWidth + (n-1)*gapSize) ≤ wrapperWidth
-		return Math.floor((wrapperWidth + gapSize) / (cardWidth + gapSize));
-	}
+	carousels.forEach((carousel) => {
+		const wrapper = carousel.querySelector('.offers-packs-wrapper');
+		const cardsContainer = carousel.querySelector('.offers-packs-cards');
+		const cards = carousel.querySelectorAll('.offer-card');
+		const prevBtn = carousel.querySelector('.offers-prev');
+		const nextBtn = carousel.querySelector('.offers-next');
+		let currentIndex = 0;
 
-	function updateCarousel() {
-		const visibleCount = getVisibleCount();
-		const maxIndex = Math.max(0, cards.length - visibleCount);
+		function getVisibleCount() {
+			const wrapperWidth = wrapper.offsetWidth;
+			const style = getComputedStyle(cardsContainer);
+			const gap = parseInt(style.gap) || 0;
+			const cardWidth = cards[0].offsetWidth;
+			return Math.floor((wrapperWidth + gap) / (cardWidth + gap));
+		}
 
-		if (currentIndex < 0) currentIndex = 0;
-		if (currentIndex > maxIndex) currentIndex = maxIndex;
+		function updateCarousel() {
+			const visibleCount = getVisibleCount();
+			const maxIndex = Math.max(0, cards.length - visibleCount);
+			if (currentIndex < 0) currentIndex = 0;
+			if (currentIndex > maxIndex) currentIndex = maxIndex;
 
-		const style = window.getComputedStyle(cardsContainer);
-		const gapSize = parseInt(style.gap) || 0;
-		const shiftX = currentIndex * (cards[0].offsetWidth + gapSize);
-		cardsContainer.style.transform = `translateX(-${shiftX}px)`;
-	}
+			const style = getComputedStyle(cardsContainer);
+			const gap = parseInt(style.gap) || 0;
+			const shiftX = currentIndex * (cards[0].offsetWidth + gap);
+			cardsContainer.style.transform = `translateX(-${shiftX}px)`;
+		}
 
-	prevBtn.addEventListener('click', function () {
-		currentIndex--;
+		prevBtn.addEventListener('click', function () {
+			currentIndex--;
+			updateCarousel();
+		});
+		nextBtn.addEventListener('click', function () {
+			currentIndex++;
+			updateCarousel();
+		});
+		window.addEventListener('resize', updateCarousel);
+
+		// Initialisation
 		updateCarousel();
 	});
-
-	nextBtn.addEventListener('click', function () {
-		currentIndex++;
-		updateCarousel();
-	});
-
-	window.addEventListener('resize', updateCarousel);
-
-	// Initialisation
-	updateCarousel();
 });
 
 // fonction d'ecoute pour selection pack
