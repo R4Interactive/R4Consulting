@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('r4-theme', isLight ? 'light' : 'dark');
 	});
 
-	// 2) Soumission du formulaire avec validation
+	// 2) Soumission du formulaire avec validation et envoi
 	const form = document.getElementById('contactForm');
-	form.addEventListener('submit', (e) => {
+	form.addEventListener('submit', async (e) => {
 		e.preventDefault();
 
 		// Champs obligatoires
@@ -74,11 +74,31 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
-		// Tout est valide : on affiche le message de succès
-		alert(
-			'Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.'
-		);
-		form.reset();
+		const data = {
+			name: form.name.value,
+			email: form.email.value,
+			phone: form.phone.value,
+			subject: form.subject.value,
+			message: form.message.value,
+		};
+
+		try {
+			const resp = await fetch('http://localhost:3000/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(data),
+			});
+			const json = await resp.json();
+			if (json.success) {
+				alert('Merci ! Votre message a bien été envoyé.');
+				form.reset();
+			} else {
+				alert(json.error || 'Erreur serveur');
+			}
+		} catch (err) {
+			console.error(err);
+			alert('Erreur réseau, réessayez plus tard.');
+		}
 	});
 
 	// 3) WhatsApp

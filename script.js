@@ -174,11 +174,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	document.addEventListener('DOMContentLoaded', () => {
-		const form = document.getElementById('contactForm');
-		if (!form) return;
-
-		form.addEventListener('submit', function (e) {
+	const form = document.getElementById('contactForm');
+	if (form) {
+		form.addEventListener('submit', async function (e) {
 			e.preventDefault();
 
 			// IDs des champs obligatoires
@@ -198,16 +196,17 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (missing.length > 0) {
 				// S’il en manque au moins un, on alerte et on met le focus sur le 1er
 				const first = missing[0];
-				let label =
-					{
-						name: 'Nom',
-						email: 'E-mail',
-						phone: 'Téléphone',
-						subject: 'Objet',
-						message: 'Message',
-					}[first] || first;
+				const labels = {
+					name: 'Nom',
+					email: 'E-mail',
+					phone: 'Téléphone',
+					subject: 'Objet',
+					message: 'Message',
+				};
 
-				alert(`Veuillez remplir le champ « ${label} ».`);
+				alert(
+					`Veuillez remplir le champ « ${labels[first] || first} ».`
+				);
 				form.querySelector(`#${first}`)?.focus();
 				return;
 			}
@@ -223,41 +222,33 @@ document.addEventListener('DOMContentLoaded', function () {
 				return;
 			}
 
-			form.addEventListener('submit', async (e) => {
-				e.preventDefault();
+			const data = {
+				name: form.name.value,
+				email: form.email.value,
+				phone: form.phone.value,
+				subject: form.subject.value,
+				message: form.message.value,
+			};
 
-				// 1) Valide… si ok :
-				const data = {
-					name: form.name.value,
-					email: form.email.value,
-					phone: form.phone.value,
-					subject: form.subject.value,
-					message: form.message.value,
-				};
-
-				try {
-					const resp = await fetch(
-						'http://localhost:3000/api/contact',
-						{
-							method: 'POST',
-							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify(data),
-						}
-					);
-					const json = await resp.json();
-					if (json.success) {
-						alert('Merci ! Votre message a bien été envoyé.');
-						form.reset();
-					} else {
-						alert(json.error || 'Erreur serveur');
-					}
-				} catch (err) {
-					console.error(err);
-					alert('Erreur réseau, réessayez plus tard.');
+			try {
+				const resp = await fetch('http://localhost:3000/api/contact', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data),
+				});
+				const json = await resp.json();
+				if (json.success) {
+					alert('Merci ! Votre message a bien été envoyé.');
+					form.reset();
+				} else {
+					alert(json.error || 'Erreur serveur');
 				}
-			});
+			} catch (err) {
+				console.error(err);
+				alert('Erreur réseau, réessayez plus tard.');
+			}
 		});
-	});
+	}
 
 	// Si vous voulez vraiment envoyer au serveur, décommentez :
 	// form.submit();
@@ -726,48 +717,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Mettre à jour l’URL (facultatif) pour ajouter le hash #contact
 			// window.location.hash = '#contact';
 		});
-	});
-});
-// empeche l'envoi de formulaire si un champs est vide
-// On attend que le DOM soit chargé
-document.addEventListener('DOMContentLoaded', () => {
-	const form = document.getElementById('contactForm');
-	if (!form) return;
-
-	form.addEventListener('submit', function (e) {
-		e.preventDefault();
-
-		// IDs des champs obligatoires
-		const requiredIds = ['name', 'email', 'phone', 'subject', 'message'];
-		// On cherche ceux qui sont vides
-		const missing = requiredIds.filter((id) => {
-			const el = form.querySelector(`#${id}`);
-			return !el || el.value.trim() === '';
-		});
-
-		if (missing.length > 0) {
-			// S’il en manque au moins un, on alerte et on met le focus sur le 1er
-			const first = missing[0];
-			let label =
-				{
-					name: 'Nom',
-					email: 'E-mail',
-					phone: 'Téléphone',
-					subject: 'Objet',
-					message: 'Message',
-				}[first] || first;
-
-			alert(`Veuillez remplir le champ « ${label} ».`);
-			form.querySelector(`#${first}`)?.focus();
-			return;
-		}
-
-		// Sinon tous présents : on affiche le popup de succès
-		alert('Merci ! Votre message a bien été envoyé.');
-		form.reset();
-
-		// Si vous voulez vraiment envoyer au serveur, décommentez :
-		// form.submit();
 	});
 });
 
