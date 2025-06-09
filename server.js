@@ -9,6 +9,13 @@ const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const { SMTP_USER, SMTP_PASS } = process.env;
+if (!SMTP_USER || !SMTP_PASS) {
+	throw new Error(
+		'SMTP_USER and SMTP_PASS environment variables must be set'
+	);
+}
+
 // 1️⃣ parser le JSON et les formulaires URL-encoded
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,8 +44,8 @@ app.post('/api/contact', async (req, res) => {
 			port: process.env.SMTP_PORT || 465,
 			secure: true, // true si port 465
 			auth: {
-				user: process.env.SMTP_USER || 'contact@r4consulting.fr',
-				pass: process.env.SMTP_PASS || 'C#7F/[>?nnKj',
+				user: SMTP_USER,
+				pass: SMTP_PASS,
 			},
 		});
 		const info = await transporter.sendMail({
