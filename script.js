@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			const offset = cards[index].offsetLeft;
 			slider.style.transform = `translateX(-${offset}px)`;
 		}
-
 		// Passe à la carte suivante (boucle)
 		function nextTestimonial() {
 			// on n’autorise pas d’index supérieur à (cards.length - visibleCount)
