@@ -223,12 +223,39 @@ document.addEventListener('DOMContentLoaded', function () {
 				return;
 			}
 
-			// Sinon tous présents : on affiche le popup de succès
-			alert('Merci ! Votre message a bien été envoyé.');
-			form.reset();
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
 
-			// Si vous voulez vraiment envoyer au serveur, décommentez :
-			// form.submit();
+				// 1) Valide… si ok :
+				const data = {
+					name: form.name.value,
+					email: form.email.value,
+					phone: form.phone.value,
+					subject: form.subject.value,
+					message: form.message.value,
+				};
+
+				try {
+					const resp = await fetch(
+						'http://localhost:3000/api/contact',
+						{
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify(data),
+						}
+					);
+					const json = await resp.json();
+					if (json.success) {
+						alert('Merci ! Votre message a bien été envoyé.');
+						form.reset();
+					} else {
+						alert(json.error || 'Erreur serveur');
+					}
+				} catch (err) {
+					console.error(err);
+					alert('Erreur réseau, réessayez plus tard.');
+				}
+			});
 		});
 	});
 
