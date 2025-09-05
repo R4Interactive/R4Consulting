@@ -345,14 +345,12 @@ button {
 
 /* Chaque carte prendra une largeur définie par media queries, et aura une margin-right fixe */
 .testimonial-card {
-	flex: 0 0 auto; /* largeur contrôlée par flex-basis ci-dessous */
 	box-sizing: border-box;
 	padding: 2rem 1rem;
 	margin-right: var(--testimonial-gap);
 	background-color: var(--card-bg);
 	border-radius: 8px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 
@@ -408,31 +406,11 @@ button {
 	 via media queries
 	 ============================ */
 
-/* Par défaut (small screens <768px) : 1 carte = 100% */
-@media (max-width: 767px) {
-	.testimonial-card {
-		flex: 0 0 100%;
-		max-width: 100%;
-	}
-}
 
-/* Entre 768px et 1199px : 2 cartes côte à côte, chacune occupant
-	 (100% – 1*gap) / 2 = calc((100% – var(--testimonial-gap)) / 2) */
-@media (min-width: 768px) and (max-width: 1199px) {
-	.testimonial-card {
-		flex: 0 0 calc((100% - var(--testimonial-gap)) / 2);
-		max-width: calc((100% - var(--testimonial-gap)) / 2);
-	}
-}
 
-/* ≥1200px : 3 cartes côte à côte,
-	 chaque carte = (100% – 2*gap) / 3 */
-@media (min-width: 1200px) {
-	.testimonial-card {
-		flex: 0 0 calc((100% - 2 * var(--testimonial-gap)) / 3);
-		max-width: calc((100% - 2 * var(--testimonial-gap)) / 3);
-	}
-}
+
+
+
 
 /* Scroll-Reveal au besoin */
 .reveal-hidden {
@@ -512,136 +490,110 @@ button {
 .info-text a:hover {
 	text-decoration: underline;
 }
-/* Bloc “Formulaire” */
-.contact-form {
-	flex: 2 1 400px;
-	max-width: 600px;
-}
-.contact-form .info-title {
-	margin: 0 0 1rem 0;
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: var(--gold);
-}
-.contact-form .form-group {
-	margin-bottom: 1.5rem;
-}
-.contact-form .form-group label {
-	display: block;
-	margin: 0 0 0.5rem 0;
-	font-weight: 600;
-	color: var(--cream);
-}
-.contact-form .form-group .optional {
-	font-style: italic;
-	font-weight: 400;
-	font-size: 0.9rem;
-	color: #bbbbbb;
-	margin-left: 4px;
-}
-.contact-form input,
-.contact-form textarea {
-	width: 100%;
-	padding: 0.75rem 1rem;
-	border: 1px solid #333333;
-	border-radius: 4px;
-	background-color: var(--input-bg);
-	color: var(--input-text);
-	font-size: 1rem;
-	font-family: var(--font-sans);
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-	/* si navegador ne supporte pas rgba(var(--input-text), 0.6), remplacer par #777777 */
-	color: #777777;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-	outline: none;
-	border-color: var(--gold);
-}
-.contact-form button {
-	background-color: var(--gold);
-	color: var(--dark-bg);
-	font-weight: 600;
-	padding: 0.75rem 2rem;
-	border: none;
-	border-radius: 4px;
-	transition: background-color 0.3s ease;
-	cursor: pointer;
-	margin-top: 0.5rem;
-}
-.contact-form button:hover {
-	background-color: #9e6e36;
-}
-/* Boutons WhatsApp & Calendly sous le formulaire */
-.contact-actions {
+/* ==== RESET ET ARRANGEMENT DU CONTENEUR CTA ==== */
+.only-ctas {
 	display: flex;
-	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: 1rem;
-	margin: 2rem 0 0 0;
-}
-.contact-actions a.btn-whatsapp,
-.contact-actions button#calendlyBtn {
+	margin-top: 2rem;
+  }
+  
+  /* ==== HAUTEUR & CENTRAGE COMMUNS AUX LIENS ==== */
+  .only-ctas a {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	height: 48px;
 	padding: 0 1.5rem;
-	font-size: 1rem;
+	text-decoration: none;
+	white-space: nowrap; /* empêche le retour à la ligne */
 	font-weight: 600;
 	border-radius: 4px;
-	text-decoration: none;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease;
-	line-height: 1;
-	margin: 0;
-}
-.contact-actions a.btn-whatsapp {
+	transition: background-color .3s, color .3s, border-color .3s;
+  }
+  
+  /* ==== BOUTON WHATSAPP (vert) ==== */
+  .only-ctas .btn-whatsapp {
 	background-color: #25d366;
 	color: #ffffff;
 	border: 2px solid #25d366;
-}
-.contact-actions a.btn-whatsapp:hover {
+  }
+  .only-ctas .btn-whatsapp:hover {
 	background-color: #1fa954;
 	border-color: #1fa954;
-}
-.contact-actions button#calendlyBtn {
+  }
+  
+  /* ==== BOUTON GOOGLE AGENDA (doré) ==== */
+  .only-ctas .btn-secondary {
 	background-color: transparent;
 	color: var(--gold);
 	border: 2px solid var(--gold);
-}
-.contact-actions button#calendlyBtn:hover {
+  }
+  .only-ctas .btn-secondary:hover {
 	background-color: var(--gold);
 	color: var(--dark-bg);
-}
-.contact-actions a.btn-whatsapp:focus,
-.contact-actions button#calendlyBtn:focus {
-	outline: 2px solid var(--cream);
-	outline-offset: 2px;
-}
-@media (max-width: 600px) {
-	.contact-actions {
-		flex-direction: column;
-		align-items: stretch;
-	}
-	.contact-actions a.btn-whatsapp,
-	.contact-actions button#calendlyBtn {
-		width: 100%;
-		height: 44px;
-		margin: 0;
-	}
-}
-@media (max-width: 768px) {
-	.contact-card {
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-	.contact-info,
-	.contact-form {
-		max-width: 100%;
-	}
-}
+  }
+  
+  /* ==== BOUTON E-MAIL (crème) ==== */
+  .only-ctas .btn-tertiary {
+	background-color: transparent;
+	color: var(--cream);
+	border: 2px solid var(--cream);
+  }
+  .only-ctas .btn-tertiary:hover {
+	background-color: var(--cream);
+	color: var(--dark-bg);
+  }
+/* 1) Centre toute la carte de contact en colonne */
+.contact-card {
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+  }
+  
+  /* 2) Centre les éléments “Informations” */
+  .contact-info {
+	text-align: center;
+	margin-bottom: 1rem !important;
+  }
+  
+  /* 3) Aligne icône + texte de chaque ligne au centre */
+  .info-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+  }
+  .info-list li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+  }
+  
+  /* 4) Fais tenir tous les boutons sur une seule ligne et centre-les */
+  /* Override final pour aligner parfaitement les 3 boutons */
+.only-ctas {
+	display: flex !important;
+	flex-wrap: nowrap !important;       /* empêche le retour à la ligne */
+	justify-content: center !important; /* centre horizontalement */
+	align-items: center !important;     /* aligne verticalement */
+	gap: 1rem !important;
+	margin-top: 1rem !important;
+	width: 100%;
+  }
+  
+  .only-ctas a {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	height: 48px !important;     /* uniformise la hauteur */
+	padding: 0 1.5rem !important;/* uniformise le padding */
+	margin-top: 0 !important;    /* annule tout margin-top résiduel */
+	white-space: nowrap !important;
+	line-height: normal !important;
+  }
 
 /* --------------------------------------------
 	 Scroll‐Reveal (fade & slide) – CSS classes
@@ -2503,6 +2455,21 @@ button {
 	/* valeur temporaire, remplacée en JS */
 	max-height: 500px;
   }
+
+  /* make the Google Agenda link match the WhatsApp button’s height & centering */
+.contact-actions a.btn-secondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 48px;       /* same as your WhatsApp button */
+	padding: 0 1.5rem;  /* keep your existing horizontal padding */
+  }
+  .contact-actions a.btn-whatsapp,
+.contact-actions a.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+}
+
   
 /* ──────────────────────────────────────────────
    “Notre approche” passe en grille en responsive
@@ -2671,5 +2638,99 @@ button {
 	}
   }
   
+
+  /* ————————————————————————————————————————————
+   Réduction de l’espacement vertical dans la carte de contact
+   ———————————————————————————————————————————— */
+   #contact .contact-card {
+	/* on écrase le gap global pour n’avoir que 0.25rem */
+	gap: 0.25rem !important;
+  }
+  
+  #contact .contact-info {
+	/* on retire toute marge résiduelle sous le bloc infos */
+	margin-bottom: 0 !important;
+  }
+  
+  #contact .only-ctas {
+	/* on annule la marge-top entre infos et boutons */
+	margin-top: 0 !important;
+  }
+
+  /* — fallback si le gap flex n’est pas pris en compte — */
+#contact .only-ctas {
+	/* remonte un peu les boutons */
+	margin-top: -0.5rem !important;
+  }
+
+  #contact .contact-subheading {
+	display: block;
+	max-width: 700px;         /* limite la largeur pour rester lisible */
+	margin: 0.75rem auto 2rem;/* 0.75rem au-dessus, 2rem en-dessous */
+	text-align: center;       /* centre horizontalement le texte */
+  }
+
+/* ————————————————————————————————————————————
+   Empilement des boutons CTAs en colonne en responsive
+   ———————————————————————————————————————————— */
+   @media (max-width: 768px) {
+	/* On cible précisément le conteneur des CTAs */
+	#contact .contact-actions.only-ctas {
+	  display: flex !important;
+	  flex-direction: column !important;
+	  align-items: stretch !important; /* chaque bouton prend la largeur */
+	  gap: 1rem !important;
+	  margin-top: 1rem !important;
+	}
+	/* Chaque lien devient full-width */
+	#contact .contact-actions.only-ctas a {
+	  width: 100% !important;
+	  max-width: none !important;
+	}
+  }
+
+  /* ────────────────────────────────────────────── */
+/* FIX CAROUSEL “ILS TÉMOIGNENT” : largeur des cartes */
+/* On enlève le overflow-y pour que rien ne soit verticalement tronqué */
+section#testimonials .testimonials-container {
+	overflow-x: hidden !important;
+	overflow-y: visible !important;
+  }
+  
+  /* On s’assure que le slider reste en ligne */
+  section#testimonials .testimonials-slider {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	transition: transform 0.8s ease !important;
+  }
+  
+ /* === Carrousel “Ils témoignent” responsive === */
+#testimonials .testimonial-card {
+  /* on laisse JS piloter flex-basis */
+  flex: 0 0 auto;
+  margin-right: var(--testimonial-gap);
+  box-sizing: border-box;
+  width: auto;  /* + on retire toute autre width ! */
+}
+  
+  /* ≥1200px : 3 cartes côte à côte */
+  @media (min-width: 1200px) {
+	section#testimonials .testimonial-card {
+	  flex: 0 0 calc((100% - 2 * var(--testimonial-gap)) / 3) !important;
+	  max-width: calc((100% - 2 * var(--testimonial-gap)) / 3) !important;
+	}
+  }
+  
+  /* On enlève toute limite de hauteur/largeur pour éviter tout crop */
+  section#testimonials .testimonial-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-shrink: 0 !important;
+	height: auto !important;
+	max-height: none !important;
+  }
+  
+
 /* --------------------------------------------
 	 FIN DU CSS

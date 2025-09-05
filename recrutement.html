@@ -35,6 +35,15 @@
 
     <!-- CSS principal -->
     <link rel="stylesheet" href="styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV46LF4HD1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PV46LF4HD1');
+    </script>
 </head>
 
 <body class="recrutement">
@@ -101,7 +110,7 @@
     <header class="hero reveal">
         <div class="header-top">
             <a href="index.html">
-                <img src="R4-Consulting-Logo.png" alt="Logo R4 Consulting" class="logo" />
+                <img src="R4-Consulting-Logo.webp" alt="Logo R4 Consulting" class="logo" />
             </a>
             <!-- BOUTON HAMBURGER (affiché ≤768px) -->
             <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu">
@@ -238,14 +247,15 @@
                 <div class="contact-info">
                     <h3 class="info-title">Comment Postuler ?</h3>
                     <p>
-                        Sélectionnez l’offre qui vous intéresse et cliquez sur “Postuler” pour être redirigé au
-                        formulaire.
+                        Sélectionnez l’offre qui vous intéresse et cliquez sur “Postuler” pour être redirigé vers nos
+                        différents canaux de contacts.
                         Joignez votre CV & lettre de motivation en précisant le <strong>titre du poste</strong>.
                         Nous étudierons votre candidature sous 48 h.
                     </p>
                 </div>
 
                 <!-- Formulaire -->
+<<<<<<< HEAD
                 <div class="contact-form reveal">
                     <h3 class="info-title">Formulaire de Candidature</h3>
                     <form id="contactForm" action="http://localhost:3000/api/contact" method="POST"
@@ -286,6 +296,21 @@
                         </a>
                         <button id="calendlyBtn" type="button">Prendre rendez-vous</button>
                     </div>
+=======
+                <!-- NOUVEAU -->
+                <div class="contact-actions only-ctas">
+                    <a href="https://wa.me/33784298202?text=Bonjour%20R4%20Consulting%20!" class="btn-whatsapp"
+                        target="_blank" rel="noopener">
+                        Discuter sur WhatsApp
+                    </a>
+                    <a href="https://calendar.app.google/vu2skZJCPNh8YWsT8" class="btn-secondary" target="_blank"
+                        rel="noopener">
+                        Réserver sur Google Agenda
+                    </a>
+                    <a href="mailto:contact@r4consulting.fr" class="btn-tertiary">
+                        Envoyer un e-mail
+                    </a>
+>>>>>>> 4766f70622d7f415c8817decc365f0b2a950b71c
                 </div>
             </div>
         </div>

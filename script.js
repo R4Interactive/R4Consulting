@@ -107,11 +107,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Affiche la carte d’index « index »
 		function showTestimonial(index) {
-			const widthPercent = 100 / visibleCount;
-			const offset = -index * widthPercent;
-			slider.style.transform = `translateX(${offset}%)`;
+			const offset = cards[index].offsetLeft;
+			slider.style.transform = `translateX(-${offset}px)`;
 		}
-
 		// Passe à la carte suivante (boucle)
 		function nextTestimonial() {
 			// on n’autorise pas d’index supérieur à (cards.length - visibleCount)
@@ -164,21 +162,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	const calendlyBtn = document.getElementById('calendlyBtn');
-	if (calendlyBtn) {
-		calendlyBtn.addEventListener('click', function (e) {
-			e.preventDefault();
-			const calendlyLink =
-				'https://calendly.com/votre-compte-r4-consulting';
-			window.open(calendlyLink, '_blank');
-		});
-	}
-
-	document.addEventListener('DOMContentLoaded', () => {
-		const form = document.getElementById('contactForm');
-		if (!form) return;
-
-		form.addEventListener('submit', function (e) {
+	const form = document.getElementById('contactForm');
+	if (form) {
+		form.addEventListener('submit', async function (e) {
 			e.preventDefault();
 
 			// IDs des champs obligatoires
@@ -198,16 +184,17 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (missing.length > 0) {
 				// S’il en manque au moins un, on alerte et on met le focus sur le 1er
 				const first = missing[0];
-				let label =
-					{
-						name: 'Nom',
-						email: 'E-mail',
-						phone: 'Téléphone',
-						subject: 'Objet',
-						message: 'Message',
-					}[first] || first;
+				const labels = {
+					name: 'Nom',
+					email: 'E-mail',
+					phone: 'Téléphone',
+					subject: 'Objet',
+					message: 'Message',
+				};
 
-				alert(`Veuillez remplir le champ « ${label} ».`);
+				alert(
+					`Veuillez remplir le champ « ${labels[first] || first} ».`
+				);
 				form.querySelector(`#${first}`)?.focus();
 				return;
 			}
@@ -223,6 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				return;
 			}
 
+<<<<<<< HEAD
 			form.addEventListener('submit', async (e) => {
 				e.preventDefault();
 
@@ -256,8 +244,35 @@ document.addEventListener('DOMContentLoaded', function () {
 					alert('Erreur réseau, réessayez plus tard.');
 				}
 			});
+=======
+			const data = {
+				name: form.name.value,
+				email: form.email.value,
+				phone: form.phone.value,
+				subject: form.subject.value,
+				message: form.message.value,
+			};
+
+			try {
+				const resp = await fetch('/api/contact', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data),
+				});
+				const json = await resp.json();
+				if (json.success) {
+					alert('Merci ! Votre message a bien été envoyé.');
+					form.reset();
+				} else {
+					alert(json.error || 'Erreur serveur');
+				}
+			} catch (err) {
+				console.error(err);
+				alert('Erreur réseau, réessayez plus tard.');
+			}
+>>>>>>> 4766f70622d7f415c8817decc365f0b2a950b71c
 		});
-	});
+	}
 
 	// Si vous voulez vraiment envoyer au serveur, décommentez :
 	// form.submit();
@@ -551,49 +566,52 @@ document.addEventListener('DOMContentLoaded', function () {
 //  CARROUSEL “OFFRES & PACKS” – logique JavaScript
 // -----------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
-	const wrapper = document.querySelector('.offers-packs-wrapper');
-	const cardsContainer = document.querySelector('.offers-packs-cards');
-	const cards = document.querySelectorAll('.offer-card');
-	const prevBtn = document.querySelector('.offers-prev');
-	const nextBtn = document.querySelector('.offers-next');
-	let currentIndex = 0;
+	// On récupère chaque carousel “Offres & Packs” (on a 3 sections : générale, SEO, SEA)
+	const carousels = document.querySelectorAll(
+		'.offres-packs-section .offers-carousel'
+	);
 
-	function getVisibleCount() {
-		const wrapperWidth = wrapper.offsetWidth;
-		const style = window.getComputedStyle(cardsContainer);
-		const gapSize = parseInt(style.gap) || 0;
-		const cardWidth = cards[0].offsetWidth;
-		// On ajoute gapSize à wrapperWidth pour que (n * cardWidth + (n-1)*gapSize) ≤ wrapperWidth
-		return Math.floor((wrapperWidth + gapSize) / (cardWidth + gapSize));
-	}
+	carousels.forEach((carousel) => {
+		const wrapper = carousel.querySelector('.offers-packs-wrapper');
+		const cardsContainer = carousel.querySelector('.offers-packs-cards');
+		const cards = carousel.querySelectorAll('.offer-card');
+		const prevBtn = carousel.querySelector('.offers-prev');
+		const nextBtn = carousel.querySelector('.offers-next');
+		let currentIndex = 0;
 
-	function updateCarousel() {
-		const visibleCount = getVisibleCount();
-		const maxIndex = Math.max(0, cards.length - visibleCount);
+		function getVisibleCount() {
+			const wrapperWidth = wrapper.offsetWidth;
+			const style = getComputedStyle(cardsContainer);
+			const gap = parseInt(style.gap) || 0;
+			const cardWidth = cards[0].offsetWidth;
+			return Math.floor((wrapperWidth + gap) / (cardWidth + gap));
+		}
 
-		if (currentIndex < 0) currentIndex = 0;
-		if (currentIndex > maxIndex) currentIndex = maxIndex;
+		function updateCarousel() {
+			const visibleCount = getVisibleCount();
+			const maxIndex = Math.max(0, cards.length - visibleCount);
+			if (currentIndex < 0) currentIndex = 0;
+			if (currentIndex > maxIndex) currentIndex = maxIndex;
 
-		const style = window.getComputedStyle(cardsContainer);
-		const gapSize = parseInt(style.gap) || 0;
-		const shiftX = currentIndex * (cards[0].offsetWidth + gapSize);
-		cardsContainer.style.transform = `translateX(-${shiftX}px)`;
-	}
+			const style = getComputedStyle(cardsContainer);
+			const gap = parseInt(style.gap) || 0;
+			const shiftX = currentIndex * (cards[0].offsetWidth + gap);
+			cardsContainer.style.transform = `translateX(-${shiftX}px)`;
+		}
 
-	prevBtn.addEventListener('click', function () {
-		currentIndex--;
+		prevBtn.addEventListener('click', function () {
+			currentIndex--;
+			updateCarousel();
+		});
+		nextBtn.addEventListener('click', function () {
+			currentIndex++;
+			updateCarousel();
+		});
+		window.addEventListener('resize', updateCarousel);
+
+		// Initialisation
 		updateCarousel();
 	});
-
-	nextBtn.addEventListener('click', function () {
-		currentIndex++;
-		updateCarousel();
-	});
-
-	window.addEventListener('resize', updateCarousel);
-
-	// Initialisation
-	updateCarousel();
 });
 
 // fonction d'ecoute pour selection pack
@@ -726,48 +744,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Mettre à jour l’URL (facultatif) pour ajouter le hash #contact
 			// window.location.hash = '#contact';
 		});
-	});
-});
-// empeche l'envoi de formulaire si un champs est vide
-// On attend que le DOM soit chargé
-document.addEventListener('DOMContentLoaded', () => {
-	const form = document.getElementById('contactForm');
-	if (!form) return;
-
-	form.addEventListener('submit', function (e) {
-		e.preventDefault();
-
-		// IDs des champs obligatoires
-		const requiredIds = ['name', 'email', 'phone', 'subject', 'message'];
-		// On cherche ceux qui sont vides
-		const missing = requiredIds.filter((id) => {
-			const el = form.querySelector(`#${id}`);
-			return !el || el.value.trim() === '';
-		});
-
-		if (missing.length > 0) {
-			// S’il en manque au moins un, on alerte et on met le focus sur le 1er
-			const first = missing[0];
-			let label =
-				{
-					name: 'Nom',
-					email: 'E-mail',
-					phone: 'Téléphone',
-					subject: 'Objet',
-					message: 'Message',
-				}[first] || first;
-
-			alert(`Veuillez remplir le champ « ${label} ».`);
-			form.querySelector(`#${first}`)?.focus();
-			return;
-		}
-
-		// Sinon tous présents : on affiche le popup de succès
-		alert('Merci ! Votre message a bien été envoyé.');
-		form.reset();
-
-		// Si vous voulez vraiment envoyer au serveur, décommentez :
-		// form.submit();
 	});
 });
 

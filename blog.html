@@ -35,6 +35,15 @@
 
     <!-- CSS principal -->
     <link rel="stylesheet" href="styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV46LF4HD1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PV46LF4HD1');
+    </script>
 </head>
 
 <body>
@@ -99,7 +108,7 @@
     <header class="hero reveal">
         <div class="header-top">
             <a href="index.html">
-                <img src="R4-Consulting-Logo.png" alt="Logo R4 Consulting" class="logo" />
+                <img src="R4-Consulting-Logo.webp" alt="Logo R4 Consulting" class="logo" />
             </a>
             <!-- BOUTON HAMBURGER (affiché ≤768px) -->
             <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu">
@@ -230,7 +239,11 @@
 
                 <div class="contact-form reveal">
                     <h3 class="info-title">Envoyez-Nous un Message</h3>
+<<<<<<< HEAD
                     <form id="contactForm" action="http://localhost:3000/api/contact" method="POST">
+=======
+                    <form id="contactForm" action="/api/contact" method="POST">
+>>>>>>> 4766f70622d7f415c8817decc365f0b2a950b71c
                         <div class="form-group">
                             <label for="name">Nom</label>
                             <input type="text" id="name" name="name" placeholder="Votre nom complet" required />
@@ -260,7 +273,10 @@
                         <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">
                             Discuter sur WhatsApp
                         </a>
-                        <button id="calendlyBtn" type="button">Prendre rendez-vous</button>
+                        <a id="calendarBtn" href="https://calendar.app.google/vu2skZJCPNh8YWsT8" class="btn-secondary"
+                            target="_blank" rel="noopener">
+                            Réserver sur Google Agenda
+                        </a>
                     </div>
                 </div>
             </div>

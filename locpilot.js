@@ -1,54 +1,41 @@
-// Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navmenu = document.getElementById('navmenu');
-if (navToggle && navmenu) {
-	navToggle.addEventListener('click', () => {
-		const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-		navToggle.setAttribute('aria-expanded', String(!expanded));
-		navmenu.style.display = expanded ? 'none' : 'flex';
-	});
-}
+// JS minimal & scopé à .lp pour éviter toute collision
+(function () {
+	const root = document.querySelector('.lp');
+	if (!root) return;
 
-// Year in footer
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-	a.addEventListener('click', (e) => {
-		const target = document.querySelector(a.getAttribute('href'));
-		if (!target) return;
-		e.preventDefault();
-		target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-	});
-});
-
-// Minimal in-view reveal
-const observer =
-	'IntersectionObserver' in window
-		? new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('reveal');
-							observer.unobserve(entry.target);
-						}
-					});
-				},
-				{ threshold: 0.12 }
-		  )
-		: null;
-
-document
-	.querySelectorAll('.card, .feature, .hero-copy, .device')
-	.forEach((el) => {
-		if (observer) observer.observe(el);
+	// Smooth scroll interne (seulement pour les ancres de la section)
+	root.querySelectorAll('a[href^="#"]').forEach((a) => {
+		a.addEventListener('click', (e) => {
+			const target = root.querySelector(a.getAttribute('href'));
+			if (!target) return;
+			e.preventDefault();
+			target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		});
 	});
 
-// Progressive enhancement: add .reveal style
-const style = document.createElement('style');
-style.textContent = `
-  .card, .feature, .hero-copy, .device { opacity: 0; transform: translateY(12px); transition: .5s ease; }
-  .reveal { opacity: 1 !important; transform: none !important; }
-`;
-document.head.appendChild(style);
+	// Révélation douce des éléments clés
+	const revealEls = root.querySelectorAll(
+		'.lp-card, .lp-feature, .lp-hero-copy, .lp-device'
+	);
+	if ('IntersectionObserver' in window) {
+		const io = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.style.transition = '.45s ease';
+						entry.target.style.opacity = '1';
+						entry.target.style.transform = 'none';
+						io.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.12 }
+		);
+
+		revealEls.forEach((el) => {
+			el.style.opacity = '0';
+			el.style.transform = 'translateY(12px)';
+			io.observe(el);
+		});
+	}
+})();

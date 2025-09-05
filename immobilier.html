@@ -35,6 +35,15 @@
 
     <!-- CSS principal -->
     <link rel="stylesheet" href="styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV46LF4HD1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PV46LF4HD1');
+    </script>
 </head>
 
 <body>
@@ -99,7 +108,7 @@
     <header class="hero reveal">
         <div class="header-top">
             <a href="index.html">
-                <img src="R4-Consulting-Logo.png" alt="Logo R4 Consulting" class="logo" />
+                <img src="R4-Consulting-Logo.webp" alt="Logo R4 Consulting" class="logo" />
             </a>
             <!-- BOUTON HAMBURGER (affiché ≤768px) -->
             <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu">
@@ -145,7 +154,7 @@
                     </p>
                 </div>
                 <div class="detail-image">
-                    <img src="assets/images/immobilier-hero.jpg" alt="Illustration : projet immobilier" />
+                    <img src="./image/immo.webp" alt="Illustration : projet immobilier" />
                 </div>
             </div>
         </div>
@@ -314,18 +323,24 @@
     </div>
 
 
-    <!-- SECTION CONTACT RÉUNIFIÉE -->
+    <!-- ===============================
+         SECTION CONTACT RÉUNIFIÉE
+         =============================== -->
     <section id="contact" class="contact reveal">
         <div class="contact-inner">
-            <h2 class="contact-heading">NOUS CONTACTER</h2>
+            <h2 class="contact-heading">Prêt à Transformer Votre Projet ?</h2>
+            <p class="contact-subheading">
+                Dites-nous où vous en êtes, nous vous proposerons la stratégie sur-mesure qui fera décoller votre
+                business. </p>
+            <!-- Conteneur unifié de la carte de contact -->
             <div class="contact-card">
+                <!-- Bloc 1 : Informations de contact -->
                 <div class="contact-info">
                     <h3 class="info-title">Informations</h3>
                     <ul class="info-list">
                         <li>
                             <img src="https://img.icons8.com/ios-filled/24/b08040/new-post.png" alt="Email"
                                 class="info-icon" />
-                            <span class="info-label"></span>
                             <span class="info-text">
                                 <a href="mailto:contact@r4consulting.fr">contact@r4consulting.fr</a>
                             </span>
@@ -333,13 +348,11 @@
                         <li>
                             <img src="https://img.icons8.com/ios-filled/24/b08040/phone.png" alt="Téléphone"
                                 class="info-icon" />
-                            <span class="info-label"></span>
                             <span class="info-text">+33 7 84 29 82 02</span>
                         </li>
                         <li>
                             <img src="https://img.icons8.com/ios-filled/24/b08040/marker.png" alt="Adresse"
                                 class="info-icon" />
-                            <span class="info-label"></span>
                             <span class="info-text">
                                 Résidence La Mongie Tourmalet, 3 rue de Sencours<br />
                                 65200 Bagnères de Bigorre, France
@@ -347,6 +360,7 @@
                         </li>
                     </ul>
                 </div>
+<<<<<<< HEAD
 
                 <div class="contact-form reveal">
                     <h3 class="info-title">Envoyez-Nous un Message</h3>
@@ -382,7 +396,24 @@
                         </a>
                         <button id="calendlyBtn" type="button">Prendre rendez-vous</button>
                     </div>
+=======
+                <!-- NOUVEAU -->
+                <div class="contact-actions only-ctas">
+                    <a href="https://wa.me/33784298202?text=Bonjour%20R4%20Consulting%20!" class="btn-whatsapp"
+                        target="_blank" rel="noopener">
+                        Discuter sur WhatsApp
+                    </a>
+                    <a href="https://calendar.app.google/vu2skZJCPNh8YWsT8" class="btn-secondary" target="_blank"
+                        rel="noopener">
+                        Réserver sur Google Agenda
+                    </a>
+                    <a href="mailto:contact@r4consulting.fr" class="btn-tertiary">
+                        Envoyer un e-mail
+                    </a>
+>>>>>>> 4766f70622d7f415c8817decc365f0b2a950b71c
                 </div>
+
+
             </div>
         </div>
     </section>
