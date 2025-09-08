@@ -2731,6 +2731,20 @@ section#testimonials .testimonials-container {
 	max-height: none !important;
   }
   
+/* Compléments légers pour LocPilot — respecte la charte existante */
+
+/* État visuel des flèches quand désactivées */
+.offres-packs-section .offers-prev[disabled],
+.offres-packs-section .offers-next[disabled] {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* Transition douce du track (si absente dans styles.css) */
+.offres-packs-section .offers-packs-cards {
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
 
 /* --------------------------------------------
 	 FIN DU CSS

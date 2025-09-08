@@ -210,7 +210,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				return;
 			}
 
-<<<<<<< HEAD
 			form.addEventListener('submit', async (e) => {
 				e.preventDefault();
 
@@ -244,33 +243,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					alert('Erreur réseau, réessayez plus tard.');
 				}
 			});
-=======
-			const data = {
-				name: form.name.value,
-				email: form.email.value,
-				phone: form.phone.value,
-				subject: form.subject.value,
-				message: form.message.value,
-			};
-
-			try {
-				const resp = await fetch('/api/contact', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(data),
-				});
-				const json = await resp.json();
-				if (json.success) {
-					alert('Merci ! Votre message a bien été envoyé.');
-					form.reset();
-				} else {
-					alert(json.error || 'Erreur serveur');
-				}
-			} catch (err) {
-				console.error(err);
-				alert('Erreur réseau, réessayez plus tard.');
-			}
->>>>>>> 4766f70622d7f415c8817decc365f0b2a950b71c
 		});
 	}
 
@@ -782,3 +754,458 @@ document.querySelectorAll('.mini-accordion').forEach((detail) => {
 		}
 	});
 });
+// === Offres & Packs — Carousel controls ===
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('.offers-carousel').forEach(setupOffersCarousel);
+});
+
+function setupOffersCarousel(root) {
+	const wrapper = root.querySelector('.offers-packs-wrapper');
+	const track = root.querySelector('.offers-packs-cards');
+	const cards = track
+		? Array.from(track.querySelectorAll('.offer-card'))
+		: [];
+	const prevBtn = root.querySelector('.offers-prev');
+	const nextBtn = root.querySelector('.offers-next');
+
+	if (!wrapper || !track || cards.length <= 1 || !prevBtn || !nextBtn) return;
+
+	let index = 0;
+	root.setAttribute('tabindex', '0'); // clavier: ←/→
+
+	const step = () => {
+		// largeur d’un "pas" = distance entre 2 cartes (gap inclus)
+		if (cards.length > 1) return cards[1].offsetLeft - cards[0].offsetLeft;
+		return wrapper.clientWidth;
+	};
+
+	const visibleCount = () => {
+		const s = step();
+		return s > 0
+			? Math.max(1, Math.floor((wrapper.clientWidth + 1) / s))
+			: 1;
+	};
+
+	const maxIndex = () => Math.max(0, cards.length - visibleCount());
+
+	const apply = () => {
+		const x = step() * index;
+		track.style.transform = `translateX(${-x}px)`;
+
+		// état des flèches
+		prevBtn.disabled = index <= 0;
+		nextBtn.disabled = index >= maxIndex();
+
+		// accessibilité (on masque ce qui sort du viewport)
+		const vis = visibleCount();
+		cards.forEach((card, i) => {
+			const isVisible = i >= index && i < index + vis;
+			card.setAttribute('aria-hidden', String(!isVisible));
+			if (isVisible && i === index)
+				card.setAttribute('aria-current', 'true');
+			else card.removeAttribute('aria-current');
+		});
+	};
+
+	// Actions boutons
+	prevBtn.addEventListener('click', () => {
+		index = Math.max(0, index - visibleCount());
+		apply();
+	});
+
+	nextBtn.addEventListener('click', () => {
+		index = Math.min(maxIndex(), index + visibleCount());
+		apply();
+	});
+
+	// Clavier (← / →)
+	root.addEventListener('keydown', (e) => {
+		if (e.key === 'ArrowLeft') {
+			e.preventDefault();
+			prevBtn.click();
+		}
+		if (e.key === 'ArrowRight') {
+			e.preventDefault();
+			nextBtn.click();
+		}
+	});
+
+	// Responsive
+	const ro = new ResizeObserver(() => {
+		index = Math.min(index, maxIndex());
+		apply();
+	});
+	ro.observe(wrapper);
+
+	apply();
+}
+/* ===== R4 — Offers & Packs Carousel (scoped v7: geom detection + both-way loop) ===== */
+(() => {
+	if (window.R4OffersCarouselModuleLoaded) return;
+	window.R4OffersCarouselModuleLoaded = true;
+
+	// API publique (init/reset ciblés)
+	window.initOffersCarousel = function (target) {
+		const nodes =
+			typeof target === 'string'
+				? document.querySelectorAll(target)
+				: target instanceof Element
+				? [target]
+				: target;
+		nodes && nodes.forEach((el) => setupCarousel(el));
+	};
+	window.resetOffersCarousel = function (
+		target = '.offers-carousel[data-r4-offers]'
+	) {
+		const nodes =
+			typeof target === 'string'
+				? document.querySelectorAll(target)
+				: target instanceof Element
+				? [target]
+				: target;
+		nodes && nodes.forEach((el) => el.r4Carousel?.goStart());
+	};
+
+	document.addEventListener('DOMContentLoaded', () => {
+		document
+			.querySelectorAll('.offers-carousel[data-r4-offers]')
+			.forEach(setupCarousel);
+	});
+
+	function setupCarousel(root) {
+		if (!root || root.r4Carousel) return;
+
+		const wrapper = root.querySelector('.offers-packs-wrapper');
+		const track = root.querySelector('.offers-packs-cards');
+		const prevBtn = root.querySelector('.offers-prev');
+		const nextBtn = root.querySelector('.offers-next');
+		if (!wrapper || !track || !prevBtn || !nextBtn) return;
+
+		// 1) Filtrer indisponibles
+		const all = Array.from(track.querySelectorAll('.offer-card'));
+		const unavailable = (el) => {
+			const v = (el.dataset.available || '').toLowerCase().trim();
+			return (
+				v === 'false' ||
+				v === '0' ||
+				v === 'no' ||
+				v === 'non' ||
+				el.classList.contains('is-unavailable')
+			);
+		};
+		all.forEach((c) => {
+			if (unavailable(c)) c.remove();
+		});
+
+		const cards = Array.from(track.querySelectorAll('.offer-card'));
+		if (!cards.length) {
+			prevBtn.disabled = nextBtn.disabled = true;
+			return;
+		}
+
+		wrapper.style.overflowX = 'hidden';
+		track.style.willChange = 'transform';
+
+		let index = 0;
+		let touched = false;
+
+		// --- Géométrie robuste ---
+		const css = () => getComputedStyle(track);
+		const contentWidth = () => {
+			const first = cards[0];
+			const last = cards[cards.length - 1];
+			const left0 = first.offsetLeft;
+			return last.offsetLeft + last.offsetWidth - left0;
+		};
+		const hasPagination = () => contentWidth() - wrapper.clientWidth > 2;
+
+		// pas moyen fiable entre 2 cartes (moyenne)
+		const step = () => {
+			let diffs = [];
+			for (let i = 1; i < Math.min(cards.length, 6); i++) {
+				const d = cards[i].offsetLeft - cards[i - 1].offsetLeft;
+				if (d > 0) diffs.push(d);
+			}
+			if (!diffs.length) {
+				const w = cards[0].getBoundingClientRect().width;
+				const gap = parseFloat(css().gap || css().columnGap || 0) || 0;
+				return Math.max(1, Math.round(w + gap));
+			}
+			return Math.max(
+				1,
+				Math.round(diffs.reduce((a, b) => a + b, 0) / diffs.length)
+			);
+		};
+
+		const visibleCount = () => {
+			if (!hasPagination()) return cards.length;
+			const s = step();
+			return Math.max(1, Math.floor((wrapper.clientWidth + 1) / s));
+		};
+
+		const maxIndex = () =>
+			hasPagination() ? Math.max(0, cards.length - visibleCount()) : 0;
+
+		const updateUI = () => {
+			const paged = hasPagination();
+			const maxI = maxIndex();
+
+			// calcule le défilement max en pixels (largeur contenu - viewport)
+			const maxScrollPx = Math.max(
+				0,
+				contentWidth() - wrapper.clientWidth
+			);
+
+			if (!paged || maxI === 0) {
+				// pas de pagination -> aucun décalage, flèches off, index 0
+				prevBtn.disabled = true;
+				nextBtn.disabled = true;
+				track.style.transform = '';
+				index = 0;
+			} else {
+				// clamp l’index ET la translation pour éviter tout “trou” en bout
+				index = Math.max(0, Math.min(index, maxI));
+				const stepPx = step();
+				const desired = stepPx * index;
+				const x = Math.min(desired, maxScrollPx); // <= clé : ne jamais aller plus loin que le contenu
+				track.style.transform = `translateX(${-x}px)`;
+
+				// boucles actives -> on laisse les flèches actives
+				prevBtn.disabled = false;
+				nextBtn.disabled = false;
+			}
+
+			// A11y
+			const vis = visibleCount();
+			cards.forEach((card, i) => {
+				const isVisible = !hasPagination()
+					? true
+					: i >= index && i < index + vis;
+				card.setAttribute('aria-hidden', String(!isVisible));
+				if (isVisible && i === index)
+					card.setAttribute('aria-current', 'true');
+				else card.removeAttribute('aria-current');
+			});
+		};
+
+		const centerOn = (targetIdx) => {
+			if (!hasPagination()) {
+				updateUI();
+				return;
+			}
+			const vis = visibleCount();
+			index =
+				vis <= 1
+					? Math.min(maxIndex(), Math.max(0, targetIdx))
+					: Math.min(
+							maxIndex(),
+							Math.max(0, targetIdx - Math.floor(vis / 2))
+					  );
+			updateUI();
+		};
+
+		// Auto-centre “Confort” si présent
+		const confortIdx = cards.findIndex(
+			(c) =>
+				(c.getAttribute('aria-label') || '')
+					.toLowerCase()
+					.includes('confort') ||
+				/confort/i.test(
+					c.querySelector('.offer-title')?.textContent || ''
+				)
+		);
+		const defaultIdx =
+			confortIdx >= 0 ? confortIdx : Math.floor(cards.length / 2);
+		requestAnimationFrame(() => centerOn(defaultIdx));
+
+		// --- Flèches (loop aux 2 bouts) ---
+		prevBtn.addEventListener('click', () => {
+			if (!hasPagination()) return;
+			touched = true;
+			const maxI = maxIndex();
+			if (maxI === 0) return;
+			index = index <= 0 ? maxI : Math.max(0, index - visibleCount());
+			updateUI();
+		});
+
+		nextBtn.addEventListener('click', () => {
+			if (!hasPagination()) return;
+			touched = true;
+			const maxI = maxIndex();
+			if (maxI === 0) return;
+			index = index >= maxI ? 0 : Math.min(maxI, index + visibleCount());
+			updateUI();
+		});
+
+		// --- Clavier
+		root.setAttribute('tabindex', '0');
+		root.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				e.preventDefault();
+				prevBtn.click();
+			}
+			if (e.key === 'ArrowRight') {
+				e.preventDefault();
+				nextBtn.click();
+			}
+		});
+
+		// --- Swipe (hard clamp + loop)
+		let isDrag = false,
+			sx = 0,
+			sy = 0,
+			st = 0,
+			cur = 0,
+			axis = null,
+			vx = 0,
+			lx = 0,
+			lt = 0;
+
+		const clampTranslate = (t) => {
+			const minT = -(step() * maxIndex());
+			const maxT = 0;
+			return Math.max(minT, Math.min(maxT, t));
+		};
+		const xy = (e) =>
+			e.touches && e.touches[0]
+				? { x: e.touches[0].clientX, y: e.touches[0].clientY }
+				: { x: e.clientX, y: e.clientY };
+		const currentTranslate = () => -(step() * index);
+
+		const onDown = (e) => {
+			if (!hasPagination()) return;
+			if (e.button !== undefined && e.button !== 0) return;
+			isDrag = true;
+			touched = true;
+			axis = null;
+			const p = xy(e);
+			sx = p.x;
+			sy = p.y;
+			st = currentTranslate();
+			cur = st;
+			lx = p.x;
+			lt = performance.now();
+			vx = 0;
+			track.style.transition = 'none';
+			root.setPointerCapture?.(e.pointerId);
+		};
+		const onMove = (e) => {
+			if (!isDrag) return;
+			const p = xy(e);
+			const dx = p.x - sx;
+			const dy = p.y - sy;
+			if (!axis) {
+				if (Math.abs(dx) > 8 || Math.abs(dy) > 8)
+					axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+				else return;
+			}
+			if (axis === 'y') return;
+
+			cur = clampTranslate(st + dx);
+			track.style.transform = `translateX(${cur}px)`;
+
+			const now = performance.now();
+			const dt = now - lt;
+			if (dt > 0) vx = (p.x - lx) / dt;
+			lx = p.x;
+			lt = now;
+			e.preventDefault();
+		};
+		const onUp = (e) => {
+			if (!isDrag) return;
+			isDrag = false;
+			track.style.transition = '';
+			const dx = cur - st;
+			const thr = step() * 0.25;
+			const inertia = vx * 180;
+			const total = dx + inertia;
+			const maxI = maxIndex();
+			if (maxI === 0) {
+				updateUI();
+				root.releasePointerCapture?.(e.pointerId);
+				return;
+			}
+
+			if (total < -thr) {
+				// →
+				index =
+					index >= maxI
+						? 0
+						: Math.min(
+								maxI,
+								index + Math.ceil(Math.abs(total) / step())
+						  );
+			} else if (total > thr) {
+				// ←
+				index =
+					index <= 0
+						? maxI
+						: Math.max(
+								0,
+								index - Math.ceil(Math.abs(total) / step())
+						  );
+			}
+			updateUI();
+			root.releasePointerCapture?.(e.pointerId);
+		};
+
+		track.addEventListener('pointerdown', onDown, { passive: true });
+		window.addEventListener('pointermove', onMove, { passive: false });
+		window.addEventListener('pointerup', onUp, { passive: true });
+		window.addEventListener('pointercancel', onUp, { passive: true });
+		window.addEventListener(
+			'pointerleave',
+			(e) => {
+				if (isDrag) onUp(e);
+			},
+			{ passive: true }
+		);
+
+		// --- Responsive : recalcule avec la géométrie
+		const onResize = () => {
+			index = Math.min(index, maxIndex());
+			if (!touched) centerOn(defaultIdx);
+			else updateUI();
+		};
+		if ('ResizeObserver' in window)
+			new ResizeObserver(onResize).observe(wrapper);
+		else window.addEventListener('resize', onResize);
+
+		// API
+		root.r4Carousel = {
+			goTo(i) {
+				index = Math.max(0, Math.min(i | 0, maxIndex()));
+				updateUI();
+			},
+			goStart() {
+				index = 0;
+				updateUI();
+			},
+			goEnd() {
+				index = maxIndex();
+				updateUI();
+			},
+			next() {
+				const m = maxIndex();
+				if (m === 0) return;
+				index = index >= m ? 0 : Math.min(m, index + visibleCount());
+				updateUI();
+			},
+			prev() {
+				const m = maxIndex();
+				if (m === 0) return;
+				index = index <= 0 ? m : Math.max(0, index - visibleCount());
+				updateUI();
+			},
+			refresh() {
+				updateUI();
+			},
+			get current() {
+				return index;
+			},
+			get max() {
+				return maxIndex();
+			},
+		};
+	}
+})();

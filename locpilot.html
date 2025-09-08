@@ -2,276 +2,224 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LocPilot by R4 — Réservations directes, 0 % commission</title>
     <meta name="description"
         content="LocPilot by R4 : générez des réservations directes sans commission. Site premium, moteur de réservation intégré, visibilité Google Travel & Maps, TripAdvisor." />
+    <meta property="og:title" content="LocPilot by R4 — Réservations directes" />
+    <meta property="og:description"
+        content="Site premium, moteur de résa intégré, visibilité Google Travel & Maps, TripAdvisor. 0 % commission." />
+    <meta property="og:type" content="website" />
+    <title>LocPilot by R4</title>
+
+    <!-- Styles globaux du site -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- (petit complément visuel optionnel pour ce template) -->
     <link rel="stylesheet" href="locpilot.css" />
 
-    <!-- Données structurées : 3 offres -->
-    <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Product",
-    "name":"LocPilot by R4",
-    "brand":{"@type":"Brand","name":"R4 Consulting"},
-    "description":"Solution digitale pour générer des réservations directes sans commission.",
-    "offers":[
-      {"@type":"Offer","name":"Pack Essentiel","price":"1490","priceCurrency":"EUR"},
-      {"@type":"Offer","name":"Pack Confort","price":"2490","priceCurrency":"EUR"},
-      {"@type":"Offer","name":"Pack Autonomie","price":"3490","priceCurrency":"EUR"}
-    ]
-  }
-  </script>
+    <!-- Polices/icônes comme la home -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Dancing+Script&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
-    <main>
-        <!-- SECTION SCOPÉE .lp (respecte ta charte globale) -->
-        <section class="lp" id="locpilot" aria-labelledby="lp-title">
-            <!-- HERO -->
-            <div class="lp-section lp-hero">
-                <div class="lp-container lp-hero-grid">
-                    <div class="lp-hero-copy">
-                        <h1 id="lp-title">LocPilot by R4 — <span class="lp-highlight">0&nbsp;% commission</span></h1>
-                        <p class="lp-lead">
-                            Reprenez le contrôle de vos réservations : site premium, moteur de réservation intégré,
-                            visibilité <strong>Google Travel</strong> & <strong>Maps</strong>, profil
-                            <strong>TripAdvisor</strong> optimisé.
-                        </p>
-                        <div class="lp-hero-cta">
-                            <a class="lp-btn lp-btn-primary" href="#lp-contact">Demander une démo</a>
-                            <a class="lp-btn lp-btn-ghost" href="assets/LocPilot-by-R4.pdf" download>Plaquette PDF</a>
-                        </div>
-                        <ul class="lp-trust" aria-label="Indicateurs clés">
-                            <li>SEO friendly</li>
-                            <li>Moteur responsive</li>
-                            <li>Multi-biens & évolutif</li>
-                        </ul>
-                    </div>
-                    <div class="lp-hero-media" aria-hidden="true">
-                        <div class="lp-device">
-                            <div class="lp-device-screen">
-                                <div class="lp-pulse"></div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ===============================
+       HEADER / HERO (mêmes classes que la home)
+       =============================== -->
+    <header class="hero">
+        <div class="header-top">
+            <a href="index.html">
+                <img src="R4-Consulting-Logo.webp" alt="Logo R4 Consulting" class="logo" />
+            </a>
+
+            <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu">
+                <span></span><span></span><span></span>
+            </button>
+            <button id="themeToggle" aria-label="Basculer thème sombre/clair"
+                title="Basculer thème sombre/clair">🌙</button>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="identite.html" class="active">Digital</a></li>
+                    <li><a href="immobilier.html">Immobilier</a></li>
+                    <li><a href="gestion.html">Patrimoine</a></li>
+                    <li><a href="recrutement.html">Recrutement</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="hero-inner hero-visible">
+            <h1 class="site-title">LocPilot by R4 — Réservations Directes</h1>
+            <p class="tagline">Votre canal direct sans commission, pensé pour convertir.</p>
+            <!-- CTA identique -->
+            <a href="#offres-lp" class="btn-primary">Découvrir les packs</a>
+        </div>
+    </header>
+
+    <!-- ===============================
+       POURQUOI (reprise de ton pattern detail-service)
+       =============================== -->
+    <section class="detail-service">
+        <div class="detail-inner">
+            <h2 class="detail-heading">Pourquoi choisir LocPilot&nbsp;?</h2>
+
+            <div class="detail-content intro">
+                <div class="detail-text">
+                    <p>
+                        Reprenez le contrôle de vos réservations&nbsp;: <strong>site premium</strong>,
+                        <strong>moteur de réservation intégré</strong>, visibilité <strong>Google Travel &amp;
+                            Maps</strong>,
+                        profil <strong>TripAdvisor</strong> optimisé. <br />
+                        <em>Objectif&nbsp;: plus de direct, 0&nbsp;% de commission.</em>
+                    </p>
+                </div>
+                <div class="detail-image">
+                    <img src="assets/mockup-locpilot.jpg" alt="Aperçu LocPilot by R4" />
                 </div>
             </div>
 
-            <!-- ATOUTS -->
-            <div class="lp-section" id="lp-atouts">
-                <div class="lp-container">
-                    <h2 class="lp-section-title">Pourquoi choisir LocPilot&nbsp;?</h2>
-                    <div class="lp-grid-3">
-                        <article class="lp-card lp-feature">
-                            <div class="lp-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M6 13a6 6 0 0 1 12 0v1h1a3 3 0 1 1-6 0v-1H6zM3 14h2a7 7 0 0 1 14 0h2" />
-                                </svg>
-                            </div>
-                            <h3>Canal direct performant</h3>
-                            <p>Un site de réservation directe pensé pour convertir&nbsp;: rapide, accessible, optimisé
-                                SEO.</p>
-                        </article>
-                        <article class="lp-card lp-feature">
-                            <div class="lp-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M9 3l6 2 6-2v16l-6 2-6-2-6 2V5zM9 5v14M15 5v14" />
-                                </svg>
-                            </div>
-                            <h3>Visibilité élargie</h3>
-                            <p>Activation <strong>Google Travel</strong>, <strong>Google Maps</strong> et
-                                <strong>TripAdvisor</strong> pour capter la demande locale.
-                            </p>
-                        </article>
-                        <article class="lp-card lp-feature">
-                            <div class="lp-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M12 3l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7z" />
-                                </svg>
-                            </div>
-                            <h3>0&nbsp;% commission</h3>
-                            <p>Gardez vos marges&nbsp;: pas de frais sur les réservations directes. Vous pilotez votre
-                                rentabilité.</p>
-                        </article>
-                    </div>
-                </div>
+            <div class="detail-content section-block">
+                <h3>Ce que vous obtenez</h3>
+                <ul>
+                    <li>Un <strong>site de réservation directe</strong> rapide, accessible et SEO-friendly</li>
+                    <li>Une <strong>intégration fluide</strong> du moteur de réservation (mobile-first)</li>
+                    <li>La <strong>visibilité locale</strong> via Google Travel, Google Maps &amp; TripAdvisor</li>
+                    <li>Un accompagnement modulable selon vos objectifs et votre autonomie</li>
+                </ul>
             </div>
+        </div>
+    </section>
 
-            <!-- PACKS (3 fiches côte à côte) -->
-            <div class="lp-section lp-alt" id="lp-packs" aria-labelledby="lp-packs-title">
-                <div class="lp-container">
-                    <h2 id="lp-packs-title" class="lp-section-title">Trois packs, un objectif : <span
-                            class="lp-nowrap">+ de direct</span></h2>
+    <!-- ===============================
+       OFFRES & PACKS — CAROUSEL (flèches + swipe)
+       =============================== -->
+    <section id="offres-lp" class="offres-packs-section detail-service">
+        <div class="detail-inner">
+            <h2 class="detail-heading">Trois packs, un objectif&nbsp;: + de direct</h2>
 
-                    <div class="lp-packs" role="list" aria-label="Liste des packs">
+            <div class="offers-carousel" data-r4-offers aria-roledescription="carousel">
+                <button class="offers-prev" aria-label="Précédent">‹</button>
+
+                <div class="offers-packs-wrapper" aria-live="polite">
+                    <div class="offers-packs-cards">
                         <!-- ESSENTIEL -->
-                        <article class="lp-card lp-pack" role="listitem" aria-label="Pack Essentiel">
-                            <header>
-                                <h3>Essentiel</h3>
-                                <p class="lp-price"><span class="lp-amount">1&nbsp;490&nbsp;€</span> <span
-                                        class="lp-period">HT / an</span></p>
-                                <p class="lp-note">0 % commission • idéal pour se lancer</p>
-                            </header>
-                            <ul class="lp-list">
+                        <article class="offer-card" aria-label="Pack Essentiel">
+                            <h4 class="offer-title">Pack Essentiel — 1&nbsp;490&nbsp;€ HT / an</h4>
+                            <ul class="offer-list">
                                 <li>Site premium de réservation directe (SEO friendly)</li>
-                                <li>Visibilité renforcée sur Google Travel, Google Maps & TripAdvisor</li>
-                                <li>Plus d’indépendance face aux commissions OTA</li>
+                                <li>Visibilité renforcée Google Travel, Google Maps &amp; TripAdvisor</li>
+                                <li>Indépendance vis-à-vis des commissions OTA</li>
                                 <li>Maintenance technique incluse</li>
                             </ul>
-                            <footer>
-                                <a class="lp-btn lp-btn-primary" href="#lp-contact"
-                                    aria-label="Choisir le pack Essentiel">Je choisis ce pack</a>
-                            </footer>
+                            <a href="#contact" class="btn-primary">Demander une démo</a>
                         </article>
 
                         <!-- CONFORT -->
-                        <article class="lp-card lp-pack" role="listitem" aria-label="Pack Confort">
-                            <span class="lp-ribbon" aria-hidden="true">Populaire</span>
-                            <header>
-                                <h3>Confort</h3>
-                                <p class="lp-price"><span class="lp-amount">2&nbsp;490&nbsp;€</span> <span
-                                        class="lp-period">HT / an</span></p>
-                                <p class="lp-note">0 % commission • accompagnement stratégique léger</p>
-                            </header>
-                            <ul class="lp-list">
-                                <li>Site premium orienté conversions (canal direct)</li>
-                                <li>Présence renforcée Google Travel, Maps & TripAdvisor</li>
-                                <li>2 RDV stratégiques/an (pré-saison & mi-saison)</li>
+                        <article class="offer-card" aria-label="Pack Confort">
+                            <h4 class="offer-title">Pack Confort — 2&nbsp;490&nbsp;€ HT / an</h4>
+                            <ul class="offer-list">
+                                <li>Tout “Essentiel” + optimisation conversion</li>
+                                <li>Présence renforcée Google Travel, Maps &amp; TripAdvisor</li>
+                                <li>2 RDV stratégiques/an (pré-saison &amp; mi-saison)</li>
                                 <li>Support prioritaire (mail + visio)</li>
-                                <li>Mise en relation ponctuelle avec des prestataires locaux (ménage, linge, photos…)
-                                </li>
+                                <li>Mise en relation ponctuelle avec des prestataires locaux</li>
                             </ul>
-                            <footer>
-                                <a class="lp-btn lp-btn-primary" href="#lp-contact"
-                                    aria-label="Choisir le pack Confort">Je choisis ce pack</a>
-                            </footer>
+                            <a href="#contact" class="btn-primary">Demander une démo</a>
                         </article>
 
                         <!-- AUTONOMIE -->
-                        <article class="lp-card lp-pack lp-pack-featured" role="listitem" aria-label="Pack Autonomie">
-                            <span class="lp-ribbon" aria-hidden="true">Recommandé</span>
-                            <header>
-                                <h3>Autonomie</h3>
-                                <p class="lp-price"><span class="lp-amount">3&nbsp;490&nbsp;€</span> <span
-                                        class="lp-period">HT / an</span></p>
-                                <p class="lp-note">0 % commission • suivi stratégique illimité</p>
-                            </header>
-                            <ul class="lp-list">
-                                <li>Site premium optimisé pour les réservations directes</li>
-                                <li>Présence Google Travel, Maps & TripAdvisor</li>
-                                <li>Suivi prioritaire et illimité (ajustements en continu)</li>
-                                <li>Yield management simplifié</li>
-                                <li>Stratégie anti-OTA progressive</li>
+                        <article class="offer-card" aria-label="Pack Autonomie">
+                            <h4 class="offer-title">Pack Autonomie — 3&nbsp;490&nbsp;€ HT / an</h4>
+                            <ul class="offer-list">
+                                <li>Tout “Confort” + suivi prioritaire illimité</li>
+                                <li>Yield management simplifié &amp; anti-OTA progressive</li>
                                 <li>Optimisation continue du taux d’occupation</li>
-                                <li>Mise en relation avec un réseau complet de prestataires fiables</li>
+                                <li>Réseau complet de prestataires fiables</li>
                             </ul>
-                            <footer>
-                                <a class="lp-btn lp-btn-primary" href="#lp-contact"
-                                    aria-label="Choisir le pack Autonomie">Je choisis ce pack</a>
-                            </footer>
+                            <a href="#contact" class="btn-primary">Demander une démo</a>
                         </article>
                     </div>
-
-                    <p class="lp-small lp-muted">Tarifs HT. Intègrent l’implémentation du moteur de réservation. Nom de
-                        domaine et outils tiers non inclus.</p>
                 </div>
+
+                <button class="offers-next" aria-label="Suivant">›</button>
             </div>
 
-            <!-- COMPARATIF -->
-            <div class="lp-section" id="lp-comparatif">
-                <div class="lp-container">
-                    <h2 class="lp-section-title">LocPilot vs. plateformes OTA</h2>
-                    <div class="lp-compare">
-                        <div class="lp-card">
-                            <h3>LocPilot (canal direct)</h3>
-                            <ul class="lp-list">
-                                <li>0 % de commission</li>
-                                <li>Marque & relation client maîtrisées</li>
-                                <li>SEO & visibilité locale (Maps/Travel)</li>
-                                <li>Stratégie prix souple (yield léger)</li>
-                            </ul>
-                        </div>
-                        <div class="lp-card lp-card-alt">
-                            <h3>OTA (Airbnb, Booking…)</h3>
-                            <ul class="lp-list">
-                                <li>Commissions 15–20 % (voire +)</li>
-                                <li>Dépendance aux algorithmes</li>
-                                <li>Peu de données propriétaires</li>
-                                <li>Moins de marge pour investir</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="lp-cta-center">
-                        <a class="lp-btn lp-btn-ghost" href="#lp-faq">Voir la FAQ</a>
-                        <a class="lp-btn lp-btn-primary" href="#lp-contact">Passer au direct</a>
-                    </div>
-                </div>
+            <div class="detail-content section-block faq-block">
+                <h3>Questions fréquentes</h3>
+                <h4>Compatible avec mes annonces Airbnb/Booking&nbsp;?</h4>
+                <p>Oui, LocPilot s’ajoute comme canal direct. Vous conservez vos OTA et réduisez leur part si vous le
+                    souhaitez.</p>
+                <h4>Qui gère le moteur de réservation&nbsp;?</h4>
+                <p>Nous l’implémentons et le paramétrons. Vous gardez la main sur disponibilités &amp; tarifs.</p>
             </div>
 
-            <!-- FAQ -->
-            <div class="lp-section lp-alt" id="lp-faq">
-                <div class="lp-container">
-                    <h2 class="lp-section-title">FAQ</h2>
-                    <div class="lp-faq">
-                        <details>
-                            <summary>Compatible avec mes annonces Airbnb/Booking&nbsp;?</summary>
-                            <p>Oui. LocPilot s’ajoute comme canal direct. Vous conservez vos OTA, puis vous réduisez
-                                leur part si vous le souhaitez.</p>
-                        </details>
-                        <details>
-                            <summary>Qui gère le moteur de réservation&nbsp;?</summary>
-                            <p>Nous l’implémentons et le paramétrons ; vous gardez la main sur dispos & tarifs.</p>
-                        </details>
-                        <details>
-                            <summary>Délai pour apparaître sur Google Travel & Maps&nbsp;?</summary>
-                            <p>Mise en place rapide. L’apparition dépend ensuite des délais de Google et des signaux SEO
-                                locaux.</p>
-                        </details>
-                        <details>
-                            <summary>Accompagnement tarifaire (yield)&nbsp;?</summary>
-                            <p>Inclus dans le pack Autonomie : lissage des revenus et captation de la demande
-                                haute/basse saison.</p>
-                        </details>
-                    </div>
+            <!-- CTA global identique -->
+            <div class="cta-block">
+                <h3>Envie de passer au direct&nbsp;?</h3>
+                <p>On analyse votre situation et on vous montre concrètement l’impact de LocPilot sur vos réservations.
+                </p>
+                <a href="#contact" class="btn-primary">Parler à un expert</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+       CONTACT (mêmes classes/CTA que la home)
+       =============================== -->
+    <section id="contact" class="contact">
+        <div class="contact-inner">
+            <h2 class="contact-heading">Prêt à Transformer Votre Projet ?</h2>
+            <p class="contact-subheading">
+                Dites-nous où vous en êtes, nous vous proposerons la stratégie sur-mesure qui fera décoller votre
+                business.
+            </p>
+
+            <div class="contact-card">
+                <div class="contact-info">
+                    <h3 class="info-title">Informations</h3>
+                    <ul class="info-list">
+                        <li>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/new-post.png" alt="Email"
+                                class="info-icon" />
+                            <span class="info-text"><a
+                                    href="mailto:contact@r4consulting.fr">contact@r4consulting.fr</a></span>
+                        </li>
+                        <li>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/phone.png" alt="Téléphone"
+                                class="info-icon" />
+                            <span class="info-text">+33 7 84 29 82 02</span>
+                        </li>
+                        <li>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/marker.png" alt="Adresse"
+                                class="info-icon" />
+                            <span class="info-text">Résidence La Mongie Tourmalet, 3 rue de Sencours<br />65200 Bagnères
+                                de Bigorre, France</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-actions only-ctas">
+                    <a href="https://wa.me/33784298202?text=Bonjour%20R4%20Consulting%20!" class="btn-whatsapp"
+                        target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+                    <a href="https://calendar.app.google/vu2skZJCPNh8YWsT8" class="btn-secondary" target="_blank"
+                        rel="noopener">Réserver sur Google Agenda</a>
+                    <a href="mailto:contact@r4consulting.fr" class="btn-tertiary">Envoyer un e-mail</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- CONTACT -->
-            <div class="lp-section lp-contact" id="lp-contact">
-                <div class="lp-container lp-contact-grid">
-                    <div>
-                        <h2 class="lp-section-title">Parlons de votre bien</h2>
-                        <p>Expliquez vos objectifs (taux d’occupation, panier moyen, saisonnalité). On vous montre ce
-                            que LocPilot peut apporter.</p>
-                        <ul class="lp-contact-points">
-                            <li>💬 Visio de découverte (30 min)</li>
-                            <li>🧭 Audit express de votre présence</li>
-                            <li>🛠️ Roadmap d’activation</li>
-                        </ul>
-                    </div>
-                    <form class="lp-card lp-form" action="mailto:sales@leadforge.fr" method="post" enctype="text/plain">
-                        <label>Nom
-                            <input type="text" name="nom" placeholder="Nom Prénom" required />
-                        </label>
-                        <label>E-mail
-                            <input type="email" name="email" placeholder="vous@exemple.com" required />
-                        </label>
-                        <label>Message
-                            <textarea name="message" rows="5" placeholder="Nombre de biens, localisation, objectifs…"
-                                required></textarea>
-                        </label>
-                        <button class="lp-btn lp-btn-primary" type="submit">Envoyer</button>
-                        <p class="lp-small lp-muted">Ou contactez-nous sur LinkedIn en message privé.</p>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+    <footer class="site-footer">
+        <p class="footer-text">© 2025 R4 Consulting — Digital • Immobilier • Patrimoine • Vision</p>
+    </footer>
 
-    <script src="locpilot.js" defer></script>
+    <!-- JS global du site + contrôles du carrousel -->
+    <script src="script.js" defer></script>
 </body>
 
 </html>
