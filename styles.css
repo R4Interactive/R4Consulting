@@ -2904,6 +2904,13 @@ section#testimonials .testimonials-container {
   .page-locpilot .detail-inner { width: min(1200px, 100% - 3rem); }
   .page-locpilot .offers-packs-section .offer-card { min-width: clamp(340px, 28vw, 420px); }
 }
+/* Micro-typo SEO/UX */
+.page-locpilot .offer-blurb { margin:.35rem 0 .6rem; font-size: .98rem; opacity:.95; }
+.page-locpilot .faq-block h4 { font-size:1.02rem; margin-top:.9rem; margin-bottom:.3rem; }
+.page-locpilot ol { padding-left: 1.2rem; display:grid; gap:.35rem; }
+.page-locpilot ul { padding-left: 1.1rem; }
+.page-locpilot .detail-heading strong { font-weight: 800; }
+.page-locpilot a { text-underline-offset: 2px; }
 
 
 /* --------------------------------------------
