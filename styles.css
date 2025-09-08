@@ -2745,6 +2745,43 @@ section#testimonials .testimonials-container {
   transition: transform 0.4s ease;
   will-change: transform;
 }
+/* n'affecte que la page LocPilot */
+.page-locpilot h3 { text-align: center; }
+
+/* ===== LocPilot — ULTRA SERRÉ entre "Ce que vous obtenez" et la section packs ===== */
+
+/* Couper (presque) toute la marge en bas du dernier bloc de la 1re section */
+.page-locpilot .detail-service .section-block:last-child {
+  margin-bottom: 4px !important;
+  padding-bottom: 0 !important;
+}
+
+/* Évite que la marge du heading suivant se "collape" avec celle d'avant */
+.page-locpilot #offres-lp {
+  margin-top: 4px !important;
+  padding-top: 0 !important;
+  border-top: 1px solid transparent; /* casse le collapsing sans effet visuel */
+}
+
+/* Neutralise toute marge haute du premier titre dans la section packs */
+.page-locpilot #offres-lp .detail-heading:first-child {
+  margin-top: 0 !important;
+  margin-bottom: 8px; /* petit rythme, sinon mets 4px */
+}
+
+/* Supprime la marge basse de l’ultime enfant du bloc "Ce que vous obtenez" */
+.page-locpilot .detail-service .section-block:last-child > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Si le layout interne ajoute une marge/padding en tête, on les annule */
+.page-locpilot #offres-lp .detail-inner {
+  padding-top: 0 !important;
+}
+.page-locpilot #offres-lp .detail-inner > :first-child {
+  margin-top: 0 !important;
+}
+
 
 /* --------------------------------------------
 	 FIN DU CSS
