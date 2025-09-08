@@ -2781,6 +2781,129 @@ section#testimonials .testimonials-container {
 .page-locpilot #offres-lp .detail-inner > :first-child {
   margin-top: 0 !important;
 }
+/* ============ LocPilot — Responsive Upgrade ============ */
+
+/* Conteneur fluide et image safe */
+.page-locpilot .detail-inner { width: min(1100px, 100% - 2rem); margin-inline: auto; }
+.page-locpilot img { max-width: 100%; height: auto; display: block; }
+
+/* Titres à taille fluide */
+.page-locpilot .detail-heading { 
+  text-align: center;
+  font-size: clamp(1.4rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+}
+
+/* ---- 1) Section intro ("Pourquoi…") ---- */
+.page-locpilot .detail-service .intro {
+  display: grid;
+  gap: clamp(16px, 2.4vw, 32px);
+}
+.page-locpilot .detail-service .intro .detail-text { order: 1; }
+.page-locpilot .detail-service .intro .detail-image { order: 2; }
+
+@media (min-width: 768px) {
+  .page-locpilot .detail-service .intro {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+  }
+  .page-locpilot .detail-service .intro .detail-text { order: 1; }
+  .page-locpilot .detail-service .intro .detail-image { order: 2; justify-self: end; }
+}
+
+/* Listes plus lisibles sur mobile */
+.page-locpilot .detail-service ul { 
+  margin: 0; 
+  padding-left: 1.1em;
+  display: grid; 
+  gap: .4rem;
+}
+
+/* ---- 2) Section packs (carousel) ---- */
+
+/* Wrapper: respire un peu sur petits écrans */
+.page-locpilot .offers-packs-section .offers-packs-wrapper { 
+  padding-inline: clamp(0px, 3vw, 24px);
+}
+
+/* Track par défaut = flex (desktop, piloté par JS) */
+.page-locpilot .offers-packs-section .offers-packs-cards {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 32px);
+  will-change: transform;
+}
+
+/* Cartes: largeur min/max fluide pour éviter les sauts */
+.page-locpilot .offers-packs-section .offer-card {
+  min-width: clamp(300px, 34vw, 420px);
+  padding: clamp(16px, 2.2vw, 24px);
+  border-radius: 14px;
+}
+
+/* Bouton plein-largeur sur mobile */
+@media (max-width: 480px) {
+  .page-locpilot .offers-packs-section .offer-card .btn-primary { width: 100%; }
+}
+
+/* Arrows: centrées verticalement, cliquables, mais cachées en mobile */
+.page-locpilot .offers-packs-section .offers-prev,
+.page-locpilot .offers-packs-section .offers-next {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .page-locpilot .offers-packs-section .offers-prev,
+  .page-locpilot .offers-packs-section .offers-next { display: none; }
+}
+
+/* Mobile/Tablet: on passe le track en grille -> 1 carte/ligne (JS le gère) */
+@media (max-width: 900px) {
+  .page-locpilot .offers-packs-section .offers-packs-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(14px, 2.2vw, 24px);
+    transform: none !important; /* sécurité visuelle */
+  }
+  .page-locpilot .offers-packs-section .offer-card {
+    min-width: 0;
+  }
+}
+
+/* Ultra serré entre "Ce que vous obtenez" et "Trois packs…" (tu l’avais demandé) */
+.page-locpilot .detail-service .section-block:last-child { margin-bottom: 4px !important; }
+.page-locpilot #offres-lp { margin-top: 4px !important; padding-top: 0 !important; }
+
+/* ---- 3) FAQ & CTA ---- */
+.page-locpilot .faq-block h4 { margin-top: clamp(10px, 1.6vw, 18px); margin-bottom: .4rem; }
+.page-locpilot .faq-block p  { margin-top: 0; }
+
+.page-locpilot .cta-block {
+  text-align: center;
+  padding-block: clamp(16px, 3vw, 36px);
+}
+.page-locpilot .cta-block h3 { 
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  margin-bottom: .5rem;
+}
+.page-locpilot .cta-block p { 
+  max-width: 60ch; 
+  margin-inline: auto; 
+  margin-bottom: .9rem; 
+}
+
+/* ---- 4) Petits écrans très étroits ---- */
+@media (max-width: 360px) {
+  .page-locpilot .detail-inner { width: calc(100% - 1.25rem); }
+  .page-locpilot .detail-heading { font-size: 1.25rem; }
+  .page-locpilot .offer-card { padding: 14px; }
+}
+
+/* ---- 5) Grands écrans ---- */
+@media (min-width: 1200px) {
+  .page-locpilot .detail-inner { width: min(1200px, 100% - 3rem); }
+  .page-locpilot .offers-packs-section .offer-card { min-width: clamp(340px, 28vw, 420px); }
+}
 
 
 /* --------------------------------------------
