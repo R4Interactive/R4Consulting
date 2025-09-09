@@ -76,7 +76,7 @@
 					"name": "Compatible avec mes annonces Airbnb/Booking ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Oui. LocPilot s’ajoute comme canal direct : vous gardez vos OTA et réduisez progressivement leur part."
+						"text": "Oui. Notre solution s’ajoute comme canal direct : vous gardez vos OTA et réduisez progressivement leur part."
 					}
 				},
 				{
@@ -114,7 +114,7 @@
 					"name": "Qui a accès à mon moteur de réservation ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Vous restez propriétaire des comptes et gardez le contrôle sur les disponibilités, tarifs et conditions. R4 dispose d’un compte master (accès administrateur) pour l’assistance, la supervision et les interventions techniques, sans modifier vos paramètres commerciaux sans votre accord."
+						"text": "Vous restez propriétaire des comptes et gardez le contrôle sur disponibilités, tarifs et conditions. R4 dispose d’un compte master (accès administrateur) pour l’assistance, la supervision et les interventions techniques, sans modifier vos paramètres commerciaux sans votre accord."
 					}
 				},
 				{
@@ -122,7 +122,7 @@
 					"name": "Qu’est-ce qu’un compte master ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Un accès administrateur auditable permettant support et maintenance (diagnostics, mises à jour, correctifs). Il est sécurisé (mots de passe forts, 2FA lorsque disponible) et son usage est journalisé sur les outils compatibles."
+						"text": "Un accès administrateur auditable et sécurisé (mots de passe forts, 2FA lorsque disponible) pour support, diagnostics, mises à jour. Usage journalisé si l’outil le permet."
 					}
 				},
 				{
@@ -130,7 +130,7 @@
 					"name": "Puis-je limiter ou retirer cet accès ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Oui. L’accès master peut être temporaire, restreint (droits minimaux) ou désactivé sur demande. Un accès en lecture seule peut être mis en place selon l’outil utilisé (PMS/Channel Manager)."
+						"text": "Oui : accès temporaire, restreint (droits minimaux), lecture seule si possible, ou désactivation sur demande."
 					}
 				},
 				{
@@ -138,7 +138,7 @@
 					"name": "Comment sont traitées les modifications sensibles ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Elles sont réalisées sur validation écrite, précédées d’une sauvegarde/export lorsque disponible, documentées, avec possibilité de retour arrière."
+						"text": "Sur validation écrite, avec sauvegarde/export préalable quand c’est possible, documentation et possibilité de retour arrière."
 					}
 				},
 				{
