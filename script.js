@@ -1209,3 +1209,29 @@ function setupOffersCarousel(root) {
 		};
 	}
 })();
+// Init du carrousel LocPilot uniquement quand la section "offres" entre en vue
+(() => {
+	const target = document.querySelector('#offres-lp');
+	if (!target || !window.initOffersCarousel) return;
+
+	if ('IntersectionObserver' in window) {
+		const io = new IntersectionObserver(
+			(entries, obs) => {
+				if (entries[0].isIntersecting) {
+					window.initOffersCarousel(
+						'.offers-carousel[data-r4-offers]'
+					);
+					obs.disconnect();
+				}
+			},
+			{ rootMargin: '200px' }
+		);
+		io.observe(target);
+	} else {
+		window.addEventListener(
+			'load',
+			() => window.initOffersCarousel('.offers-carousel[data-r4-offers]'),
+			{ once: true }
+		);
+	}
+})();

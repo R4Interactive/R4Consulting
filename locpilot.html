@@ -34,11 +34,20 @@
     <link rel="stylesheet" href="styles.css" />
 
     <!-- Polices/icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Dancing+Script&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="icon" href="R4-Consulting-Logo.webp" type="image/webp" />
+
+    <!-- Preconnect fonts pour réduire le handshake réseau -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Précharge l'image LCP (adapte le chemin/tailles à ton fichier réel) -->
+    <link rel="preload" as="image" href="./image/LocPilot.webp" imagesizes="(max-width: 768px) 92vw, 450px"
+        imagesrcset="./image/LocPilot.webp 1x, ./image/LocPilot@2x.webp 2x">
+
 </head>
 
 <body class="page-locpilot">
@@ -101,8 +110,9 @@
                     </p>
                 </div>
                 <div class="detail-image">
-                    <img src="./image/LocPilot.webp" alt="Aperçu du site de réservation LocPilot by R4" loading="lazy"
-                        width="1200" height="800" />
+                    <img src="./image/LocPilot.webp" srcset="./image/LocPilot.webp 1x, ./image/LocPilot@2x.webp 2x"
+                        sizes="(max-width: 768px) 92vw, 450px" width="450" height="300" fetchpriority="high"
+                        decoding="async" alt="Aperçu LocPilot by R4">
                 </div>
             </div>
 
