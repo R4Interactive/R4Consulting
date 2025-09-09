@@ -118,17 +118,31 @@ button {
 		font-size: 0.9rem;
 	}
 }
-.hero-inner {
-	max-width: 800px;
-	margin: 1rem auto 0;
-	text-align: center;
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 2s ease-out, transform 2s ease-out;
+/* Hero : visible tout de suite (pas d'opacité 0 sur le conteneur) */
+.hero-inner { 
+  opacity: 1; 
+  transform: none; 
 }
 .hero-inner.hero-visible {
 	opacity: 1;
 	transform: translateY(0);
+}
+
+/* Animations légères sur éléments secondaires seulement */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-inner .tagline { 
+    animation: r4-fade-up .55s ease-out both; 
+    animation-delay: .06s;
+  }
+  .hero-inner .btn-primary { 
+    animation: r4-fade-up .55s ease-out both; 
+    animation-delay: .12s;
+  }
+}
+
+@keyframes r4-fade-up {
+  from { opacity: 0.001; transform: translate3d(0, 10px, 0); }
+  to   { opacity: 1;     transform: none; }
 }
 .site-title {
 	font-size: 2.5rem;

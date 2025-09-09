@@ -13,6 +13,13 @@
  * 9) Apparition échelonnée des cartes de service
  */
 
+function r4Idle(fn) {
+	if ('requestIdleCallback' in window)
+		requestIdleCallback(fn, { timeout: 1500 });
+	else setTimeout(fn, 0);
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
 	// ----------------------------------------
 	// 1) BASCULE THÈME SOMBRE / CLAIR (localStorage)
