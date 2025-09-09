@@ -401,27 +401,38 @@ button {
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
-/* ============================
-	 Définition du flex-basis 
-	 via media queries
-	 ============================ */
-
-
-
-
-
-
-
-/* Scroll-Reveal au besoin */
-.reveal-hidden {
-	opacity: 0;
-	transform: translateY(40px);
+/* ===== Scroll-Reveal générique (direction + délai) ===== */
+.reveal {
+  opacity: 0;
+  transform:
+    translateX(var(--r-x, 0))
+    translateY(var(--r-y, 20px));
+  transition:
+    opacity var(--r-dur, .7s) var(--r-ease, cubic-bezier(.2,.7,.3,1)),
+    transform var(--r-dur, .7s) var(--r-ease, cubic-bezier(.2,.7,.3,1));
+  will-change: transform, opacity;
 }
-.reveal-visible {
-	opacity: 1;
-	transform: translateY(0);
-	transition: opacity 3s ease-out, transform 3s ease-out;
+
+/* devient visible */
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
 }
+
+/* Variantes directionnelles (on change juste l’offset initial) */
+.reveal-up    { --r-x: 0;    --r-y: 22px; }
+.reveal-left  { --r-x: -22px; --r-y: 0;   }
+.reveal-right { --r-x: 22px;  --r-y: 0;   }
+
+/* Respecte les préférences d’accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 
 /* ----------------------------------
 	 SECTION CONTACT (utilisée partout)
@@ -2948,6 +2959,56 @@ section#testimonials .testimonials-container {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
+}
+/* ===== Révélations homogènes (up/left/right) + stagger ===== */
+.reveal-hidden { opacity: 0; transition: opacity .7s ease, transform .7s ease; will-change: opacity, transform; }
+.reveal-visible { opacity: 1; transform: none !important; }
+
+/* directions */
+.reveal-up.reveal-hidden    { transform: translateY(24px); }
+.reveal-left.reveal-hidden  { transform: translateX(-28px); }
+.reveal-right.reveal-hidden { transform: translateX(28px); }
+
+/* délai via data attr (– custom property fallback) */
+.reveal-hidden { transition-delay: var(--reveal-delay, 0ms); }
+
+/* petit lift homogène sur les cartes lors du hover */
+.offer-card:hover,
+.faq-block blockquote:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.6);
+}
+
+/* accessibilité : animations coupées si demandé par l’utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden { transition: none !important; }
+}
+
+/* LocPilot : on n'anime plus le conteneur, seulement ses enfants .reveal */
+.page-locpilot .hero-inner {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+/* Le conteneur du hero ne fade plus : visible dès le 1er paint */
+.page-locpilot .hero-inner {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Système reveal existant : on coupe uniquement l'opacité pour les éléments .nofade */
+.reveal-hidden.nofade { opacity: 1 !important; }          /* visibles tout de suite */
+.reveal-visible.nofade { opacity: 1 !important; }          /* aucune transition d'opacité */
+.reveal.nofade { transition: transform .6s cubic-bezier(.2,.7,.2,1) !important; }
+
+/* Petit décalage au départ, mais déjà visible → pas d'impact LCP */
+.reveal-hidden.reveal-up { transform: translateY(14px); }
+.reveal-visible.reveal-up { transform: translateY(0); }
+
+/* Bonus : si l’utilisateur préfère réduire les animations, on coupe le slide */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-hidden, .reveal-visible { transition: none !important; transform: none !important; }
 }
 
 /* --------------------------------------------

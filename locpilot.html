@@ -4,50 +4,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- SEO -->
-    <title>LocPilot by R4 — Réservations directes sans commission</title>
     <meta name="description"
-        content="LocPilot by R4 : site premium + moteur de réservation intégré + visibilité Google Travel & Maps, TripAdvisor. Objectif : plus de réservations directes, 0 % commission." />
-    <link rel="canonical" href="https://www.r4consulting.fr/locpilot.html" />
-    <meta name="theme-color" content="#0c1518" />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
-
-    <!-- Open Graph / Twitter -->
-    <meta property="og:locale" content="fr_FR" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="R4 Consulting" />
+        content="LocPilot by R4 : générez des réservations directes sans commission. Site premium, moteur de réservation intégré, visibilité Google Travel & Maps, TripAdvisor." />
     <meta property="og:title" content="LocPilot by R4 — Réservations directes" />
     <meta property="og:description"
         content="Site premium, moteur de résa intégré, visibilité Google Travel & Maps, TripAdvisor. 0 % commission." />
-    <meta property="og:url" content="https://www.r4consulting.fr/locpilot.html" />
-    <meta property="og:image" content="https://www.r4consulting.fr/assets/og-locpilot.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:type" content="website" />
+    <title>LocPilot by R4</title>
 
-    <!-- Perf -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Styles -->
+    <!-- Styles globaux -->
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Polices/icônes -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="icon" href="R4-Consulting-Logo.webp" type="image/webp" />
-
-    <!-- Preconnect fonts pour réduire le handshake réseau -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Précharge l'image LCP (adapte le chemin/tailles à ton fichier réel) -->
-    <link rel="preload" as="image" href="./image/LocPilot.webp" imagesizes="(max-width: 768px) 92vw, 450px"
-        imagesrcset="./image/LocPilot.webp 1x, ./image/LocPilot@2x.webp 2x">
-
+    <!-- Polices / icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Dancing+Script&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="R4-Consulting-Logo.png" type="image/png" />
 </head>
 
 <body class="page-locpilot">
@@ -57,21 +30,19 @@
     <header class="hero">
         <div class="header-top">
             <a href="index.html">
-                <img src="./R4-Consulting-Logo.webp" alt="Logo R4 Consulting" class="logo" width="180" height="48"
-                    decoding="async" />
+                <img src="./R4-Consulting-Logo.png" alt="Logo R4 Consulting" class="logo" width="180" height="54" />
             </a>
 
-            <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu" aria-controls="site-nav"
-                aria-expanded="false">
+            <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu">
                 <span></span><span></span><span></span>
             </button>
             <button id="themeToggle" aria-label="Basculer thème sombre/clair"
                 title="Basculer thème sombre/clair">🌙</button>
 
-            <nav class="main-nav" id="site-nav" aria-label="Navigation principale">
+            <nav class="main-nav" aria-label="Navigation principale">
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="locpilot.html" aria-current="page" class="active">LocPilot</a></li>
+                    <li><a href="locpilot.html" class="active" aria-current="page">LocPilot</a></li>
                     <li><a href="identite.html">Digital</a></li>
                     <li><a href="immobilier.html">Immobilier</a></li>
                     <li><a href="gestion.html">Patrimoine</a></li>
@@ -81,11 +52,17 @@
             </nav>
         </div>
 
-        <div class="hero-inner hero-visible">
-            <h1 class="site-title">LocPilot by R4</h1>
-            <p class="tagline">Générez des <strong>réservations directes</strong> sans commission.</p>
-            <a href="#offres-lp" class="btn-primary">Découvrir les packs</a>
+        <div class="hero-inner">
+            <h1 class="site-title reveal reveal-up nofade" data-reveal-delay="0">LocPilot by R4</h1>
+            <p class="tagline reveal reveal-up nofade" data-reveal-delay="120">
+                Générez des <strong>réservations directes</strong> sans commission
+            </p>
+            <a href="#offres-lp" class="btn-primary reveal reveal-up nofade" data-reveal-delay="240">
+                Découvrir les packs
+            </a>
         </div>
+
+
     </header>
 
     <!-- ===============================
@@ -93,33 +70,32 @@
        =============================== -->
     <section class="detail-service">
         <div class="detail-inner">
-            <h2 class="detail-heading">Pourquoi choisir LocPilot&nbsp;?</h2>
+            <h2 class="detail-heading reveal reveal-up">Pourquoi choisir LocPilot&nbsp;?</h2>
 
             <div class="detail-content intro">
-                <div class="detail-text">
+                <div class="detail-text reveal reveal-left" data-reveal-delay="50">
                     <p>
                         LocPilot aide les <strong>locations saisonnières</strong>, <strong>conciergeries</strong>,
                         <strong>gîtes</strong>,
-                        <strong>chambres d’hôtes</strong> et <strong>hôtels indépendants</strong> à reprendre le
-                        contrôle du
-                        <strong>canal direct</strong>. Nous concevons un <strong>site de réservation</strong> rapide et
-                        accessible,
-                        nous intégrons un <strong>moteur de réservation mobile-first</strong> et nous optimisons votre
-                        <strong>SEO local</strong>
-                        (Google Travel, Maps, TripAdvisor). Résultat : moins de dépendance aux OTA, plus de marge, une
-                        expérience fluide du clic au paiement.
+                        <strong>chambres d’hôtes</strong> et <strong>hôtels indépendants</strong>
+                        à reprendre le contrôle du <strong>canal direct</strong>. Nous concevons un <strong>site de
+                            réservation</strong> rapide
+                        et accessible, nous intégrons un <strong>moteur de réservation mobile-first</strong> et nous
+                        optimisons votre
+                        <strong>SEO local</strong> sur Google Travel, Maps et TripAdvisor.
+                        Résultat : moins de dépendance aux OTA, plus de marge, une expérience fluide du clic jusqu’au
+                        paiement.
                     </p>
                 </div>
-                <div class="detail-image">
-                    <img src="./image/LocPilot.webp" srcset="./image/LocPilot.webp 1x, ./image/LocPilot@2x.webp 2x"
-                        sizes="(max-width: 768px) 92vw, 450px" width="450" height="300" fetchpriority="high"
-                        decoding="async" alt="Aperçu LocPilot by R4">
+                <div class="detail-image reveal reveal-right" data-reveal-delay="150">
+                    <img src="./image/LocPilot.webp" alt="Aperçu LocPilot by R4" width="900" height="600"
+                        decoding="async" />
                 </div>
             </div>
 
             <div class="detail-content section-block">
-                <h3>Ce que vous obtenez</h3>
-                <ul>
+                <h3 class="reveal reveal-up">Ce que vous obtenez</h3>
+                <ul class="reveal reveal-up" data-reveal-delay="100">
                     <li><strong>Site de réservation directe</strong> au design premium, rapide (Core Web Vitals) et
                         accessible (RGAA).</li>
                     <li><strong>Moteur de réservation intégré</strong> (mobile-first), tunnel de conversion clair et
@@ -130,13 +106,13 @@
                         propre (events, consentement RGPD).</li>
                     <li><strong>Réduction des commissions OTA</strong> et reprise de marge avec un canal direct pérenne.
                     </li>
-                    <li><strong>Accompagnement modulable</strong> selon vos objectifs et votre autonomie.</li>
+                    <li><strong>Accompagnement modulable</strong> selon vos objectifs et votre niveau d’autonomie.</li>
                 </ul>
             </div>
 
             <div class="detail-content section-block">
-                <h3>Comment ça marche ?</h3>
-                <ul>
+                <h3 class="reveal reveal-up">Comment ça marche&nbsp;?</h3>
+                <ul class="reveal reveal-up" data-reveal-delay="80">
                     <li><strong>Audit &amp; cadrage</strong> : inventaire des OTA, calendrier, positionnement, offres et
                         contraintes.</li>
                     <li><strong>Mise en ligne</strong> : site + moteur de réservation, moyens de paiement, avis clients,
@@ -153,7 +129,7 @@
        =============================== -->
     <section id="offres-lp" class="offres-packs-section detail-service">
         <div class="detail-inner">
-            <h2 class="detail-heading">Trois packs, un objectif&nbsp;: + de direct</h2>
+            <h2 class="detail-heading reveal reveal-up">Trois packs, un objectif&nbsp;: + de direct</h2>
 
             <div class="offers-carousel" data-r4-offers aria-roledescription="carousel">
                 <button class="offers-prev" aria-label="Précédent">‹</button>
@@ -161,24 +137,29 @@
                 <div class="offers-packs-wrapper" aria-live="polite">
                     <div class="offers-packs-cards">
                         <!-- ESSENTIEL -->
-                        <article class="offer-card" aria-label="Pack Essentiel" data-available="true">
+                        <article class="offer-card reveal reveal-up" data-reveal-delay="0" aria-label="Pack Essentiel">
                             <h4 class="offer-title">Pack Essentiel — 1&nbsp;490&nbsp;€ HT / an</h4>
-                            <p class="offer-blurb">L’essentiel pour <strong>vendre en direct</strong> : site performant
-                                + moteur de réservation sans commission.</p>
+                            <p class="offer-blurb">
+                                L’essentiel pour <strong>vendre en direct</strong> : un site performant + un moteur de
+                                réservation clair, sans commission.
+                            </p>
                             <ul class="offer-list">
                                 <li>Site premium de réservation directe (SEO friendly)</li>
                                 <li>Visibilité renforcée Google Travel, Google Maps &amp; TripAdvisor</li>
                                 <li>Indépendance vis-à-vis des commissions OTA</li>
                                 <li>Maintenance technique incluse</li>
                             </ul>
-                            <a href="#contact" class="btn-primary">Demander une démo</a>
+                            <a href="#contact" class="btn-primary offer-cta" data-pack="Pack Essentiel">Demander une
+                                démo</a>
                         </article>
 
                         <!-- CONFORT -->
-                        <article class="offer-card" aria-label="Pack Confort" data-available="true">
+                        <article class="offer-card reveal reveal-up" data-reveal-delay="120" aria-label="Pack Confort">
                             <h4 class="offer-title">Pack Confort — 2&nbsp;490&nbsp;€ HT / an</h4>
-                            <p class="offer-blurb">Le bon équilibre <strong>conversion</strong> + <strong>visibilité
-                                    locale</strong>, avec coaching stratégique.</p>
+                            <p class="offer-blurb">
+                                Le bon équilibre entre <strong>conversion</strong> et <strong>visibilité locale</strong>
+                                avec coaching stratégique.
+                            </p>
                             <ul class="offer-list">
                                 <li>Tout “Essentiel” + optimisation conversion</li>
                                 <li>Présence renforcée Google Travel, Maps &amp; TripAdvisor</li>
@@ -186,14 +167,18 @@
                                 <li>Support prioritaire (mail + visio)</li>
                                 <li>Mise en relation ponctuelle avec des prestataires locaux</li>
                             </ul>
-                            <a href="#contact" class="btn-primary">Demander une démo</a>
+                            <a href="#contact" class="btn-primary offer-cta" data-pack="Pack Confort">Demander une
+                                démo</a>
                         </article>
 
                         <!-- AUTONOMIE -->
-                        <article class="offer-card" aria-label="Pack Autonomie" data-available="true">
+                        <article class="offer-card reveal reveal-up" data-reveal-delay="240"
+                            aria-label="Pack Autonomie">
                             <h4 class="offer-title">Pack Autonomie — 3&nbsp;490&nbsp;€ HT / an</h4>
-                            <p class="offer-blurb">Pour viser le plein potentiel : <strong>priorité</strong>,
-                                optimisation continue et anti-OTA progressive.</p>
+                            <p class="offer-blurb">
+                                Pour viser le plein potentiel : <strong>accompagnement prioritaire</strong>,
+                                optimisation continue et anti-OTA progressive.
+                            </p>
                             <ul class="offer-list">
                                 <li>Tout “Confort” + suivi prioritaire illimité</li>
                                 <li>4 RDV stratégiques/an</li>
@@ -201,7 +186,8 @@
                                 <li>Optimisation continue du taux d’occupation</li>
                                 <li>Réseau complet de prestataires fiables</li>
                             </ul>
-                            <a href="#contact" class="btn-primary">Demander une démo</a>
+                            <a href="#contact" class="btn-primary offer-cta" data-pack="Pack Autonomie">Demander une
+                                démo</a>
                         </article>
                     </div>
                 </div>
@@ -209,74 +195,63 @@
                 <button class="offers-next" aria-label="Suivant">›</button>
             </div>
 
+            <!-- FAQ -->
             <div class="detail-content section-block faq-block">
-                <h3>Questions fréquentes</h3>
+                <h3 class="reveal reveal-up">Questions fréquentes</h3>
 
-                <h4>Compatible avec mes annonces Airbnb/Booking&nbsp;?</h4>
-                <p>Oui. Notre solution s’ajoute comme <strong>canal direct</strong> : vous gardez vos OTA et réduisez
-                    progressivement leur part.</p>
-
-                <h4>Dois-je changer de channel manager ou de PMS&nbsp;?</h4>
-                <p>Pas nécessairement. Nous nous adaptons à votre stack existante (calendriers, paiements, facturation)
-                    quand c’est possible.</p>
-
-                <h4>Qui gère le moteur de réservation&nbsp;?</h4>
-                <p>
-                    Nous l’implémentons et le paramétrons. Vous gardez la main sur <strong>les disponibilités</strong>,
-                    <strong>les tarifs</strong> et <strong>les conditions</strong>. Nous disposons également d’un
-                    <strong>compte master</strong> (accès administrateur) pour l’assistance, la supervision et les
-                    interventions
-                    techniques si besoin, <em>sans modifier vos paramètres commerciaux sans votre accord</em>.
+                <h4 class="reveal reveal-left">Compatible avec mes annonces Airbnb/Booking&nbsp;?</h4>
+                <p class="reveal reveal-left" data-reveal-delay="80">
+                    Oui. Notre solution s’ajoute comme <strong>canal direct</strong> : vous gardez vos OTA et réduisez
+                    progressivement leur part.
                 </p>
 
-                <h4>Quid du SEO local (Google Travel, Maps, TripAdvisor)&nbsp;?</h4>
-                <p>Nous optimisons les <strong>profils établissements</strong>, le balisage du site (schemas) et le
-                    <strong>maillage interne</strong> pour apparaître sur les recherches locales pertinentes.
+                <h4 class="reveal reveal-left" data-reveal-delay="120">Dois-je changer de channel manager ou de
+                    PMS&nbsp;?</h4>
+                <p class="reveal reveal-left" data-reveal-delay="200">
+                    Pas nécessairement. Nous nous adaptons à votre stack existante (calendriers, paiements, facturation)
+                    quand c’est possible.
                 </p>
 
-                <h4>Combien de temps pour être en ligne&nbsp;?</h4>
-                <p>Selon la complexité de l’offre et les contenus disponibles ; nous avançons itérativement pour ouvrir
-                    le <strong>canal direct</strong> rapidement.</p>
-
-                <h4>Pouvez-vous former mon équipe&nbsp;?</h4>
-                <p>Oui. Sessions ciblées possibles (mise à jour des contenus, gestion des avis, bonnes pratiques de
-                    conversion).</p>
-            </div>
-
-            <!-- FAQ gouvernance d’accès -->
-            <div class="detail-content section-block faq-block" id="faq-gouvernance">
-                <h3>Gouvernance des accès &amp; sécurité</h3>
-
-                <h4>Qui a accès à mon moteur de réservation&nbsp;?</h4>
-                <p>Vous restez <strong>propriétaire</strong> des comptes et gardez le contrôle sur disponibilités,
-                    tarifs et conditions. R4 dispose d’un <strong>compte master</strong> (administrateur) pour support
-                    et maintenance, sans modification commerciale sans votre accord.</p>
-
-                <h4>Qu’est-ce qu’un compte master&nbsp;?</h4>
-                <p>Un accès <strong>auditable</strong> et <strong>sécurisé</strong> (mots de passe forts, 2FA si dispo)
-                    dédié au support, diagnostics, mises à jour. Usage <strong>journalisé</strong> quand l’outil le
-                    permet.</p>
-
-                <h4>Puis-je limiter/retirer cet accès&nbsp;?</h4>
-                <p>Oui : accès <strong>temporaire</strong>, <strong>restreint</strong> (droits minimaux),
-                    <strong>lecture seule</strong> si possible, ou <strong>désactivation</strong> sur demande.
+                <h4 class="reveal reveal-left" data-reveal-delay="240">Qui gère le moteur de réservation&nbsp;?</h4>
+                <p class="reveal reveal-left" data-reveal-delay="320">
+                    Nous l’implémentons et le paramétrons. Vous gardez la main sur les disponibilités, les tarifs et les
+                    conditions.
+                    Nous disposons également d’un <strong>accès administrateur (compte master)</strong> pour
+                    l’assistance, la supervision et les
+                    interventions techniques si besoin, <em>sans modifier vos paramètres commerciaux sans votre
+                        accord</em>.
                 </p>
 
-                <h4>Modifications sensibles</h4>
-                <p>Effectuées <strong>sur validation</strong>, avec sauvegarde/export préalable quand c’est possible et
-                    <strong>retour arrière</strong> prévu en cas d’anomalie.
+                <h4 class="reveal reveal-left" data-reveal-delay="360">Quid du SEO local (Google Travel, Maps,
+                    TripAdvisor)&nbsp;?</h4>
+                <p class="reveal reveal-left" data-reveal-delay="420">
+                    Nous optimisons les <strong>profils établissements</strong>, le balisage du site (schemas) et le
+                    <strong>maillage interne</strong>
+                    pour apparaître sur les recherches locales pertinentes.
                 </p>
 
-                <h4>Réversibilité en fin de mission</h4>
-                <p>Vous gardez la <strong>pleine propriété</strong>. Le compte master est <strong>transféré ou
-                        supprimé</strong> à la clôture, remise des accès et mémo de passation si besoin.</p>
+                <h4 class="reveal reveal-left" data-reveal-delay="460">Combien de temps pour être en ligne&nbsp;?</h4>
+                <p class="reveal reveal-left" data-reveal-delay="520">
+                    Selon la complexité de l’offre et les contenus disponibles ; nous avançons itérativement pour ouvrir
+                    le <strong>canal direct</strong>
+                    rapidement.
+                </p>
+
+                <h4 class="reveal reveal-left" data-reveal-delay="560">Pouvez-vous former mon équipe&nbsp;?</h4>
+                <p class="reveal reveal-left" data-reveal-delay="620">
+                    Oui. Nous proposons des sessions ciblées (mise à jour des contenus, gestion des avis, bonnes
+                    pratiques de conversion).
+                </p>
             </div>
 
             <!-- CTA -->
-            <div class="cta-block">
+            <div class="cta-block reveal reveal-up" data-reveal-delay="80">
                 <h3>Envie de passer au direct&nbsp;?</h3>
-                <p>Parlons de votre situation (OTA, calendrier, marges) et voyons comment <strong>LocPilot</strong> peut
-                    augmenter vos <strong>réservations directes</strong>.</p>
+                <p>
+                    Parlons de votre situation (OTA, calendrier, marges) et voyons comment <strong>LocPilot</strong>
+                    peut
+                    augmenter vos <strong>réservations directes</strong> en quelques semaines.
+                </p>
                 <a href="#contact" class="btn-primary">Parler à un expert</a>
             </div>
         </div>
@@ -285,45 +260,39 @@
     <!-- ===============================
        CONTACT
        =============================== -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact reveal reveal-up" data-reveal-delay="80">
         <div class="contact-inner">
             <h2 class="contact-heading">Prêt à Transformer Votre Projet ?</h2>
-            <p class="contact-subheading">Dites-nous où vous en êtes, nous vous proposerons la stratégie sur-mesure.</p>
+            <p class="contact-subheading">
+                Dites-nous où vous en êtes, nous vous proposerons la stratégie sur-mesure qui fera décoller votre
+                business.
+            </p>
 
             <div class="contact-card">
                 <div class="contact-info">
                     <h3 class="info-title">Informations</h3>
-                    <ul class="info-list">
+                    <ul class="info-list" role="list">
                         <li>
-                            <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill="currentColor" d="M2 5h20v14H2V5zm10 7L4.5 7h15L12 12z" />
-                            </svg>
-                            <span class="sr-only"></span>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/new-post.png" alt=""
+                                class="info-icon" />
                             <span class="info-text"><a
                                     href="mailto:contact@r4consulting.fr">contact@r4consulting.fr</a></span>
                         </li>
                         <li>
-                            <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill="currentColor"
-                                    d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25c1.1.36 2.3.56 3.6.6a1 1 0 011 1V20a1 1 0 01-1 1C12.4 21 3 11.6 3 2a1 1 0 011-1h2.45a1 1 0 011 1c.04 1.3.24 2.5.6 3.6a1 1 0 01-.25 1l-2.2 2.2z" />
-                            </svg>
-                            <span class="sr-only"></span>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/phone.png" alt="" class="info-icon" />
                             <span class="info-text">+33 7 84 29 82 02</span>
                         </li>
                         <li>
-                            <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill="currentColor"
-                                    d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7zm0 9a2 2 0 100-4 2 2 0 000 4z" />
-                            </svg>
-                            <span class="sr-only"></span>
-                            <span class="info-text">Résidence La Mongie Tourmalet, 3 rue de Sencours<br>65200 Bagnères
-                                de Bigorre,
-                                France</span>
+                            <img src="https://img.icons8.com/ios-filled/24/b08040/marker.png" alt=""
+                                class="info-icon" />
+                            <span class="info-text">
+                                Résidence La Mongie Tourmalet, 3 rue de Sencours<br />65200 Bagnères de Bigorre, France
+                            </span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="contact-actions only-ctas">
+                <div class="contact-actions only-ctas" aria-label="Actions de contact">
                     <a href="https://wa.me/33784298202?text=Bonjour%20R4%20Consulting%20!" class="btn-whatsapp"
                         target="_blank" rel="noopener">Discuter sur WhatsApp</a>
                     <a href="https://calendar.app.google/vu2skZJCPNh8YWsT8" class="btn-secondary" target="_blank"
@@ -338,26 +307,24 @@
         <p class="footer-text">© 2025 R4 Consulting — Digital • Immobilier • Patrimoine • Vision</p>
     </footer>
 
-    <!-- JS global existant -->
+    <!-- JS global du site + contrôles / animations -->
     <script src="script.js" defer></script>
 
-    <!-- Module carrousel robuste (scoped) -->
-    <script src="carousel.r4.js" defer></script>
-
-    <!-- JSON-LD loader (vers fichier centralisé) -->
+    <!-- Chargement JSON-LD externe centralisé -->
     <script>
         (function loadSchema(url) {
-            function run() {
-                fetch(url, { credentials: 'omit' }).then(r => r.ok ? r.json() : null).then(json => {
-                    if (!json) return;
-                    var s = document.createElement('script');
-                    s.type = 'application/ld+json';
-                    s.text = JSON.stringify(json);
-                    document.head.appendChild(s);
-                }).catch(() => { });
-            }
-            if ('requestIdleCallback' in window) { requestIdleCallback(run, { timeout: 2000 }); }
-            else { window.addEventListener('load', run, { once: true }); }
+            try {
+                fetch(url, { credentials: 'omit' })
+                    .then(function (r) { return r.ok ? r.json() : null; })
+                    .then(function (json) {
+                        if (!json) return;
+                        var s = document.createElement('script');
+                        s.type = 'application/ld+json';
+                        s.text = JSON.stringify(json);
+                        document.head.appendChild(s);
+                    })
+                    .catch(function () { /* silencieux */ });
+            } catch (e) { }
         })('/schema/locpilot.json');
     </script>
 </body>
