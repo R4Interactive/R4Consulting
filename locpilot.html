@@ -61,16 +61,17 @@
                     decoding="async" />
             </a>
 
-            <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu">
+            <button id="hamburgerBtn" class="hamburger" aria-label="Ouvrir le menu" aria-controls="site-nav"
+                aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
             <button id="themeToggle" aria-label="Basculer thème sombre/clair"
                 title="Basculer thème sombre/clair">🌙</button>
 
-            <nav class="main-nav" aria-label="Navigation principale">
+            <nav class="main-nav" id="site-nav" aria-label="Navigation principale">
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="locpilot.html" class="active" aria-current="page">LocPilot</a></li>
+                    <li><a href="locpilot.html" aria-current="page" class="active">LocPilot</a></li>
                     <li><a href="identite.html">Digital</a></li>
                     <li><a href="immobilier.html">Immobilier</a></li>
                     <li><a href="gestion.html">Patrimoine</a></li>
@@ -294,21 +295,30 @@
                     <h3 class="info-title">Informations</h3>
                     <ul class="info-list">
                         <li>
-                            <img src="https://img.icons8.com/ios-filled/24/b08040/new-post.png" alt="Email"
-                                class="info-icon" />
+                            <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor" d="M2 5h20v14H2V5zm10 7L4.5 7h15L12 12z" />
+                            </svg>
+                            <span class="sr-only"></span>
                             <span class="info-text"><a
                                     href="mailto:contact@r4consulting.fr">contact@r4consulting.fr</a></span>
                         </li>
                         <li>
-                            <img src="https://img.icons8.com/ios-filled/24/b08040/phone.png" alt="Téléphone"
-                                class="info-icon" />
+                            <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25c1.1.36 2.3.56 3.6.6a1 1 0 011 1V20a1 1 0 01-1 1C12.4 21 3 11.6 3 2a1 1 0 011-1h2.45a1 1 0 011 1c.04 1.3.24 2.5.6 3.6a1 1 0 01-.25 1l-2.2 2.2z" />
+                            </svg>
+                            <span class="sr-only"></span>
                             <span class="info-text">+33 7 84 29 82 02</span>
                         </li>
                         <li>
-                            <img src="https://img.icons8.com/ios-filled/24/b08040/marker.png" alt="Adresse"
-                                class="info-icon" />
-                            <span class="info-text">Résidence La Mongie Tourmalet, 3 rue de Sencours<br />65200 Bagnères
-                                de Bigorre, France</span>
+                            <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7zm0 9a2 2 0 100-4 2 2 0 000 4z" />
+                            </svg>
+                            <span class="sr-only"></span>
+                            <span class="info-text">Résidence La Mongie Tourmalet, 3 rue de Sencours<br>65200 Bagnères
+                                de Bigorre,
+                                France</span>
                         </li>
                     </ul>
                 </div>

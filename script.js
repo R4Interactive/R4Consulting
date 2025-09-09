@@ -719,18 +719,53 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 });
 
+/* === Burger accessible (ARIA) === */
 document.addEventListener('DOMContentLoaded', () => {
 	const btn = document.getElementById('hamburgerBtn');
+	const nav =
+		document.getElementById('site-nav') ||
+		document.querySelector('.main-nav');
+	if (!btn || !nav) return;
+
+	// Lier le bouton au nav si besoin
+	if (!btn.hasAttribute('aria-controls')) {
+		if (!nav.id) nav.id = 'site-nav';
+		btn.setAttribute('aria-controls', nav.id);
+	}
+	btn.setAttribute('aria-expanded', 'false');
+
+	const openMenu = () => {
+		document.body.classList.add('nav-open');
+		btn.setAttribute('aria-expanded', 'true');
+		nav.querySelector('a')?.focus();
+	};
+	const closeMenu = () => {
+		document.body.classList.remove('nav-open');
+		btn.setAttribute('aria-expanded', 'false');
+		btn.focus();
+	};
+
 	btn.addEventListener('click', () => {
-		document.body.classList.toggle('nav-open');
+		const open = document.body.classList.contains('nav-open');
+		open ? closeMenu() : openMenu();
 	});
-	// Fermer le menu si on clique sur un lien
-	document.querySelectorAll('.main-nav a').forEach((link) => {
-		link.addEventListener('click', () => {
-			document.body.classList.remove('nav-open');
-		});
+
+	// Fermer au clavier (Échap)
+	document.addEventListener('keydown', (e) => {
+		if (
+			e.key === 'Escape' &&
+			document.body.classList.contains('nav-open')
+		) {
+			closeMenu();
+		}
 	});
+
+	// Fermer quand on clique un lien
+	nav.querySelectorAll('a').forEach((a) =>
+		a.addEventListener('click', closeMenu)
+	);
 });
+
 document.querySelectorAll('.mini-accordion').forEach((detail) => {
 	const summary = detail.querySelector('summary');
 	const list = detail.querySelector('ul');
@@ -1235,3 +1270,37 @@ function setupOffersCarousel(root) {
 		);
 	}
 })();
+/* === Skip-link : focus sur <main> après saut === */
+document.addEventListener('DOMContentLoaded', () => {
+	const main = document.getElementById('main-content');
+	if (main && !main.hasAttribute('tabindex')) {
+		main.setAttribute('tabindex', '-1');
+	}
+});
+/* === Carrousels Offres : refléter disabled -> aria-disabled === */
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('.offers-carousel').forEach((root) => {
+		const prev = root.querySelector('.offers-prev');
+		const next = root.querySelector('.offers-next');
+
+		const sync = (btn) =>
+			btn &&
+			btn.setAttribute('aria-disabled', btn.disabled ? 'true' : 'false');
+
+		const mo = new MutationObserver(() => {
+			sync(prev);
+			sync(next);
+		});
+		[prev, next].forEach(
+			(b) =>
+				b &&
+				mo.observe(b, {
+					attributes: true,
+					attributeFilter: ['disabled'],
+				})
+		);
+
+		sync(prev);
+		sync(next);
+	});
+});

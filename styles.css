@@ -2912,6 +2912,43 @@ section#testimonials .testimonials-container {
 .page-locpilot .detail-heading strong { font-weight: 800; }
 .page-locpilot a { text-underline-offset: 2px; }
 
+/* Accessibilité : focus clair au clavier */
+:focus-visible {
+  outline: 3px solid #b08040;
+  outline-offset: 2px;
+}
+
+/* Lien “aller au contenu” (visible seulement au focus) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #b08040;
+  color: #0c1518;
+  padding: .5rem .75rem;
+  border-radius: 4px;
+  z-index: 2000;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Contraste renforcé si l’utilisateur le demande */
+@media (prefers-contrast: more) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-tertiary {
+    border-width: 3px;
+  }
+  a { text-decoration: underline; }
+}
+
+/* Réduction des animations pour motion-sensitive */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
 
 /* --------------------------------------------
 	 FIN DU CSS
