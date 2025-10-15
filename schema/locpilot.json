@@ -3,42 +3,64 @@
 	"@graph": [
 		{
 			"@type": "Organization",
-			"@id": "https://www.r4consulting.fr/#org",
+			"@id": "https://r4consulting.fr/#org",
 			"name": "R4 Consulting",
-			"url": "https://www.r4consulting.fr/",
-			"logo": "https://www.r4consulting.fr/R4-Consulting-Logo.webp",
+			"url": "https://r4consulting.fr/",
 			"email": "contact@r4consulting.fr",
 			"telephone": "+33 7 84 29 82 02",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://r4consulting.fr/R4-Consulting-Logo.png"
+			},
 			"address": {
 				"@type": "PostalAddress",
 				"streetAddress": "Résidence La Mongie Tourmalet, 3 rue de Sencours",
 				"postalCode": "65200",
 				"addressLocality": "Bagnères de Bigorre",
 				"addressCountry": "FR"
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"contactType": "customer support",
+				"email": "contact@r4consulting.fr",
+				"telephone": "+33 7 84 29 82 02",
+				"areaServed": "FR",
+				"availableLanguage": ["fr"]
 			}
 		},
 		{
 			"@type": "WebSite",
-			"@id": "https://www.r4consulting.fr/#website",
-			"url": "https://www.r4consulting.fr/",
+			"@id": "https://r4consulting.fr/#website",
+			"url": "https://r4consulting.fr/",
 			"name": "R4 Consulting",
-			"publisher": { "@id": "https://www.r4consulting.fr/#org" },
-			"potentialAction": {
-				"@type": "SearchAction",
-				"target": "https://www.r4consulting.fr/?s={search_term_string}",
-				"query-input": "required name=search_term_string"
-			}
+			"publisher": { "@id": "https://r4consulting.fr/#org" },
+			"inLanguage": "fr-FR"
+		},
+		{
+			"@type": "WebPage",
+			"@id": "https://r4consulting.fr/locpilot.html",
+			"url": "https://r4consulting.fr/locpilot.html",
+			"name": "LocPilot by R4 — Réservations directes",
+			"description": "LocPilot by R4 : générez des réservations directes sans commission. Site premium, moteur de réservation intégré, visibilité Google Travel & Maps, TripAdvisor.",
+			"isPartOf": { "@id": "https://r4consulting.fr/#website" },
+			"about": { "@id": "https://r4consulting.fr/#service-locpilot" },
+			"primaryImageOfPage": {
+				"@type": "ImageObject",
+				"url": "https://r4consulting.fr/image/LocPilot.webp"
+			},
+			"breadcrumb": {
+				"@id": "https://r4consulting.fr/#breadcrumb-locpilot"
+			},
+			"inLanguage": "fr-FR"
 		},
 		{
 			"@type": "Service",
-			"@id": "https://www.r4consulting.fr/locpilot.html#service",
+			"@id": "https://r4consulting.fr/#service-locpilot",
 			"name": "LocPilot by R4",
-			"url": "https://www.r4consulting.fr/locpilot.html",
-			"description": "Solution pour générer des réservations directes sans commission : site premium, moteur de réservation intégré, visibilité Google Travel & Maps et TripAdvisor.",
-			"serviceType": "Réservations directes / marketing digital touristique",
-			"brand": { "@type": "Brand", "name": "R4 Consulting" },
-			"provider": { "@id": "https://www.r4consulting.fr/#org" },
+			"serviceType": "Solution de réservation directe",
+			"provider": { "@id": "https://r4consulting.fr/#org" },
 			"areaServed": "FR",
+			"description": "Site de réservation directe performant avec moteur de réservation intégré et optimisation de la visibilité locale (Google Travel, Google Maps, TripAdvisor).",
 			"hasOfferCatalog": {
 				"@type": "OfferCatalog",
 				"name": "Packs LocPilot",
@@ -46,30 +68,54 @@
 					{
 						"@type": "Offer",
 						"name": "Pack Essentiel",
-						"price": "1490",
+						"price": "1490.00",
 						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock"
+						"availability": "https://schema.org/InStock",
+						"url": "https://r4consulting.fr/locpilot.html#offres-lp?pack=Essentiel",
+						"priceSpecification": {
+							"@type": "UnitPriceSpecification",
+							"price": "1490.00",
+							"priceCurrency": "EUR",
+							"unitText": "per year"
+						},
+						"category": "Pack"
 					},
 					{
 						"@type": "Offer",
 						"name": "Pack Confort",
-						"price": "2490",
+						"price": "2490.00",
 						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock"
+						"availability": "https://schema.org/InStock",
+						"url": "https://r4consulting.fr/locpilot.html#offres-lp?pack=Confort",
+						"priceSpecification": {
+							"@type": "UnitPriceSpecification",
+							"price": "2490.00",
+							"priceCurrency": "EUR",
+							"unitText": "per year"
+						},
+						"category": "Pack"
 					},
 					{
 						"@type": "Offer",
 						"name": "Pack Autonomie",
-						"price": "3490",
+						"price": "3490.00",
 						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock"
+						"availability": "https://schema.org/InStock",
+						"url": "https://r4consulting.fr/locpilot.html#offres-lp?pack=Autonomie",
+						"priceSpecification": {
+							"@type": "UnitPriceSpecification",
+							"price": "3490.00",
+							"priceCurrency": "EUR",
+							"unitText": "per year"
+						},
+						"category": "Pack"
 					}
 				]
 			}
 		},
 		{
 			"@type": "FAQPage",
-			"@id": "https://www.r4consulting.fr/locpilot.html#faq",
+			"@id": "https://r4consulting.fr/#faq-locpilot",
 			"mainEntity": [
 				{
 					"@type": "Question",
@@ -77,14 +123,6 @@
 					"acceptedAnswer": {
 						"@type": "Answer",
 						"text": "Oui. Notre solution s’ajoute comme canal direct : vous gardez vos OTA et réduisez progressivement leur part."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Qui gère le moteur de réservation ?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Nous l’implémentons et le paramétrons. Vous gardez la main sur les disponibilités, les tarifs et les conditions. Nous disposons également d’un compte master (accès administrateur) pour l’assistance, la supervision et les interventions techniques si besoin, sans modifier vos paramètres commerciaux sans votre accord."
 					}
 				},
 				{
@@ -97,75 +135,53 @@
 				},
 				{
 					"@type": "Question",
+					"name": "Qui gère le moteur de réservation ?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Nous l’implémentons et le paramétrons. Vous gardez la main sur les disponibilités, les tarifs et les conditions. Nous disposons également d’un accès administrateur (compte master) pour l’assistance, la supervision et les interventions techniques si besoin — sans modifier vos paramètres commerciaux sans votre accord."
+					}
+				},
+				{
+					"@type": "Question",
 					"name": "Quid du SEO local (Google Travel, Maps, TripAdvisor) ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
 						"text": "Nous optimisons les profils établissements, le balisage du site (schemas) et le maillage interne pour apparaître sur les recherches locales pertinentes."
 					}
-				}
-			]
-		},
-		{
-			"@type": "FAQPage",
-			"@id": "https://www.r4consulting.fr/locpilot.html#faq-gouvernance",
-			"mainEntity": [
+				},
 				{
 					"@type": "Question",
-					"name": "Qui a accès à mon moteur de réservation ?",
+					"name": "Combien de temps pour être en ligne ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Vous restez propriétaire des comptes et gardez le contrôle sur disponibilités, tarifs et conditions. R4 dispose d’un compte master (accès administrateur) pour l’assistance, la supervision et les interventions techniques, sans modifier vos paramètres commerciaux sans votre accord."
+						"text": "Selon la complexité de l’offre et les contenus disponibles ; nous avançons itérativement pour ouvrir le canal direct rapidement."
 					}
 				},
 				{
 					"@type": "Question",
-					"name": "Qu’est-ce qu’un compte master ?",
+					"name": "Pouvez-vous former mon équipe ?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Un accès administrateur auditable et sécurisé (mots de passe forts, 2FA lorsque disponible) pour support, diagnostics, mises à jour. Usage journalisé si l’outil le permet."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Puis-je limiter ou retirer cet accès ?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Oui : accès temporaire, restreint (droits minimaux), lecture seule si possible, ou désactivation sur demande."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Comment sont traitées les modifications sensibles ?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Sur validation écrite, avec sauvegarde/export préalable quand c’est possible, documentation et possibilité de retour arrière."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Réversibilité et fin de mission ?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Vous conservez la pleine propriété des comptes. Le compte master est transféré ou supprimé à la clôture, avec passation fournie si besoin."
+						"text": "Oui. Nous proposons des sessions ciblées : mise à jour des contenus, gestion des avis et bonnes pratiques de conversion."
 					}
 				}
 			]
 		},
 		{
 			"@type": "BreadcrumbList",
-			"@id": "https://www.r4consulting.fr/locpilot.html#breadcrumb",
+			"@id": "https://r4consulting.fr/#breadcrumb-locpilot",
 			"itemListElement": [
 				{
 					"@type": "ListItem",
 					"position": 1,
 					"name": "Accueil",
-					"item": "https://www.r4consulting.fr/"
+					"item": "https://r4consulting.fr/"
 				},
 				{
 					"@type": "ListItem",
 					"position": 2,
-					"name": "LocPilot",
-					"item": "https://www.r4consulting.fr/locpilot.html"
+					"name": "LocPilot by R4",
+					"item": "https://r4consulting.fr/locpilot.html"
 				}
 			]
 		}

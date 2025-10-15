@@ -21,9 +21,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Dancing+Script&display=swap"
         rel="stylesheet" />
     <link rel="icon" href="R4-Consulting-Logo.png" type="image/png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV46LF4HD1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PV46LF4HD1');
+    </script>
 </head>
 
 <body class="page-locpilot">
+    <!-- Banderole de consentement aux cookies (RGPD) -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-banner__content">
+            <p>
+                Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser le
+                contenu.
+                <a href="/politique-cookies.html" target="_blank">En savoir plus</a>.
+            </p>
+            <div class="cookie-banner__buttons">
+                <button id="acceptAllCookies" class="btn-cookie">Tout accepter</button>
+                <button id="manageCookies" class="btn-cookie--alt">Préférences</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fenêtre modale de gestion fine des catégories -->
+    <div id="cookieSettingsModal" class="cookie-modal hidden">
+        <div class="cookie-modal__content">
+            <h2>Paramètres des cookies</h2>
+            <form id="cookieSettingsForm">
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieNecessary" name="necessary" disabled checked />
+                    <label for="cookieNecessary">Cookies strictement nécessaires</label>
+                    <p class="cookie-category__desc">
+                        Nécessaires au fonctionnement du site (par ex. panier, session…). Toujours actifs.
+                    </p>
+                </div>
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieAnalytics" name="analytics" />
+                    <label for="cookieAnalytics">Cookies analytiques</label>
+                    <p class="cookie-category__desc">
+                        Permettent de mesurer les performances du site (ex. Google Analytics).
+                    </p>
+                </div>
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieFunctional" name="functional" />
+                    <label for="cookieFunctional">Cookies fonctionnels</label>
+                    <p class="cookie-category__desc">
+                        Améliorent l’expérience (ex. mémorisation langue, préférences d’affichage).
+                    </p>
+                </div>
+                <div class="cookie-category">
+                    <input type="checkbox" id="cookieMarketing" name="marketing" />
+                    <label for="cookieMarketing">Cookies marketing / publicitaires</label>
+                    <p class="cookie-category__desc">
+                        Utilisés pour la publicité ciblée (ex. pixels Facebook).
+                    </p>
+                </div>
+
+                <div class="cookie-modal__buttons">
+                    <button type="button" id="saveCookieSettings" class="btn-cookie">Enregistrer mes choix</button>
+                    <button type="button" id="cancelCookieSettings" class="btn-cookie--alt">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- ===============================
        HEADER / HERO
        =============================== -->
@@ -138,7 +203,7 @@
                     <div class="offers-packs-cards">
                         <!-- ESSENTIEL -->
                         <article class="offer-card reveal reveal-up" data-reveal-delay="0" aria-label="Pack Essentiel">
-                            <h4 class="offer-title">Pack Essentiel — 1&nbsp;490&nbsp;€ HT / an</h4>
+                            <h4 class="offer-title">Pack Essentiel — à partir de 1&nbsp;490&nbsp;€ HT / an</h4>
                             <p class="offer-blurb">
                                 L’essentiel pour <strong>vendre en direct</strong> : un site performant + un moteur de
                                 réservation clair, sans commission.
@@ -155,7 +220,7 @@
 
                         <!-- CONFORT -->
                         <article class="offer-card reveal reveal-up" data-reveal-delay="120" aria-label="Pack Confort">
-                            <h4 class="offer-title">Pack Confort — 2&nbsp;490&nbsp;€ HT / an</h4>
+                            <h4 class="offer-title">Pack Confort — à partir de 2&nbsp;490&nbsp;€ HT / an</h4>
                             <p class="offer-blurb">
                                 Le bon équilibre entre <strong>conversion</strong> et <strong>visibilité locale</strong>
                                 avec coaching stratégique.
@@ -174,7 +239,7 @@
                         <!-- AUTONOMIE -->
                         <article class="offer-card reveal reveal-up" data-reveal-delay="240"
                             aria-label="Pack Autonomie">
-                            <h4 class="offer-title">Pack Autonomie — 3&nbsp;490&nbsp;€ HT / an</h4>
+                            <h4 class="offer-title">Pack Autonomie — à partir de 3&nbsp;490&nbsp;€ HT / an</h4>
                             <p class="offer-blurb">
                                 Pour viser le plein potentiel : <strong>accompagnement prioritaire</strong>,
                                 optimisation continue et anti-OTA progressive.
@@ -254,6 +319,26 @@
                 </p>
                 <a href="#contact" class="btn-primary">Parler à un expert</a>
             </div>
+        </div>
+    </section>
+
+    <!-- ===============================
+       PRESSE
+       =============================== -->
+    <section class="press reveal" aria-labelledby="press-title">
+        <div class="press-inner">
+            <h2 id="press-title" class="detail-heading">Ils parlent de nous</h2>
+
+            <ul class="press-list" role="list">
+                <li class="press-logo reveal">
+                    <a href="https://www.lepoint.fr/services/locpilot-l-alternative-pour-se-liberer-des-plateformes-de-location-saisonnieres-25-09-2025-2599545_4345.php"
+                        target="_blank" rel="noopener noreferrer"
+                        aria-label="Lire l’article Le Point sur LocPilot (nouvel onglet)">
+                        <!-- mets le vrai chemin de ton fichier rouge -->
+                        <img src="image/lepoint.webp" width="256" height="256" alt="Le Point" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
 

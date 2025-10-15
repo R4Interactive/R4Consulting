@@ -3011,5 +3011,71 @@ section#testimonials .testimonials-container {
   .reveal, .reveal-hidden, .reveal-visible { transition: none !important; transform: none !important; }
 }
 
+/* ============== PRESSE (Ils parlent de nous) ============== */
+.press {
+  background: var(--bg);
+  padding-block: clamp(2rem, 5vw, 4rem); /* air haut/bas */
+}
+.press-inner {
+  width: min(1000px, 100% - 2rem);
+  margin-inline: auto;
+  text-align: center;
+}
+.press .detail-heading {
+  margin: 0 0 clamp(1.25rem, 3vw, 2.5rem) 0; /* espace sous le titre */
+  color: var(--gold);
+  font-weight: 800;
+}
+
+/* grille simple et centrée */
+.press-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  place-items: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+/* item + logo */
+.press-logo a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.press-logo img {
+  display: block;
+  width: auto;
+  max-height: 64px;       /* 56px en mobile juste dessous */
+  height: auto;
+  /* pas de filtre: on garde le rouge d'origine */
+  transition: transform .25s ease, opacity .25s ease;
+  opacity: 0.98;
+}
+.press-logo a:focus-visible img,
+.press-logo a:hover img {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .press-logo img { max-height: 56px; }
+}
+
+/* Petite entrée en douceur (respecte ton système reveal existant) */
+@media (prefers-reduced-motion: no-preference) {
+  .press-list .press-logo {
+    animation: press-in .45s ease both;
+  }
+  .press-list .press-logo:nth-child(2) { animation-delay: .06s; }
+  .press-list .press-logo:nth-child(3) { animation-delay: .12s; }
+}
+@keyframes press-in {
+  from { opacity: .001; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* --------------------------------------------
 	 FIN DU CSS

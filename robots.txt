@@ -1,4 +1,4 @@
-# robots.txt pour https://www.r4consulting.fr
-
 User-agent: *
 Allow: /
+
+Sitemap: https://r4consulting.fr/sitemap.xml
